@@ -1,0 +1,1636 @@
+Enter password: ***********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.33 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| lco_films          |
+| mysql              |
+| performance_schema |
+| world_actors       |
++--------------------+
+5 rows in set (0.03 sec)
+
+mysql> use world_actors;
+Database changed
+mysql> show tables;
++------------------------+
+| Tables_in_world_actors |
++------------------------+
+| actor                  |
++------------------------+
+1 row in set (0.01 sec)
+
+mysql> SELECT * FROM ACTOR;
++-----------+----------+--------+----------+
+| Firstname | LastName | Gender | Networth |
++-----------+----------+--------+----------+
+| Angela    | White    | Female |      750 |
+| Sunny     | Leone    | Female |       10 |
+| Mia       | Khalifa  | Female |       45 |
+| Abella    | Danger   | Female |       10 |
+| Mia       | Malova   | Female |       12 |
+| Valentina | Nappi    | Female |       46 |
+| Eva       | Elfie    | Female |       18 |
+| Riley     | Reid     | Female |       19 |
+| Lena      | Paul     | Female |       21 |
+| Brandi    | Love     | Female |       23 |
+| Emily     | Wills    | Female |       25 |
+| Lana      | Rhaodes  | Female |       26 |
+| Tesa      | Lane     | Female |       27 |
+| Leah      | Gotti    | Female |       28 |
+| Mischa    | Brooks   | Female |       15 |
+| Brianna   | Love     | Female |       30 |
+| August    | Ades     | Female |       31 |
+| Victoria  | June     | Female |       32 |
+| Madison   | Ivy      | Female |       33 |
+| Syndey    | Cole     | Female |       35 |
+| Dani      | Daniels  | Female |       36 |
+| Molly     | Sims     | Female |       37 |
+| Kacy      | Black    | Female |       38 |
+| Alyssia   | Kent     | Female |       39 |
+| Kayley    | Gunner   | Female |       41 |
+| Lacy      | Lennon   | Female |       51 |
+| Karlee    | Grey     | Female |       79 |
+| Keisha    | Grey     | Female |       81 |
+| Anila     | Depp     | Male   |       56 |
+| Ana       | Polana   | Female |       91 |
+| Blake     | Blossom  | Female |       13 |
++-----------+----------+--------+----------+
+31 rows in set (0.01 sec)
+
+mysql> SELECT * FROM ACTOR WHERE Networth = "21";
++-----------+----------+--------+----------+
+| Firstname | LastName | Gender | Networth |
++-----------+----------+--------+----------+
+| Lena      | Paul     | Female |       21 |
++-----------+----------+--------+----------+
+1 row in set (0.00 sec)
+
+mysql> SELECT * FROM ACTOR WHERE Networth >= "56";
++-----------+----------+--------+----------+
+| Firstname | LastName | Gender | Networth |
++-----------+----------+--------+----------+
+| Angela    | White    | Female |      750 |
+| Karlee    | Grey     | Female |       79 |
+| Keisha    | Grey     | Female |       81 |
+| Anila     | Depp     | Male   |       56 |
+| Ana       | Polana   | Female |       91 |
++-----------+----------+--------+----------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT * FROM ACTOR WHERE Networth >= "56" OR Networth < 40;
++-----------+----------+--------+----------+
+| Firstname | LastName | Gender | Networth |
++-----------+----------+--------+----------+
+| Angela    | White    | Female |      750 |
+| Sunny     | Leone    | Female |       10 |
+| Abella    | Danger   | Female |       10 |
+| Mia       | Malova   | Female |       12 |
+| Eva       | Elfie    | Female |       18 |
+| Riley     | Reid     | Female |       19 |
+| Lena      | Paul     | Female |       21 |
+| Brandi    | Love     | Female |       23 |
+| Emily     | Wills    | Female |       25 |
+| Lana      | Rhaodes  | Female |       26 |
+| Tesa      | Lane     | Female |       27 |
+| Leah      | Gotti    | Female |       28 |
+| Mischa    | Brooks   | Female |       15 |
+| Brianna   | Love     | Female |       30 |
+| August    | Ades     | Female |       31 |
+| Victoria  | June     | Female |       32 |
+| Madison   | Ivy      | Female |       33 |
+| Syndey    | Cole     | Female |       35 |
+| Dani      | Daniels  | Female |       36 |
+| Molly     | Sims     | Female |       37 |
+| Kacy      | Black    | Female |       38 |
+| Alyssia   | Kent     | Female |       39 |
+| Karlee    | Grey     | Female |       79 |
+| Keisha    | Grey     | Female |       81 |
+| Anila     | Depp     | Male   |       56 |
+| Ana       | Polana   | Female |       91 |
+| Blake     | Blossom  | Female |       13 |
++-----------+----------+--------+----------+
+27 rows in set (0.00 sec)
+
+mysql> SELECT * FROM ACTOR WHERE Gender "Male";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '"Male"' at line 1
+mysql> SELECT * FROM ACTOR WHERE Gender = "Male";
++-----------+----------+--------+----------+
+| Firstname | LastName | Gender | Networth |
++-----------+----------+--------+----------+
+| Anila     | Depp     | Male   |       56 |
++-----------+----------+--------+----------+
+1 row in set (0.00 sec)
+
+mysql>
+mysql>
+mysql>
+mysql> SELECT * FROM ACTOR WHERE Gender = "Female";
++-----------+----------+--------+----------+
+| Firstname | LastName | Gender | Networth |
++-----------+----------+--------+----------+
+| Angela    | White    | Female |      750 |
+| Sunny     | Leone    | Female |       10 |
+| Mia       | Khalifa  | Female |       45 |
+| Abella    | Danger   | Female |       10 |
+| Mia       | Malova   | Female |       12 |
+| Valentina | Nappi    | Female |       46 |
+| Eva       | Elfie    | Female |       18 |
+| Riley     | Reid     | Female |       19 |
+| Lena      | Paul     | Female |       21 |
+| Brandi    | Love     | Female |       23 |
+| Emily     | Wills    | Female |       25 |
+| Lana      | Rhaodes  | Female |       26 |
+| Tesa      | Lane     | Female |       27 |
+| Leah      | Gotti    | Female |       28 |
+| Mischa    | Brooks   | Female |       15 |
+| Brianna   | Love     | Female |       30 |
+| August    | Ades     | Female |       31 |
+| Victoria  | June     | Female |       32 |
+| Madison   | Ivy      | Female |       33 |
+| Syndey    | Cole     | Female |       35 |
+| Dani      | Daniels  | Female |       36 |
+| Molly     | Sims     | Female |       37 |
+| Kacy      | Black    | Female |       38 |
+| Alyssia   | Kent     | Female |       39 |
+| Kayley    | Gunner   | Female |       41 |
+| Lacy      | Lennon   | Female |       51 |
+| Karlee    | Grey     | Female |       79 |
+| Keisha    | Grey     | Female |       81 |
+| Ana       | Polana   | Female |       91 |
+| Blake     | Blossom  | Female |       13 |
++-----------+----------+--------+----------+
+30 rows in set (0.00 sec)
+
+mysql> SELECT Firstname,Networth FROM ACTOR WHERE Gender = "Female";
++-----------+----------+
+| Firstname | Networth |
++-----------+----------+
+| Angela    |      750 |
+| Sunny     |       10 |
+| Mia       |       45 |
+| Abella    |       10 |
+| Mia       |       12 |
+| Valentina |       46 |
+| Eva       |       18 |
+| Riley     |       19 |
+| Lena      |       21 |
+| Brandi    |       23 |
+| Emily     |       25 |
+| Lana      |       26 |
+| Tesa      |       27 |
+| Leah      |       28 |
+| Mischa    |       15 |
+| Brianna   |       30 |
+| August    |       31 |
+| Victoria  |       32 |
+| Madison   |       33 |
+| Syndey    |       35 |
+| Dani      |       36 |
+| Molly     |       37 |
+| Kacy      |       38 |
+| Alyssia   |       39 |
+| Kayley    |       41 |
+| Lacy      |       51 |
+| Karlee    |       79 |
+| Keisha    |       81 |
+| Ana       |       91 |
+| Blake     |       13 |
++-----------+----------+
+30 rows in set (0.00 sec)
+
+mysql> SELECT Firstname,Lastname,Networth FROM ACTOR WHERE Gender = "Female";
++-----------+----------+----------+
+| Firstname | Lastname | Networth |
++-----------+----------+----------+
+| Angela    | White    |      750 |
+| Sunny     | Leone    |       10 |
+| Mia       | Khalifa  |       45 |
+| Abella    | Danger   |       10 |
+| Mia       | Malova   |       12 |
+| Valentina | Nappi    |       46 |
+| Eva       | Elfie    |       18 |
+| Riley     | Reid     |       19 |
+| Lena      | Paul     |       21 |
+| Brandi    | Love     |       23 |
+| Emily     | Wills    |       25 |
+| Lana      | Rhaodes  |       26 |
+| Tesa      | Lane     |       27 |
+| Leah      | Gotti    |       28 |
+| Mischa    | Brooks   |       15 |
+| Brianna   | Love     |       30 |
+| August    | Ades     |       31 |
+| Victoria  | June     |       32 |
+| Madison   | Ivy      |       33 |
+| Syndey    | Cole     |       35 |
+| Dani      | Daniels  |       36 |
+| Molly     | Sims     |       37 |
+| Kacy      | Black    |       38 |
+| Alyssia   | Kent     |       39 |
+| Kayley    | Gunner   |       41 |
+| Lacy      | Lennon   |       51 |
+| Karlee    | Grey     |       79 |
+| Keisha    | Grey     |       81 |
+| Ana       | Polana   |       91 |
+| Blake     | Blossom  |       13 |
++-----------+----------+----------+
+30 rows in set (0.00 sec)
+
+mysql> SELECT * FROM ACTOR WHERE Firstname like "An%";
++-----------+----------+--------+----------+
+| Firstname | LastName | Gender | Networth |
++-----------+----------+--------+----------+
+| Angela    | White    | Female |      750 |
+| Anila     | Depp     | Male   |       56 |
+| Ana       | Polana   | Female |       91 |
++-----------+----------+--------+----------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT * FROM ACTOR WHERE Firstname like "%ge";
+Empty set (0.00 sec)
+
+mysql> SELECT * FROM ACTOR WHERE Firstname like "%la";
++-----------+----------+--------+----------+
+| Firstname | LastName | Gender | Networth |
++-----------+----------+--------+----------+
+| Angela    | White    | Female |      750 |
+| Abella    | Danger   | Female |       10 |
+| Anila     | Depp     | Male   |       56 |
++-----------+----------+--------+----------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT * FROM ACTOR WHERE Firstname like "%ge%";
++-----------+----------+--------+----------+
+| Firstname | LastName | Gender | Networth |
++-----------+----------+--------+----------+
+| Angela    | White    | Female |      750 |
++-----------+----------+--------+----------+
+1 row in set (0.00 sec)
+
+mysql> SELECT * FROM ACTOR WHERE Firstname ORDER BY ASC;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ASC' at line 1
+mysql> SELECT * FROM ACTOR ORDER BY ASC;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ASC' at line 1
+mysql> SELECT * FROM ACTOR ORDER BY DESC;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DESC' at line 1
+mysql> SELECT * FROM ACTOR ORDER BY Networth,Firstname ASC;
++-----------+----------+--------+----------+
+| Firstname | LastName | Gender | Networth |
++-----------+----------+--------+----------+
+| Abella    | Danger   | Female |       10 |
+| Sunny     | Leone    | Female |       10 |
+| Mia       | Malova   | Female |       12 |
+| Blake     | Blossom  | Female |       13 |
+| Mischa    | Brooks   | Female |       15 |
+| Eva       | Elfie    | Female |       18 |
+| Riley     | Reid     | Female |       19 |
+| Lena      | Paul     | Female |       21 |
+| Brandi    | Love     | Female |       23 |
+| Emily     | Wills    | Female |       25 |
+| Lana      | Rhaodes  | Female |       26 |
+| Tesa      | Lane     | Female |       27 |
+| Leah      | Gotti    | Female |       28 |
+| Brianna   | Love     | Female |       30 |
+| August    | Ades     | Female |       31 |
+| Victoria  | June     | Female |       32 |
+| Madison   | Ivy      | Female |       33 |
+| Syndey    | Cole     | Female |       35 |
+| Dani      | Daniels  | Female |       36 |
+| Molly     | Sims     | Female |       37 |
+| Kacy      | Black    | Female |       38 |
+| Alyssia   | Kent     | Female |       39 |
+| Kayley    | Gunner   | Female |       41 |
+| Mia       | Khalifa  | Female |       45 |
+| Valentina | Nappi    | Female |       46 |
+| Lacy      | Lennon   | Female |       51 |
+| Anila     | Depp     | Male   |       56 |
+| Karlee    | Grey     | Female |       79 |
+| Keisha    | Grey     | Female |       81 |
+| Ana       | Polana   | Female |       91 |
+| Angela    | White    | Female |      750 |
++-----------+----------+--------+----------+
+31 rows in set (0.00 sec)
+
+mysql> SELECT * FROM ACTOR ORDER BY Networth,Firstname DESC;
++-----------+----------+--------+----------+
+| Firstname | LastName | Gender | Networth |
++-----------+----------+--------+----------+
+| Sunny     | Leone    | Female |       10 |
+| Abella    | Danger   | Female |       10 |
+| Mia       | Malova   | Female |       12 |
+| Blake     | Blossom  | Female |       13 |
+| Mischa    | Brooks   | Female |       15 |
+| Eva       | Elfie    | Female |       18 |
+| Riley     | Reid     | Female |       19 |
+| Lena      | Paul     | Female |       21 |
+| Brandi    | Love     | Female |       23 |
+| Emily     | Wills    | Female |       25 |
+| Lana      | Rhaodes  | Female |       26 |
+| Tesa      | Lane     | Female |       27 |
+| Leah      | Gotti    | Female |       28 |
+| Brianna   | Love     | Female |       30 |
+| August    | Ades     | Female |       31 |
+| Victoria  | June     | Female |       32 |
+| Madison   | Ivy      | Female |       33 |
+| Syndey    | Cole     | Female |       35 |
+| Dani      | Daniels  | Female |       36 |
+| Molly     | Sims     | Female |       37 |
+| Kacy      | Black    | Female |       38 |
+| Alyssia   | Kent     | Female |       39 |
+| Kayley    | Gunner   | Female |       41 |
+| Mia       | Khalifa  | Female |       45 |
+| Valentina | Nappi    | Female |       46 |
+| Lacy      | Lennon   | Female |       51 |
+| Anila     | Depp     | Male   |       56 |
+| Karlee    | Grey     | Female |       79 |
+| Keisha    | Grey     | Female |       81 |
+| Ana       | Polana   | Female |       91 |
+| Angela    | White    | Female |      750 |
++-----------+----------+--------+----------+
+31 rows in set (0.00 sec)
+
+mysql> SELECT * FROM ACTOR WHERE Firsname like "An%" ORDER BY Networth ASC;
+ERROR 1054 (42S22): Unknown column 'Firsname' in 'where clause'
+mysql> SELECT * FROM ACTOR WHERE Firstname like "An%" ORDER BY Networth ASC;
++-----------+----------+--------+----------+
+| Firstname | LastName | Gender | Networth |
++-----------+----------+--------+----------+
+| Anila     | Depp     | Male   |       56 |
+| Ana       | Polana   | Female |       91 |
+| Angela    | White    | Female |      750 |
++-----------+----------+--------+----------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT * FROM ACTOR WHERE Firstname like "An%" ORDER BY Networth DESC;
++-----------+----------+--------+----------+
+| Firstname | LastName | Gender | Networth |
++-----------+----------+--------+----------+
+| Angela    | White    | Female |      750 |
+| Ana       | Polana   | Female |       91 |
+| Anila     | Depp     | Male   |       56 |
++-----------+----------+--------+----------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT * FROM ACTOR WHERE Firstname like "An%" ORDER BY Firstname DESC;
++-----------+----------+--------+----------+
+| Firstname | LastName | Gender | Networth |
++-----------+----------+--------+----------+
+| Anila     | Depp     | Male   |       56 |
+| Angela    | White    | Female |      750 |
+| Ana       | Polana   | Female |       91 |
++-----------+----------+--------+----------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT * FROM ACTOR WHERE Firstname like "An%" ORDER BY Firstname ASC;
++-----------+----------+--------+----------+
+| Firstname | LastName | Gender | Networth |
++-----------+----------+--------+----------+
+| Ana       | Polana   | Female |       91 |
+| Angela    | White    | Female |      750 |
+| Anila     | Depp     | Male   |       56 |
++-----------+----------+--------+----------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT * FROM ACTOR WHERE Firstname like "An%" ORDER BY Firstname,Networth ASC;
++-----------+----------+--------+----------+
+| Firstname | LastName | Gender | Networth |
++-----------+----------+--------+----------+
+| Ana       | Polana   | Female |       91 |
+| Angela    | White    | Female |      750 |
+| Anila     | Depp     | Male   |       56 |
++-----------+----------+--------+----------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT * FROM ACTOR WHERE Firstname like "An%" ORDER BY Firstname,Networth DESC;
++-----------+----------+--------+----------+
+| Firstname | LastName | Gender | Networth |
++-----------+----------+--------+----------+
+| Ana       | Polana   | Female |       91 |
+| Angela    | White    | Female |      750 |
+| Anila     | Depp     | Male   |       56 |
++-----------+----------+--------+----------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT * FROM ACTOR WHERE Firstname  ORDER BY Firstname,Networth limit 5 offset 5 DESC;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DESC' at line 1
+mysql> SELECT * FROM Actor limit 5 offset 5;
++-----------+----------+--------+----------+
+| Firstname | LastName | Gender | Networth |
++-----------+----------+--------+----------+
+| Valentina | Nappi    | Female |       46 |
+| Eva       | Elfie    | Female |       18 |
+| Riley     | Reid     | Female |       19 |
+| Lena      | Paul     | Female |       21 |
+| Brandi    | Love     | Female |       23 |
++-----------+----------+--------+----------+
+5 rows in set (0.00 sec)
+
+mysql> update Actos SET Networth = 550 WHERE LIKE = "Valentina";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIKE = "Valentina"' at line 1
+mysql> update Actos SET Networth = 550 WHERE LIKE Firstname = "Valentina";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIKE Firstname = "Valentina"' at line 1
+mysql> update Actos SET Networth = 550 WHERE Firstname = "Valentina";
+ERROR 1146 (42S02): Table 'world_actors.actos' doesn't exist
+mysql> update Actor SET Networth = 550 WHERE Firstname = "Valentina";
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM ACTOR;
++-----------+----------+--------+----------+
+| Firstname | LastName | Gender | Networth |
++-----------+----------+--------+----------+
+| Angela    | White    | Female |      750 |
+| Sunny     | Leone    | Female |       10 |
+| Mia       | Khalifa  | Female |       45 |
+| Abella    | Danger   | Female |       10 |
+| Mia       | Malova   | Female |       12 |
+| Valentina | Nappi    | Female |      550 |
+| Eva       | Elfie    | Female |       18 |
+| Riley     | Reid     | Female |       19 |
+| Lena      | Paul     | Female |       21 |
+| Brandi    | Love     | Female |       23 |
+| Emily     | Wills    | Female |       25 |
+| Lana      | Rhaodes  | Female |       26 |
+| Tesa      | Lane     | Female |       27 |
+| Leah      | Gotti    | Female |       28 |
+| Mischa    | Brooks   | Female |       15 |
+| Brianna   | Love     | Female |       30 |
+| August    | Ades     | Female |       31 |
+| Victoria  | June     | Female |       32 |
+| Madison   | Ivy      | Female |       33 |
+| Syndey    | Cole     | Female |       35 |
+| Dani      | Daniels  | Female |       36 |
+| Molly     | Sims     | Female |       37 |
+| Kacy      | Black    | Female |       38 |
+| Alyssia   | Kent     | Female |       39 |
+| Kayley    | Gunner   | Female |       41 |
+| Lacy      | Lennon   | Female |       51 |
+| Karlee    | Grey     | Female |       79 |
+| Keisha    | Grey     | Female |       81 |
+| Anila     | Depp     | Male   |       56 |
+| Ana       | Polana   | Female |       91 |
+| Blake     | Blossom  | Female |       13 |
++-----------+----------+--------+----------+
+31 rows in set (0.00 sec)
+
+mysql> SELECT Actor SET Networth = 30 WHERE Firstname = "Valentina";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SET Networth = 30 WHERE Firstname = "Valentina"' at line 1
+mysql> SELECT Actor SET Networth = 30 WHERE Firstname = "Valentina";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SET Networth = 30 WHERE Firstname = "Valentina"' at line 1
+mysql> SELECT Actor SET Networth = 30 WHERE Firstname  "Valentina";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SET Networth = 30 WHERE Firstname  "Valentina"' at line 1
+mysql> SELECT Actor SET Networth = 30 WHERE Firstname = "Valentina";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SET Networth = 30 WHERE Firstname = "Valentina"' at line 1
+mysql> UPDATE Actor SET Networth = 30 WHERE Firstname = "Valentina";
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM ACTOR;
++-----------+----------+--------+----------+
+| Firstname | LastName | Gender | Networth |
++-----------+----------+--------+----------+
+| Angela    | White    | Female |      750 |
+| Sunny     | Leone    | Female |       10 |
+| Mia       | Khalifa  | Female |       45 |
+| Abella    | Danger   | Female |       10 |
+| Mia       | Malova   | Female |       12 |
+| Valentina | Nappi    | Female |       30 |
+| Eva       | Elfie    | Female |       18 |
+| Riley     | Reid     | Female |       19 |
+| Lena      | Paul     | Female |       21 |
+| Brandi    | Love     | Female |       23 |
+| Emily     | Wills    | Female |       25 |
+| Lana      | Rhaodes  | Female |       26 |
+| Tesa      | Lane     | Female |       27 |
+| Leah      | Gotti    | Female |       28 |
+| Mischa    | Brooks   | Female |       15 |
+| Brianna   | Love     | Female |       30 |
+| August    | Ades     | Female |       31 |
+| Victoria  | June     | Female |       32 |
+| Madison   | Ivy      | Female |       33 |
+| Syndey    | Cole     | Female |       35 |
+| Dani      | Daniels  | Female |       36 |
+| Molly     | Sims     | Female |       37 |
+| Kacy      | Black    | Female |       38 |
+| Alyssia   | Kent     | Female |       39 |
+| Kayley    | Gunner   | Female |       41 |
+| Lacy      | Lennon   | Female |       51 |
+| Karlee    | Grey     | Female |       79 |
+| Keisha    | Grey     | Female |       81 |
+| Anila     | Depp     | Male   |       56 |
+| Ana       | Polana   | Female |       91 |
+| Blake     | Blossom  | Female |       13 |
++-----------+----------+--------+----------+
+31 rows in set (0.00 sec)
+
+mysql> delete from actor WHERE Firstname = "Anila";
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT * FROM ACTOR;
++-----------+----------+--------+----------+
+| Firstname | LastName | Gender | Networth |
++-----------+----------+--------+----------+
+| Angela    | White    | Female |      750 |
+| Sunny     | Leone    | Female |       10 |
+| Mia       | Khalifa  | Female |       45 |
+| Abella    | Danger   | Female |       10 |
+| Mia       | Malova   | Female |       12 |
+| Valentina | Nappi    | Female |       30 |
+| Eva       | Elfie    | Female |       18 |
+| Riley     | Reid     | Female |       19 |
+| Lena      | Paul     | Female |       21 |
+| Brandi    | Love     | Female |       23 |
+| Emily     | Wills    | Female |       25 |
+| Lana      | Rhaodes  | Female |       26 |
+| Tesa      | Lane     | Female |       27 |
+| Leah      | Gotti    | Female |       28 |
+| Mischa    | Brooks   | Female |       15 |
+| Brianna   | Love     | Female |       30 |
+| August    | Ades     | Female |       31 |
+| Victoria  | June     | Female |       32 |
+| Madison   | Ivy      | Female |       33 |
+| Syndey    | Cole     | Female |       35 |
+| Dani      | Daniels  | Female |       36 |
+| Molly     | Sims     | Female |       37 |
+| Kacy      | Black    | Female |       38 |
+| Alyssia   | Kent     | Female |       39 |
+| Kayley    | Gunner   | Female |       41 |
+| Lacy      | Lennon   | Female |       51 |
+| Karlee    | Grey     | Female |       79 |
+| Keisha    | Grey     | Female |       81 |
+| Ana       | Polana   | Female |       91 |
+| Blake     | Blossom  | Female |       13 |
++-----------+----------+--------+----------+
+30 rows in set (0.00 sec)
+
+mysql> update Actor SET Networth 15 WHERE Firsname = "Kacy" and Lastname = "Black";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '15 WHERE Firsname = "Kacy" and Lastname = "Black"' at line 1
+mysql> update Actor SET Networth 15 WHERE Firstname = "Kacy" and Lastname = "Black";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '15 WHERE Firstname = "Kacy" and Lastname = "Black"' at line 1
+mysql> update Actor SET Networth = 15 WHERE Firstname = "Kacy" and Lastname = "Black";
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM ACTOR;
++-----------+----------+--------+----------+
+| Firstname | LastName | Gender | Networth |
++-----------+----------+--------+----------+
+| Angela    | White    | Female |      750 |
+| Sunny     | Leone    | Female |       10 |
+| Mia       | Khalifa  | Female |       45 |
+| Abella    | Danger   | Female |       10 |
+| Mia       | Malova   | Female |       12 |
+| Valentina | Nappi    | Female |       30 |
+| Eva       | Elfie    | Female |       18 |
+| Riley     | Reid     | Female |       19 |
+| Lena      | Paul     | Female |       21 |
+| Brandi    | Love     | Female |       23 |
+| Emily     | Wills    | Female |       25 |
+| Lana      | Rhaodes  | Female |       26 |
+| Tesa      | Lane     | Female |       27 |
+| Leah      | Gotti    | Female |       28 |
+| Mischa    | Brooks   | Female |       15 |
+| Brianna   | Love     | Female |       30 |
+| August    | Ades     | Female |       31 |
+| Victoria  | June     | Female |       32 |
+| Madison   | Ivy      | Female |       33 |
+| Syndey    | Cole     | Female |       35 |
+| Dani      | Daniels  | Female |       36 |
+| Molly     | Sims     | Female |       37 |
+| Kacy      | Black    | Female |       15 |
+| Alyssia   | Kent     | Female |       39 |
+| Kayley    | Gunner   | Female |       41 |
+| Lacy      | Lennon   | Female |       51 |
+| Karlee    | Grey     | Female |       79 |
+| Keisha    | Grey     | Female |       81 |
+| Ana       | Polana   | Female |       91 |
+| Blake     | Blossom  | Female |       13 |
++-----------+----------+--------+----------+
+30 rows in set (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| lco_films          |
+| mysql              |
+| performance_schema |
+| world_actors       |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> use lco_films;
+Database changed
+mysql> show tables;
++---------------------+
+| Tables_in_lco_films |
++---------------------+
+| actor               |
+| address             |
+| category            |
+| city                |
+| country             |
+| film                |
+| film_actor          |
+| film_category       |
+| language            |
++---------------------+
+9 rows in set (0.00 sec)
+
+mysql> SELECT * FROM ACTOR;
++----------+-------------+--------------+------------+---------------------+
+| actor_id | first_name  | last_name    | address_id | last_update         |
++----------+-------------+--------------+------------+---------------------+
+|        1 | PENELOPE    | GUINESS      |          1 | 2020-07-30 18:07:51 |
+|        2 | NICK        | WAHLBERG     |          4 | 2020-07-30 18:07:51 |
+|        3 | ED          | CHASE        |          2 | 2020-07-30 18:07:51 |
+|        4 | JENNIFER    | DAVIS        |          3 | 2020-07-30 18:07:51 |
+|        5 | JOHNNY      | LOLLOBRIGIDA |          5 | 2020-07-30 18:07:51 |
+|        6 | BETTE       | NICHOLSON    |          7 | 2020-07-30 18:07:51 |
+|        7 | GRACE       | MOSTEL       |          6 | 2020-07-30 18:07:51 |
+|        8 | MATTHEW     | JOHANSSON    |          8 | 2020-07-30 18:07:51 |
+|        9 | JOE         | SWANK        |         10 | 2020-07-30 18:07:51 |
+|       10 | CHRISTIAN   | GABLE        |          9 | 2020-07-30 18:07:51 |
+|       11 | ZERO        | CAGE         |         11 | 2020-07-30 18:07:51 |
+|       12 | KARL        | BERRY        |         13 | 2020-07-30 18:07:51 |
+|       13 | UMA         | WOOD         |        110 | 2020-07-30 18:07:51 |
+|       14 | VIVIEN      | BERGEN       |         25 | 2020-07-30 18:07:51 |
+|       15 | CUBA        | OLIVIER      |         40 | 2020-07-30 18:07:51 |
+|       16 | FRED        | COSTNER      |         65 | 2020-07-30 18:07:51 |
+|       17 | HELEN       | VOIGHT       |         77 | 2020-07-30 18:07:51 |
+|       18 | DAN         | TORN         |        414 | 2020-07-30 18:07:51 |
+|       19 | BOB         | FAWCETT      |        125 | 2020-07-30 18:07:51 |
+|       20 | LUCILLE     | TRACY        |         80 | 2020-07-30 18:07:51 |
+|       21 | KIRSTEN     | PALTROW      |         99 | 2020-07-30 18:07:51 |
+|       22 | ELVIS       | MARX         |         44 | 2020-07-30 18:07:51 |
+|       23 | SANDRA      | KILMER       |         33 | 2020-07-30 18:09:05 |
+|       24 | CAMERON     | STREEP       |         63 | 2020-07-30 18:07:51 |
+|       25 | KEVIN       | BLOOM        |         67 | 2020-07-30 18:09:44 |
+|       26 | RIP         | CRAWFORD     |         46 | 2020-07-30 18:07:51 |
+|       27 | JULIA       | MCQUEEN      |         47 | 2020-07-30 18:07:51 |
+|       28 | WOODY       | HOFFMAN      |         57 | 2020-07-30 18:07:51 |
+|       29 | ALEC        | WAYNE        |         74 | 2020-07-30 18:07:51 |
+|       30 | SANDRA      | PECK         |         75 | 2020-07-30 18:07:51 |
+|       31 | SISSY       | SOBIESKI     |         16 | 2020-07-30 18:07:51 |
+|       32 | TIM         | HACKMAN      |         68 | 2020-07-30 18:07:51 |
+|       33 | MILLA       | PECK         |         86 | 2020-07-30 18:07:51 |
+|       34 | AUDREY      | OLIVIER      |         78 | 2020-07-30 18:07:51 |
+|       35 | JUDY        | DEAN         |         53 | 2020-07-30 18:07:51 |
+|       36 | BURT        | DUKAKIS      |         35 | 2020-07-30 18:07:51 |
+|       37 | VAL         | BOLGER       |         72 | 2020-07-30 18:07:51 |
+|       38 | TOM         | MCKELLEN     |         27 | 2020-07-30 18:07:51 |
+|       39 | GOLDIE      | BRODY        |         66 | 2020-07-30 18:07:51 |
+|       40 | JOHNNY      | CAGE         |         61 | 2020-07-30 18:07:51 |
+|       41 | JODIE       | DEGENERES    |         42 | 2020-07-30 18:07:51 |
+|       42 | TOM         | MIRANDA      |         79 | 2020-07-30 18:07:51 |
+|       43 | KIRK        | JOVOVICH     |         24 | 2020-07-30 18:07:51 |
+|       44 | NICK        | STALLONE     |         97 | 2020-07-30 18:07:51 |
+|       45 | REESE       | KILMER       |        100 | 2020-07-30 18:07:51 |
+|       46 | PARKER      | GOLDBERG     |        411 | 2020-07-30 18:10:25 |
+|       47 | JULIA       | BARRYMORE    |        104 | 2020-07-30 18:07:51 |
+|       48 | FRANCES     | DAY-LEWIS    |        108 | 2020-07-30 18:07:51 |
+|       49 | ANNE        | CRONYN       |        128 | 2020-07-30 18:07:51 |
+|       50 | NATALIE     | HOPKINS      |         54 | 2020-07-30 18:07:51 |
+|       51 | GARY        | PHOENIX      |        200 | 2020-07-30 18:07:51 |
+|       52 | CARMEN      | HUNT         |        158 | 2020-07-30 18:07:51 |
+|       53 | MENA        | TEMPLE       |        154 | 2020-07-30 18:07:51 |
+|       54 | PENELOPE    | PINKETT      |        199 | 2020-07-30 18:07:51 |
+|       55 | FAY         | KILMER       |         19 | 2020-07-30 18:07:51 |
+|       56 | DAN         | HARRIS       |        327 | 2020-07-30 18:07:51 |
+|       57 | JUDE        | CRUISE       |        124 | 2020-07-30 18:07:51 |
+|       58 | CHRISTIAN   | AKROYD       |        121 | 2020-07-30 18:07:51 |
+|       59 | DUSTIN      | TAUTOU       |        119 | 2020-07-30 18:07:51 |
+|       60 | HENRY       | BERRY        |        191 | 2020-07-30 18:07:51 |
+|       61 | CHRISTIAN   | NEESON       |        185 | 2020-07-30 18:07:51 |
+|       62 | JAYNE       | NEESON       |        351 | 2020-07-30 18:07:51 |
+|       63 | CAMERON     | WRAY         |        135 | 2020-07-30 18:07:51 |
+|       64 | RAY         | JOHANSSON    |        153 | 2020-07-30 18:07:51 |
+|       65 | ANGELA      | HUDSON       |        103 | 2020-07-30 18:07:51 |
+|       66 | MARY        | TANDY        |        217 | 2020-07-30 18:07:51 |
+|       67 | JESSICA     | BAILEY       |         45 | 2020-07-30 18:07:51 |
+|       68 | RIP         | WINSLET      |        148 | 2020-07-30 18:07:51 |
+|       69 | KENNETH     | PALTROW      |        184 | 2020-07-30 18:07:51 |
+|       70 | MICHELLE    | MCCONAUGHEY  |        265 | 2020-07-30 18:07:51 |
+|       71 | ADAM        | GRANT        |        258 | 2020-07-30 18:07:51 |
+|       72 | SEAN        | WILLIAMS     |        252 | 2020-07-30 19:39:58 |
+|       73 | GARY        | PENN         |        175 | 2020-07-30 18:07:51 |
+|       74 | MILLA       | KEITEL       |        157 | 2020-07-30 18:07:51 |
+|       75 | BURT        | POSEY        |        141 | 2020-07-30 18:07:51 |
+|       76 | ANGELINA    | ASTAIRE      |        114 | 2020-07-30 18:07:51 |
+|       77 | CARY        | MCCONAUGHEY  |        315 | 2020-07-30 18:07:51 |
+|       78 | GROUCHO     | SINATRA      |        112 | 2020-07-30 18:07:51 |
+|       79 | MAE         | HOFFMAN      |        113 | 2020-07-30 18:07:51 |
+|       80 | RALPH       | CRUZ         |        132 | 2020-07-30 18:07:51 |
+|       81 | SCARLETT    | DAMON        |        123 | 2020-07-30 18:07:51 |
+|       82 | WOODY       | JOLIE        |        131 | 2020-07-30 18:07:51 |
+|       83 | BEN         | WILLIS       |        183 | 2020-07-30 18:07:51 |
+|       84 | JAMES       | PITT         |        138 | 2020-07-30 18:07:51 |
+|       85 | MINNIE      | ZELLWEGER    |        171 | 2020-07-30 18:07:51 |
+|       86 | GREG        | CHAPLIN      |        117 | 2020-07-30 18:07:51 |
+|       87 | SPENCER     | PECK         |        235 | 2020-07-30 18:07:51 |
+|       88 | KENNETH     | PESCI        |        213 | 2020-07-30 18:07:51 |
+|       89 | CHARLIZE    | DENCH        |        216 | 2020-07-30 18:11:41 |
+|       90 | SEAN        | GUINESS      |        201 | 2020-07-30 18:07:51 |
+|       91 | CHRISTOPHER | BERRY        |        118 | 2020-07-30 18:07:51 |
+|       92 | KIRSTEN     | AKROYD       |        181 | 2020-07-30 18:07:51 |
+|       93 | ELLEN       | PRESLEY      |        219 | 2020-07-30 18:07:51 |
+|       94 | KENNETH     | TORN         |        143 | 2020-07-30 18:07:51 |
+|       95 | DARYL       | WAHLBERG     |        144 | 2020-07-30 18:07:51 |
+|       96 | GENE        | WILLIS       |        187 | 2020-07-30 18:07:51 |
+|       97 | MEG         | HAWKE        |        178 | 2020-07-30 18:07:51 |
+|       98 | CHRIS       | BRIDGES      |        116 | 2020-07-30 18:07:51 |
+|       99 | JIM         | MOSTEL       |        161 | 2020-07-30 18:07:51 |
+|      100 | SPENCER     | DEPP         |        142 | 2020-07-30 18:07:51 |
+|      101 | SUSAN       | DAVIS        |        242 | 2020-07-30 18:07:51 |
+|      102 | WALTER      | TORN         |        173 | 2020-07-30 18:07:51 |
+|      103 | MATTHEW     | LEIGH        |        137 | 2020-07-30 18:07:51 |
+|      104 | PENELOPE    | CRONYN       |        168 | 2020-07-30 18:07:51 |
+|      105 | SIDNEY      | CROWE        |        186 | 2020-07-30 18:07:51 |
+|      106 | GROUCHO     | DUNST        |        197 | 2020-07-30 18:07:51 |
+|      107 | GINA        | DEGENERES    |        169 | 2020-07-30 18:07:51 |
+|      108 | WARREN      | NOLTE        |         69 | 2020-07-30 18:07:51 |
+|      109 | SYLVESTER   | DERN         |        177 | 2020-07-30 18:07:51 |
+|      110 | SUSAN       | DAVIS        |        188 | 2020-07-30 18:07:51 |
+|      111 | CAMERON     | ZELLWEGER    |        133 | 2020-07-30 18:07:51 |
+|      112 | RUSSELL     | BACALL       |        122 | 2020-07-30 18:07:51 |
+|      113 | MORGAN      | HOPKINS      |        111 | 2020-07-30 18:07:51 |
+|      114 | MORGAN      | MCDORMAND    |        211 | 2020-07-30 18:07:51 |
+|      115 | HARRISON    | BALE         |        233 | 2020-07-30 18:07:51 |
+|      116 | DAN         | STREEP       |        288 | 2020-07-30 18:07:51 |
+|      117 | RENEE       | TRACY        |        277 | 2020-07-30 18:07:51 |
+|      118 | CUBA        | ALLEN        |        237 | 2020-07-30 18:07:51 |
+|      119 | WARREN      | JACKMAN      |        269 | 2020-07-30 18:07:51 |
+|      120 | PENELOPE    | MONROE       |        297 | 2020-07-30 18:07:51 |
+|      121 | LIZA        | BERGMAN      |        286 | 2020-07-30 18:07:51 |
+|      122 | SALMA       | NOLTE        |        268 | 2020-07-30 18:07:51 |
+|      123 | JULIANNE    | DENCH        |        241 | 2020-07-30 18:07:51 |
+|      124 | SCARLETT    | BENING       |        243 | 2020-07-30 18:07:51 |
+|      125 | ALBERT      | NOLTE        |        281 | 2020-07-30 18:07:51 |
+|      126 | FRANCES     | TOMEI        |        218 | 2020-07-30 18:07:51 |
+|      127 | KEVIN       | GARLAND      |        283 | 2020-07-30 18:07:51 |
+|      128 | CATE        | MCQUEEN      |        238 | 2020-07-30 18:07:51 |
+|      129 | DARYL       | CRAWFORD     |        208 | 2020-07-30 18:07:51 |
+|      130 | GRETA       | KEITEL       |        204 | 2020-07-30 18:07:51 |
+|      131 | JANE        | JACKMAN      |        214 | 2020-07-30 18:07:51 |
+|      132 | ADAM        | HOPPER       |        224 | 2020-07-30 18:07:51 |
+|      133 | RICHARD     | PENN         |        222 | 2020-07-30 18:07:51 |
+|      134 | GENE        | HOPKINS      |        251 | 2020-07-30 18:07:51 |
+|      135 | RITA        | REYNOLDS     |        250 | 2020-07-30 18:07:51 |
+|      136 | ED          | MANSFIELD    |        256 | 2020-07-30 18:07:51 |
+|      137 | MORGAN      | WILLIAMS     |        245 | 2020-07-30 18:07:51 |
+|      138 | LUCILLE     | DEE          |        231 | 2020-07-30 18:12:03 |
+|      139 | EWAN        | GOODING      |        225 | 2020-07-30 18:07:51 |
+|      140 | WHOOPI      | HURT         |        234 | 2020-07-30 18:07:51 |
+|      141 | CATE        | HARRIS       |        210 | 2020-07-30 18:11:19 |
+|      142 | JADA        | RYDER        |        236 | 2020-07-30 18:07:51 |
+|      143 | RIVER       | DEAN         |         36 | 2020-07-30 18:07:51 |
+|      144 | ANGELA      | WITHERSPOON  |         64 | 2020-07-30 18:07:51 |
+|      145 | KIM         | ALLEN        |        264 | 2020-07-30 18:07:51 |
+|      146 | ALBERT      | JOHANSSON    |        136 | 2020-07-30 18:07:51 |
+|      147 | FAY         | WINSLET      |        220 | 2020-07-30 18:12:23 |
+|      148 | EMILY       | DEE          |        209 | 2020-07-30 18:07:51 |
+|      149 | RUSSELL     | TEMPLE       |        313 | 2020-07-30 18:07:51 |
+|      150 | JAYNE       | NOLTE        |        345 | 2020-07-30 18:07:51 |
+|      151 | GEOFFREY    | HESTON       |        325 | 2020-07-30 18:07:51 |
+|      152 | BEN         | HARRIS       |        311 | 2020-07-30 18:07:51 |
+|      153 | MINNIE      | KILMER       |        336 | 2020-07-30 18:07:51 |
+|      154 | MERYL       | GIBSON       |        337 | 2020-07-30 18:07:51 |
+|      155 | IAN         | TANDY        |        324 | 2020-07-30 18:07:51 |
+|      156 | FAY         | WOOD         |        304 | 2020-07-30 18:07:51 |
+|      157 | GRETA       | MALDEN       |        355 | 2020-07-30 18:07:51 |
+|      158 | VIVIEN      | BASINGER     |        365 | 2020-07-30 18:07:51 |
+|      159 | LAURA       | BRODY        |        366 | 2020-07-30 18:07:51 |
+|      160 | CHRIS       | DEPP         |        377 | 2020-07-30 18:07:51 |
+|      161 | HARVEY      | HOPE         |        375 | 2020-07-30 18:07:51 |
+|      162 | OPRAH       | KILMER       |        357 | 2020-07-30 18:07:51 |
+|      163 | CHRISTOPHER | WEST         |        388 | 2020-07-30 18:07:51 |
+|      164 | HUMPHREY    | WILLIS       |        387 | 2020-07-30 18:07:51 |
+|      165 | AL          | GARLAND      |        386 | 2020-07-30 18:07:51 |
+|      166 | NICK        | DEGENERES    |        310 | 2020-07-30 19:40:21 |
+|      167 | LAURENCE    | BULLOCK      |        314 | 2020-07-30 18:07:51 |
+|      168 | WILL        | WILSON       |        333 | 2020-07-30 18:07:51 |
+|      169 | KENNETH     | HOFFMAN      |        303 | 2020-07-30 18:07:51 |
+|      170 | MENA        | HOPPER       |        317 | 2020-07-30 18:07:51 |
+|      171 | OLYMPIA     | PFEIFFER     |        371 | 2020-07-30 18:07:51 |
+|      172 | GROUCHO     | WILLIAMS     |        358 | 2020-07-30 18:07:51 |
+|      173 | ALAN        | DREYFUSS     |        369 | 2020-07-30 18:07:51 |
+|      174 | MICHAEL     | BENING       |        368 | 2020-07-30 18:07:51 |
+|      175 | WILLIAM     | HACKMAN      |        397 | 2020-07-30 18:07:51 |
+|      176 | JON         | CHASE        |        300 | 2020-07-30 18:07:51 |
+|      177 | GENE        | MCKELLEN     |        305 | 2020-07-30 18:07:51 |
+|      178 | LISA        | MONROE       |        359 | 2020-07-30 18:07:51 |
+|      179 | ED          | GUINESS      |        353 | 2020-07-30 18:07:51 |
+|      180 | JEFF        | SILVERSTONE  |        308 | 2020-07-30 18:07:51 |
+|      181 | MATTHEW     | CARREY       |        380 | 2020-07-30 18:07:51 |
+|      182 | DEBBIE      | AKROYD       |        319 | 2020-07-30 18:07:51 |
+|      183 | RUSSELL     | CLOSE        |        321 | 2020-07-30 18:07:51 |
+|      184 | HUMPHREY    | GARLAND      |        312 | 2020-07-30 18:07:51 |
+|      185 | MICHAEL     | BOLGER       |        101 | 2020-07-30 18:07:51 |
+|      186 | JULIA       | ZELLWEGER    |        301 | 2020-07-30 18:07:51 |
+|      187 | RENEE       | BALL         |        307 | 2020-07-30 18:07:51 |
+|      188 | ROCK        | DUKAKIS      |        372 | 2020-07-30 18:07:51 |
+|      189 | CUBA        | BIRCH        |        341 | 2020-07-30 18:07:51 |
+|      190 | AUDREY      | BAILEY       |        263 | 2020-07-30 18:07:51 |
+|      191 | GREGORY     | GOODING      |        339 | 2020-07-30 18:07:51 |
+|      192 | JOHN        | SUVARI       |        363 | 2020-07-30 18:07:51 |
+|      193 | BURT        | TEMPLE       |        239 | 2020-07-30 18:07:51 |
+|      194 | MERYL       | ALLEN        |        240 | 2020-07-30 18:07:51 |
+|      195 | JAYNE       | SILVERSTONE  |        347 | 2020-07-30 18:07:51 |
+|      196 | BELA        | WALKEN       |        350 | 2020-07-30 18:07:51 |
+|      197 | REESE       | WEST         |        360 | 2020-07-30 18:07:51 |
+|      198 | MARY        | KEITEL       |        260 | 2020-07-30 18:07:51 |
+|      199 | JULIA       | FAWCETT      |        361 | 2020-07-30 18:07:51 |
+|      200 | THORA       | TEMPLE       |        401 | 2020-07-30 18:07:51 |
+|      201 | Jonny       | Depp         |        361 | 2020-07-30 18:07:51 |
+|      202 | Ajay        | Devgan       |        361 | 2020-07-30 18:07:51 |
++----------+-------------+--------------+------------+---------------------+
+202 rows in set (0.01 sec)
+
+mysql> SELECT * FROM Actor WHERE actor_id >= 160;8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
++----------+-------------+-------------+------------+---------------------+
+| actor_id | first_name  | last_name   | address_id | last_update         |
++----------+-------------+-------------+------------+---------------------+
+|      160 | CHRIS       | DEPP        |        377 | 2020-07-30 18:07:51 |
+|      161 | HARVEY      | HOPE        |        375 | 2020-07-30 18:07:51 |
+|      162 | OPRAH       | KILMER      |        357 | 2020-07-30 18:07:51 |
+|      163 | CHRISTOPHER | WEST        |        388 | 2020-07-30 18:07:51 |
+|      164 | HUMPHREY    | WILLIS      |        387 | 2020-07-30 18:07:51 |
+|      165 | AL          | GARLAND     |        386 | 2020-07-30 18:07:51 |
+|      166 | NICK        | DEGENERES   |        310 | 2020-07-30 19:40:21 |
+|      167 | LAURENCE    | BULLOCK     |        314 | 2020-07-30 18:07:51 |
+|      168 | WILL        | WILSON      |        333 | 2020-07-30 18:07:51 |
+|      169 | KENNETH     | HOFFMAN     |        303 | 2020-07-30 18:07:51 |
+|      170 | MENA        | HOPPER      |        317 | 2020-07-30 18:07:51 |
+|      171 | OLYMPIA     | PFEIFFER    |        371 | 2020-07-30 18:07:51 |
+|      172 | GROUCHO     | WILLIAMS    |        358 | 2020-07-30 18:07:51 |
+|      173 | ALAN        | DREYFUSS    |        369 | 2020-07-30 18:07:51 |
+|      174 | MICHAEL     | BENING      |        368 | 2020-07-30 18:07:51 |
+|      175 | WILLIAM     | HACKMAN     |        397 | 2020-07-30 18:07:51 |
+|      176 | JON         | CHASE       |        300 | 2020-07-30 18:07:51 |
+|      177 | GENE        | MCKELLEN    |        305 | 2020-07-30 18:07:51 |
+|      178 | LISA        | MONROE      |        359 | 2020-07-30 18:07:51 |
+|      179 | ED          | GUINESS     |        353 | 2020-07-30 18:07:51 |
+|      180 | JEFF        | SILVERSTONE |        308 | 2020-07-30 18:07:51 |
+|      181 | MATTHEW     | CARREY      |        380 | 2020-07-30 18:07:51 |
+|      182 | DEBBIE      | AKROYD      |        319 | 2020-07-30 18:07:51 |
+|      183 | RUSSELL     | CLOSE       |        321 | 2020-07-30 18:07:51 |
+|      184 | HUMPHREY    | GARLAND     |        312 | 2020-07-30 18:07:51 |
+|      185 | MICHAEL     | BOLGER      |        101 | 2020-07-30 18:07:51 |
+|      186 | JULIA       | ZELLWEGER   |        301 | 2020-07-30 18:07:51 |
+|      187 | RENEE       | BALL        |        307 | 2020-07-30 18:07:51 |
+|      188 | ROCK        | DUKAKIS     |        372 | 2020-07-30 18:07:51 |
+|      189 | CUBA        | BIRCH       |        341 | 2020-07-30 18:07:51 |
+|      190 | AUDREY      | BAILEY      |        263 | 2020-07-30 18:07:51 |
+|      191 | GREGORY     | GOODING     |        339 | 2020-07-30 18:07:51 |
+|      192 | JOHN        | SUVARI      |        363 | 2020-07-30 18:07:51 |
+|      193 | BURT        | TEMPLE      |        239 | 2020-07-30 18:07:51 |
+|      194 | MERYL       | ALLEN       |        240 | 2020-07-30 18:07:51 |
+|      195 | JAYNE       | SILVERSTONE |        347 | 2020-07-30 18:07:51 |
+|      196 | BELA        | WALKEN      |        350 | 2020-07-30 18:07:51 |
+|      197 | REESE       | WEST        |        360 | 2020-07-30 18:07:51 |
+|      198 | MARY        | KEITEL      |        260 | 2020-07-30 18:07:51 |
+|      199 | JULIA       | FAWCETT     |        361 | 2020-07-30 18:07:51 |
+|      200 | THORA       | TEMPLE      |        401 | 2020-07-30 18:07:51 |
+|      201 | Jonny       | Depp        |        361 | 2020-07-30 18:07:51 |
+|      202 | Ajay        | Devgan      |        361 | 2020-07-30 18:07:51 |
++----------+-------------+-------------+------------+---------------------+
+43 rows in set (0.00 sec)
+
+mysql> SHOW TABLES;
++---------------------+
+| Tables_in_lco_films |
++---------------------+
+| actor               |
+| address             |
+| category            |
+| city                |
+| country             |
+| film                |
+| film_actor          |
+| film_category       |
+| language            |
++---------------------+
+9 rows in set (0.00 sec)
+
+mysql> SELECT * FROM category;
++-------------+-------------+---------------------+
+| category_id | name        | last_update         |
++-------------+-------------+---------------------+
+|           1 | Action      | 2020-07-30 18:07:52 |
+|           2 | Animation   | 2020-07-30 18:07:52 |
+|           3 | Children    | 2020-07-30 18:07:52 |
+|           4 | Classics    | 2020-07-30 18:07:52 |
+|           5 | Comedy      | 2020-07-30 18:07:52 |
+|           6 | Documentary | 2020-07-30 18:07:52 |
+|           7 | Drama       | 2020-07-30 18:07:52 |
+|           8 | Family      | 2020-07-30 18:07:52 |
+|           9 | Foreign     | 2020-07-30 18:07:52 |
+|          10 | Games       | 2020-07-30 18:07:52 |
+|          11 | Horror      | 2020-07-30 18:07:52 |
+|          12 | Music       | 2020-07-30 18:07:52 |
+|          13 | New         | 2020-07-30 18:07:52 |
+|          14 | Sci-Fi      | 2020-07-30 18:07:52 |
+|          15 | Sports      | 2020-07-30 18:07:52 |
+|          16 | Travel      | 2020-07-30 18:07:52 |
++-------------+-------------+---------------------+
+16 rows in set (0.01 sec)
+
+mysql> SELECT * FROM ACTOR limit 10;
++----------+------------+--------------+------------+---------------------+
+| actor_id | first_name | last_name    | address_id | last_update         |
++----------+------------+--------------+------------+---------------------+
+|        1 | PENELOPE   | GUINESS      |          1 | 2020-07-30 18:07:51 |
+|        2 | NICK       | WAHLBERG     |          4 | 2020-07-30 18:07:51 |
+|        3 | ED         | CHASE        |          2 | 2020-07-30 18:07:51 |
+|        4 | JENNIFER   | DAVIS        |          3 | 2020-07-30 18:07:51 |
+|        5 | JOHNNY     | LOLLOBRIGIDA |          5 | 2020-07-30 18:07:51 |
+|        6 | BETTE      | NICHOLSON    |          7 | 2020-07-30 18:07:51 |
+|        7 | GRACE      | MOSTEL       |          6 | 2020-07-30 18:07:51 |
+|        8 | MATTHEW    | JOHANSSON    |          8 | 2020-07-30 18:07:51 |
+|        9 | JOE        | SWANK        |         10 | 2020-07-30 18:07:51 |
+|       10 | CHRISTIAN  | GABLE        |          9 | 2020-07-30 18:07:51 |
++----------+------------+--------------+------------+---------------------+
+10 rows in set (0.00 sec)
+
+mysql>  SELECT first_name,last_name,address from Actor JOIN Address ON Actor.address_id = address.address_id;
++-------------+--------------+----------------------------------------+
+| first_name  | last_name    | address                                |
++-------------+--------------+----------------------------------------+
+| PENELOPE    | GUINESS      | 47 MySakila Drive                      |
+| NICK        | WAHLBERG     | 1411 Lillydale Drive                   |
+| ED          | CHASE        | 28 MySQL Boulevard                     |
+| JENNIFER    | DAVIS        | 23 Workhaven Lane                      |
+| JOHNNY      | LOLLOBRIGIDA | 1913 Hanoi Way                         |
+| BETTE       | NICHOLSON    | 692 Joliet Street                      |
+| GRACE       | MOSTEL       | 1121 Loja Avenue                       |
+| MATTHEW     | JOHANSSON    | 1566 Inegl Manor                       |
+| JOE         | SWANK        | 1795 Santiago de Compostela Way        |
+| CHRISTIAN   | GABLE        | 53 Idfu Parkway                        |
+| ZERO        | CAGE         | 900 Santiago de Compostela Parkway     |
+| KARL        | BERRY        | 613 Korolev Drive                      |
+| UMA         | WOOD         | 1867 San Juan Bautista Tuxtepec Avenue |
+| VIVIEN      | BERGEN       | 262 A Corua (La Corua) Parkway         |
+| CUBA        | OLIVIER      | 334 Munger (Monghyr) Lane              |
+| FRED        | COSTNER      | 915 Ponce Place                        |
+| HELEN       | VOIGHT       | 1947 Poos de Caldas Boulevard          |
+| DAN         | TORN         | 1936 Lapu-Lapu Parkway                 |
+| BOB         | FAWCETT      | 211 Chiayi Drive                       |
+| LUCILLE     | TRACY        | 602 Paarl Street                       |
+| KIRSTEN     | PALTROW      | 1697 Tanauan Lane                      |
+| ELVIS       | MARX         | 671 Graz Street                        |
+| SANDRA      | KILMER       | 786 Aurora Avenue                      |
+| CAMERON     | STREEP       | 1213 Ranchi Parkway                    |
+| KEVIN       | BLOOM        | 1214 Hanoi Way                         |
+| RIP         | CRAWFORD     | 1632 Bislig Avenue                     |
+| JULIA       | MCQUEEN      | 1447 Imus Way                          |
+| WOODY       | HOFFMAN      | 17 Kabul Boulevard                     |
+| ALEC        | WAYNE        | 1124 Buenaventura Drive                |
+| SANDRA      | PECK         | 492 Cam Ranh Street                    |
+| SISSY       | SOBIESKI     | 808 Bhopal Manor                       |
+| TIM         | HACKMAN      | 1966 Amroha Avenue                     |
+| MILLA       | PECK         | 927 Baha Blanca Parkway                |
+| AUDREY      | OLIVIER      | 1206 Dos Quebradas Place               |
+| JUDY        | DEAN         | 725 Isesaki Place                      |
+| BURT        | DUKAKIS      | 33 Gorontalo Way                       |
+| VAL         | BOLGER       | 57 Arlington Manor                     |
+| TOM         | MCKELLEN     | 1780 Hino Boulevard                    |
+| GOLDIE      | BRODY        | 1717 Guadalajara Lane                  |
+| JOHNNY      | CAGE         | 943 Tokat Street                       |
+| JODIE       | DEGENERES    | 269 Cam Ranh Parkway                   |
+| TOM         | MIRANDA      | 1551 Rampur Lane                       |
+| KIRK        | JOVOVICH     | 1688 Okara Way                         |
+| NICK        | STALLONE     | 832 Nakhon Sawan Manor                 |
+| REESE       | KILMER       | 1308 Arecibo Way                       |
+| PARKER      | GOLDBERG     | 264 Bhimavaram Manor                   |
+| JULIA       | BARRYMORE    | 1913 Kamakura Place                    |
+| FRANCES     | DAY-LEWIS    | 1386 Yangor Avenue                     |
+| ANNE        | CRONYN       | 848 Tafuna Manor                       |
+| NATALIE     | HOPKINS      | 115 Hidalgo Parkway                    |
+| GARY        | PHOENIX      | 1074 Binzhou Manor                     |
+| CARMEN      | HUNT         | 798 Cianjur Avenue                     |
+| MENA        | TEMPLE       | 781 Shimonoseki Drive                  |
+| PENELOPE    | PINKETT      | 1792 Valle de la Pascua Place          |
+| FAY         | KILMER       | 419 Iligan Lane                        |
+| DAN         | HARRIS       | 1427 A Corua (La Corua) Place          |
+| JUDE        | CRUISE       | 241 Mosul Lane                         |
+| CHRISTIAN   | AKROYD       | 1967 Sincelejo Place                   |
+| DUSTIN      | TAUTOU       | 1107 Nakhon Sawan Avenue               |
+| HENRY       | BERRY        | 140 Chiayi Parkway                     |
+| CHRISTIAN   | NEESON       | 682 Garden Grove Place                 |
+| JAYNE       | NEESON       | 1157 Nyeri Loop                        |
+| CAMERON     | WRAY         | 1752 So Leopoldo Parkway               |
+| RAY         | JOHANSSON    | 782 Mosul Street                       |
+| ANGELA      | HUDSON       | 588 Vila Velha Manor                   |
+| MARY        | TANDY        | 1001 Miyakonojo Lane                   |
+| JESSICA     | BAILEY       | 42 Brindisi Place                      |
+| RIP         | WINSLET      | 1027 Songkhla Manor                    |
+| KENNETH     | PALTROW      | 1410 Benin City Parkway                |
+| MICHELLE    | MCCONAUGHEY  | 1158 Mandi Bahauddin Parkway           |
+| ADAM        | GRANT        | 752 Ondo Loop                          |
+| SEAN        | WILLIAMS     | 1309 Weifang Street                    |
+| GARY        | PENN         | 316 Uruapan Street                     |
+| MILLA       | KEITEL       | 456 Escobar Way                        |
+| BURT        | POSEY        | 1749 Daxian Place                      |
+| ANGELINA    | ASTAIRE      | 804 Elista Drive                       |
+| CARY        | MCCONAUGHEY  | 543 Bergamo Avenue                     |
+| GROUCHO     | SINATRA      | 1002 Ahmadnagar Manor                  |
+| MAE         | HOFFMAN      | 682 Junan Way                          |
+| RALPH       | CRUZ         | 1050 Garden Grove Avenue               |
+| SCARLETT    | DAMON        | 1987 Coacalco de Berriozbal Loop       |
+| WOODY       | JOLIE        | 801 Hagonoy Drive                      |
+| BEN         | WILLIS       | 1089 Iwatsuki Avenue                   |
+| JAMES       | PITT         | 765 Southampton Drive                  |
+| MINNIE      | ZELLWEGER    | 1540 Wroclaw Drive                     |
+| GREG        | CHAPLIN      | 1079 Tel Aviv-Jaffa Boulevard          |
+| SPENCER     | PECK         | 954 Kimchon Place                      |
+| KENNETH     | PESCI        | 43 Dadu Avenue                         |
+| CHARLIZE    | DENCH        | 660 Jedda Boulevard                    |
+| SEAN        | GUINESS      | 817 Bradford Loop                      |
+| CHRISTOPHER | BERRY        | 442 Rae Bareli Place                   |
+| KIRSTEN     | AKROYD       | 146 Johannesburg Way                   |
+| ELLEN       | PRESLEY      | 1229 Valencia Parkway                  |
+| KENNETH     | TORN         | 1029 Dzerzinsk Manor                   |
+| DARYL       | WAHLBERG     | 1666 Beni-Mellal Place                 |
+| GENE        | WILLIS       | 1839 Szkesfehrvr Parkway               |
+| MEG         | HAWKE        | 1848 Salala Boulevard                  |
+| CHRIS       | BRIDGES      | 793 Cam Ranh Avenue                    |
+| JIM         | MOSTEL       | 1386 Nakhon Sawan Boulevard            |
+| SPENCER     | DEPP         | 1587 Sullana Lane                      |
+| SUSAN       | DAVIS        | 1964 Gijn Manor                        |
+| WALTER      | TORN         | 1294 Firozabad Drive                   |
+| MATTHEW     | LEIGH        | 261 Saint Louis Way                    |
+| PENELOPE    | CRONYN       | 842 Salzburg Lane                      |
+| SIDNEY      | CROWE        | 533 al-Ayn Boulevard                   |
+| GROUCHO     | DUNST        | 447 Surakarta Loop                     |
+| GINA        | DEGENERES    | 154 Tallahassee Loop                   |
+| WARREN      | NOLTE        | 698 Otsu Street                        |
+| SYLVESTER   | DERN         | 1010 Klerksdorp Way                    |
+| SUSAN       | DAVIS        | 741 Ambattur Manor                     |
+| CAMERON     | ZELLWEGER    | 1854 Tieli Street                      |
+| RUSSELL     | BACALL       | 333 Goinia Way                         |
+| MORGAN      | HOPKINS      | 1532 Dzerzinsk Way                     |
+| MORGAN      | MCDORMAND    | 850 Salala Loop                        |
+| HARRISON    | BALE         | 356 Olomouc Manor                      |
+| DAN         | STREEP       | 226 Halifax Street                     |
+| RENEE       | TRACY        | 85 San Felipe de Puerto Plata Drive    |
+| CUBA        | ALLEN        | 1736 Cavite Place                      |
+| WARREN      | JACKMAN      | 446 Kirovo-Tepetsk Lane                |
+| PENELOPE    | MONROE       | 1192 Tongliao Street                   |
+| LIZA        | BERGMAN      | 1308 Sumy Loop                         |
+| SALMA       | NOLTE        | 1831 Nam Dinh Loop                     |
+| JULIANNE    | DENCH        | 647 A Corua (La Corua) Street          |
+| SCARLETT    | BENING       | 47 Syktyvkar Lane                      |
+| ALBERT      | NOLTE        | 1944 Bamenda Way                       |
+| FRANCES     | TOMEI        | 226 Brest Manor                        |
+| KEVIN       | GARLAND      | 457 Tongliao Loop                      |
+| CATE        | MCQUEEN      | 346 Skikda Parkway                     |
+| DARYL       | CRAWFORD     | 1215 Pyongyang Parkway                 |
+| GRETA       | KEITEL       | 387 Mwene-Ditu Drive                   |
+| JANE        | JACKMAN      | 751 Lima Loop                          |
+| ADAM        | HOPPER       | 1842 Luzinia Boulevard                 |
+| RICHARD     | PENN         | 1168 Najafabad Parkway                 |
+| GENE        | HOPKINS      | 1473 Changhwa Parkway                  |
+| RITA        | REYNOLDS     | 829 Grand Prairie Way                  |
+| ED          | MANSFIELD    | 1497 Yuzhou Drive                      |
+| MORGAN      | WILLIAMS     | 1103 Bilbays Parkway                   |
+| LUCILLE     | DEE          | 430 Alessandria Loop                   |
+| EWAN        | GOODING      | 1926 Gingoog Street                    |
+| WHOOPI      | HURT         | 1256 Bislig Boulevard                  |
+| CATE        | HARRIS       | 1304 s-Hertogenbosch Way               |
+| JADA        | RYDER        | 885 Yingkou Manor                      |
+| RIVER       | DEAN         | 176 Mandaluyong Place                  |
+| ANGELA      | WITHERSPOON  | 81 Hodeida Way                         |
+| KIM         | ALLEN        | 1027 Banjul Place                      |
+| ALBERT      | JOHANSSON    | 898 Belm Manor                         |
+| FAY         | WINSLET      | 1201 Qomsheh Manor                     |
+| EMILY       | DEE          | 1679 Antofagasta Street                |
+| RUSSELL     | TEMPLE       | 1191 Sungai Petani Boulevard           |
+| JAYNE       | NOLTE        | 68 Ponce Parkway                       |
+| GEOFFREY    | HESTON       | 1892 Nabereznyje Telny Lane            |
+| BEN         | HARRIS       | 715 So Bernardo do Campo Lane          |
+| MINNIE      | KILMER       | 430 Kumbakonam Drive                   |
+| MERYL       | GIBSON       | 1838 Tabriz Lane                       |
+| IAN         | TANDY        | 1145 Vilnius Manor                     |
+| FAY         | WOOD         | 1635 Kuwana Boulevard                  |
+| GRETA       | MALDEN       | 469 Nakhon Sawan Street                |
+| VIVIEN      | BASINGER     | 1009 Zanzibar Lane                     |
+| LAURA       | BRODY        | 114 Jalib al-Shuyukh Manor             |
+| CHRIS       | DEPP         | 154 Oshawa Manor                       |
+| HARVEY      | HOPE         | 1049 Matamoros Parkway                 |
+| OPRAH       | KILMER       | 1641 Changhwa Place                    |
+| CHRISTOPHER | WEST         | 368 Hunuco Boulevard                   |
+| HUMPHREY    | WILLIS       | 401 Sucre Boulevard                    |
+| AL          | GARLAND      | 1368 Maracabo Boulevard                |
+| NICK        | DEGENERES    | 913 Coacalco de Berriozbal Loop        |
+| LAURENCE    | BULLOCK      | 1224 Huejutla de Reyes Boulevard       |
+| WILL        | WILSON       | 1860 Taguig Loop                       |
+| KENNETH     | HOFFMAN      | 898 Jining Lane                        |
+| MENA        | HOPPER       | 780 Kimberley Way                      |
+| OLYMPIA     | PFEIFFER     | 1912 Emeishan Drive                    |
+| GROUCHO     | WILLIAMS     | 1698 Southport Loop                    |
+| ALAN        | DREYFUSS     | 817 Laredo Avenue                      |
+| MICHAEL     | BENING       | 1658 Jastrzebie-Zdrj Loop              |
+| WILLIAM     | HACKMAN      | 614 Pak Kret Street                    |
+| JON         | CHASE        | 661 Chisinau Lane                      |
+| GENE        | MCKELLEN     | 41 El Alto Parkway                     |
+| LISA        | MONROE       | 519 Nyeri Manor                        |
+| ED          | GUINESS      | 381 Kabul Way                          |
+| JEFF        | SILVERSTONE  | 687 Alessandria Parkway                |
+| MATTHEW     | CARREY       | 1519 Santiago de los Caballeros Loop   |
+| DEBBIE      | AKROYD       | 1957 Yantai Lane                       |
+| RUSSELL     | CLOSE        | 651 Pathankot Loop                     |
+| HUMPHREY    | GARLAND      | 1354 Siegen Street                     |
+| MICHAEL     | BOLGER       | 1599 Plock Drive                       |
+| JULIA       | ZELLWEGER    | 951 Stara Zagora Manor                 |
+| RENEE       | BALL         | 1908 Gaziantep Place                   |
+| ROCK        | DUKAKIS      | 230 Urawa Drive                        |
+| CUBA        | BIRCH        | 1920 Weifang Avenue                    |
+| AUDREY      | BAILEY       | 532 Toulon Street                      |
+| GREGORY     | GOODING      | 503 Sogamoso Loop                      |
+| JOHN        | SUVARI       | 604 Bern Place                         |
+| BURT        | TEMPLE       | 98 Stara Zagora Boulevard              |
+| MERYL       | ALLEN        | 1479 Rustenburg Boulevard              |
+| JAYNE       | SILVERSTONE  | 1293 Nam Dinh Way                      |
+| BELA        | WALKEN       | 1628 Nagareyama Lane                   |
+| REESE       | WEST         | 619 Hunuco Avenue                      |
+| MARY        | KEITEL       | 127 Iwakuni Boulevard                  |
+| JULIA       | FAWCETT      | 45 Aparecida de Goinia Place           |
+| THORA       | TEMPLE       | 168 Cianjur Manor                      |
+| Jonny       | Depp         | 45 Aparecida de Goinia Place           |
+| Ajay        | Devgan       | 45 Aparecida de Goinia Place           |
++-------------+--------------+----------------------------------------+
+202 rows in set (0.01 sec)
+
+mysql>  SELECT first_name,last_name,address from Actor JOIN Address ON Actor.address_id = address.address_id limit 10;
++------------+--------------+---------------------------------+
+| first_name | last_name    | address                         |
++------------+--------------+---------------------------------+
+| PENELOPE   | GUINESS      | 47 MySakila Drive               |
+| NICK       | WAHLBERG     | 1411 Lillydale Drive            |
+| ED         | CHASE        | 28 MySQL Boulevard              |
+| JENNIFER   | DAVIS        | 23 Workhaven Lane               |
+| JOHNNY     | LOLLOBRIGIDA | 1913 Hanoi Way                  |
+| BETTE      | NICHOLSON    | 692 Joliet Street               |
+| GRACE      | MOSTEL       | 1121 Loja Avenue                |
+| MATTHEW    | JOHANSSON    | 1566 Inegl Manor                |
+| JOE        | SWANK        | 1795 Santiago de Compostela Way |
+| CHRISTIAN  | GABLE        | 53 Idfu Parkway                 |
++------------+--------------+---------------------------------+
+10 rows in set (0.00 sec)
+
+mysql>  SELECT first_name,last_name,address from Actor JOIN Address ON Actor.address_id = address.address_id JOIN City ON Address limit 10;
++------------+-------------+------------------------------+
+| first_name | last_name   | address                      |
++------------+-------------+------------------------------+
+| Ajay       | Devgan      | 45 Aparecida de Goinia Place |
+| Jonny      | Depp        | 45 Aparecida de Goinia Place |
+| THORA      | TEMPLE      | 168 Cianjur Manor            |
+| JULIA      | FAWCETT     | 45 Aparecida de Goinia Place |
+| MARY       | KEITEL      | 127 Iwakuni Boulevard        |
+| REESE      | WEST        | 619 Hunuco Avenue            |
+| BELA       | WALKEN      | 1628 Nagareyama Lane         |
+| JAYNE      | SILVERSTONE | 1293 Nam Dinh Way            |
+| MERYL      | ALLEN       | 1479 Rustenburg Boulevard    |
+| BURT       | TEMPLE      | 98 Stara Zagora Boulevard    |
++------------+-------------+------------------------------+
+10 rows in set, 202 warnings (0.01 sec)
+
+mysql>  SELECT first_name,last_name,address from Actor JOIN Address ON Actor.address_id = address.address_id JOIN City ON Address.City_id = City.City_id limit 10;
++------------+--------------+---------------------------------+
+| first_name | last_name    | address                         |	
++------------+--------------+---------------------------------+
+| PENELOPE   | GUINESS      | 47 MySakila Drive               |
+| NICK       | WAHLBERG     | 1411 Lillydale Drive            |
+| ED         | CHASE        | 28 MySQL Boulevard              |
+| JENNIFER   | DAVIS        | 23 Workhaven Lane               |
+| JOHNNY     | LOLLOBRIGIDA | 1913 Hanoi Way                  |
+| BETTE      | NICHOLSON    | 692 Joliet Street               |
+| GRACE      | MOSTEL       | 1121 Loja Avenue                |
+| MATTHEW    | JOHANSSON    | 1566 Inegl Manor                |
+| JOE        | SWANK        | 1795 Santiago de Compostela Way |
+| CHRISTIAN  | GABLE        | 53 Idfu Parkway                 |
++------------+--------------+---------------------------------+
+10 rows in set (0.00 sec)
+
+mysql>  SELECT first_name,last_name,address,district,City from Actor JOIN Address ON Actor.address_id = address.address_id JOIN City ON Address.City_id = City.City_id limit 10;
++------------+--------------+---------------------------------+------------+----------------+
+| first_name | last_name    | address                         | district   | City           |
++------------+--------------+---------------------------------+------------+----------------+
+| PENELOPE   | GUINESS      | 47 MySakila Drive               | Alberta    | Lethbridge     |
+| NICK       | WAHLBERG     | 1411 Lillydale Drive            | QLD        | Woodridge      |
+| ED         | CHASE        | 28 MySQL Boulevard              | QLD        | Woodridge      |
+| JENNIFER   | DAVIS        | 23 Workhaven Lane               | Alberta    | Lethbridge     |
+| JOHNNY     | LOLLOBRIGIDA | 1913 Hanoi Way                  | Nagasaki   | Sasebo         |
+| BETTE      | NICHOLSON    | 692 Joliet Street               | Attika     | Athenai        |
+| GRACE      | MOSTEL       | 1121 Loja Avenue                | California | San Bernardino |
+| MATTHEW    | JOHANSSON    | 1566 Inegl Manor                | Mandalay   | Myingyan       |
+| JOE        | SWANK        | 1795 Santiago de Compostela Way | Texas      | Laredo         |
+| CHRISTIAN  | GABLE        | 53 Idfu Parkway                 | Nantou     | Nantou         |
++------------+--------------+---------------------------------+------------+----------------+
+10 rows in set (0.00 sec)
+
+mysql> ^C
+mysql> ^C
+mysql> desc film;
++----------------------+---------------------------------------------------------------------+------+-----+-------------------+-----------------------------------------------+
+| Field                | Type                                                                | Null | Key | Default           | Extra                                         |
++----------------------+---------------------------------------------------------------------+------+-----+-------------------+-----------------------------------------------+
+| film_id              | smallint unsigned                                                   | NO   | PRI | NULL              | auto_increment                                |
+| title                | varchar(128)                                                        | NO   | MUL | NULL              |                                               |
+| description          | text                                                                | YES  |     | NULL              |                                               |
+| release_year         | year                                                                | YES  |     | NULL              |                                               |
+| language_id          | tinyint unsigned                                                    | NO   | MUL | NULL              |                                               |
+| original_language_id | tinyint unsigned                                                    | YES  | MUL | NULL              |                                               |
+| rental_duration      | tinyint unsigned                                                    | NO   |     | 3                 |                                               |
+| rental_rate          | decimal(4,2)                                                        | NO   |     | 4.99              |                                               |
+| length               | smallint unsigned                                                   | YES  |     | NULL              |                                               |
+| replacement_cost     | decimal(5,2)                                                        | NO   |     | 19.99             |                                               |
+| rating               | enum('G','PG','PG-13','R','NC-17')                                  | YES  |     | G                 |                                               |
+| special_features     | set('Trailers','Commentaries','Deleted Scenes','Behind the Scenes') | YES  |     | NULL              |                                               |
+| last_update          | timestamp                                                           | NO   |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED on update CURRENT_TIMESTAMP |
++----------------------+---------------------------------------------------------------------+------+-----+-------------------+-----------------------------------------------+
+13 rows in set (0.01 sec)
+
+mysql> desc actor;
++-------------+-------------------+------+-----+-------------------+-----------------------------------------------+
+| Field       | Type              | Null | Key | Default           | Extra                                         |
++-------------+-------------------+------+-----+-------------------+-----------------------------------------------+
+| actor_id    | smallint unsigned | NO   | PRI | NULL              | auto_increment                                |
+| first_name  | varchar(45)       | NO   |     | NULL              |                                               |
+| last_name   | varchar(45)       | NO   | MUL | NULL              |                                               |
+| address_id  | smallint unsigned | NO   | MUL | NULL              |                                               |
+| last_update | timestamp         | NO   |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED on update CURRENT_TIMESTAMP |
++-------------+-------------------+------+-----+-------------------+-----------------------------------------------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT * FROM ACTOR WHERE district = "Alberta";
+ERROR 1054 (42S22): Unknown column 'district' in 'where clause'
+mysql> SELECT * FROM ACTOR WHERE district = "Alberta";
+ERROR 1054 (42S22): Unknown column 'district' in 'where clause'
+mysql>
+mysql> SELECT * FROM ACTOR WHERE district = 'Alberta';
+ERROR 1054 (42S22): Unknown column 'district' in 'where clause'
+mysql> SELECT * FROM Address WHERE district = 'Alberta';
++------------+-------------------+----------+----------+---------+-------------+-------------+---------------------+
+| address_id | address           | address2 | district | city_id | postal_code | phone       | last_update         |
++------------+-------------------+----------+----------+---------+-------------+-------------+---------------------+
+|          1 | 47 MySakila Drive | NULL     | Alberta  |     300 |             |             | 2020-07-30 18:07:51 |
+|          3 | 23 Workhaven Lane | NULL     | Alberta  |     300 |             | 14033335568 | 2020-07-30 18:07:51 |
++------------+-------------------+----------+----------+---------+-------------+-------------+---------------------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT COUNT(*) FROM ADDRESS WHERE district = "Alberta";
++----------+
+| COUNT(*) |
++----------+
+|        2 |
++----------+
+1 row in set (0.00 sec)
+SELECT  district from address;
+mysql> SELECT distinct district from address;
+mysql> SELECT distinct district from address limit 1;
++----------+
+| district |
++----------+
+| Alberta  |
++----------+
+1 row in set (0.00 sec)
+
+mysql> SELECT distinct district from address limit 10;
++----------------+
+| district       |
++----------------+
+| Alberta        |
+| QLD            |
+| Nagasaki       |
+| California     |
+| Attika         |
+| Mandalay       |
+| Nantou         |
+| Texas          |
+| Central Serbia |
+| Hamilton       |
++----------------+
+10 rows in set (0.00 sec)
+
+
+mysql> SELECT COUNT(*),district from address group by district;
++----------+----------------------+
+| COUNT(*) | district             |
++----------+----------------------+
+|        2 | Alberta              |
+|        2 | QLD                  |
+|        1 | Nagasaki             |
+|        9 | California           |
+|        1 | Attika               |
+|        1 | Mandalay             |
+|        2 | Nantou               |
+|        5 | Texas                |
+|        1 | Central Serbia       |
+|        1 | Hamilton             |
+|        1 | Masqat               |
+|        3 | Esfahan              |
+|        2 | Kanagawa             |
+|        2 | Haryana              |
+|        1 | Osmaniye             |
+|        3 | Madhya Pradesh       |
+|        7 | England              |
+|        1 | Kalmykia             |
+|        2 | Kaduna               |
+|        1 | Northern Cape        |
+|        1 | Nothwest Border Prov |
+|        3 | Dhaka                |
+|        1 | Rabat-Sal-Zammour-Z  |
+|        1 | Liepaja              |
+|        1 | Crdoba               |
+|        2 | Sind                 |
+|        3 |                      |
+|        1 | Southern Mindanao    |
+|        3 | Bihar                |
+|        2 | Yamaguchi            |
+|        4 | Taipei               |
+|        9 | West Bengali         |
+|        8 | Uttar Pradesh        |
+|        1 | Piemonte             |
+|        3 | Okayama              |
+|        1 | Midi-Pyrnes          |
+|        1 | Markazi              |
+|        3 | Henan                |
+|        1 | Chisinau             |
+|        1 | Esprito Santo        |
+|        1 | Oriental             |
+|        1 | Yerevan              |
+|        1 | Nonthaburi           |
+|        2 | Tahiti               |
+|        2 | Lipetsk              |
+|        1 | Antofagasta          |
+|        1 | Moscow (City)        |
+|        1 | Cear                 |
+|        2 | Tatarstan            |
+|        2 | Mekka                |
+|        1 | Khartum              |
+|        3 | Galicia              |
+|        1 | Chiba                |
+|        4 | Moskova              |
+|        1 | Vaduz                |
+|        1 | Sarawak              |
+|        5 | Karnataka            |
+|        4 | Rajasthan            |
+|        1 | Basel-Stadt          |
+|        2 | Missouri             |
+|        1 | Nebraska             |
+|        3 | Sichuan              |
+|        1 | Cayenne              |
+|        1 | Skne ln              |
+|        2 | Hunan                |
+|        1 | Bchar                |
+|        1 | Eastern Visayas      |
+|        2 | National Capital Reg |
+|        1 | Chiayi               |
+|        8 | So Paulo             |
+|        1 | Changhwa             |
+|        1 | Pavlodar             |
+|        4 | Oyo & Osun           |
+|        1 | Mahajanga            |
+|        1 | Krim                 |
+|        4 | Gauteng              |
+|        1 | Puebla               |
+|        1 | Songkhla             |
+|        2 | Sucre                |
+|        1 | Cheju                |
+|       10 | Buenos Aires         |
+|        4 | Guangdong            |
+|        1 | Brunei and Muara     |
+|        5 | Gois                 |
+|        4 | Inner Mongolia       |
+|        2 | Caraga               |
+|        5 | Punjab               |
+|        1 | Georgia              |
+|        1 | Tete                 |
+|        2 | Abu Dhabi            |
+|        1 | Kyongsangbuk         |
+|        1 | Asir                 |
+|        2 | Ha Darom             |
+|        1 | Kwara & Kogi         |
+|        1 | Provence-Alpes-Cte   |
+|        1 | Funafuti             |
+|        1 | Ivanovo              |
+|        4 | Mxico                |
+|        2 | North West           |
+|        5 | Hubei                |
+|        2 | Distrito Federal     |
+|        3 | Nordrhein-Westfalen  |
+|        3 | Central Java         |
+|        3 | Gujarat              |
+|        2 | al-Qalyubiya         |
+|        2 | Risaralda            |
+|        1 | Lima                 |
+|        1 | Ktahya               |
+|        1 | Smolensk             |
+|        3 | Slaskie              |
+|        9 | Shandong             |
+|        1 | Taka-Karpatia        |
+|        1 | Free State           |
+|        3 | Coahuila de Zaragoza |
+|        7 | Maharashtra          |
+|        2 | Gelderland           |
+|        1 | Ynlin                |
+|        2 | Tennessee            |
+|        3 | Hiroshima            |
+|        1 | Scotland             |
+|        1 | Kilis                |
+|        1 | Minsk                |
+|        2 | Michigan             |
+|        3 | Saitama              |
+|        1 | Saint-Denis          |
+|        1 | Massachusetts        |
+|        2 | Michoacn de Ocampo   |
+|        1 | Assam                |
+|        1 | Jakarta Raya         |
+|        2 | Shanxi               |
+|        1 | Bern                 |
+|        3 | Ondo & Ekiti         |
+|        1 | Pyongyang-si         |
+|        1 | North Carolina       |
+|        1 | North Austria        |
+|        2 | Tel Aviv             |
+|        1 | Pays de la Loire     |
+|        1 | Gifu                 |
+|        2 | Adana                |
+|        2 | Xinxiang             |
+|        1 | Lilongwe             |
+|        2 | Gansu                |
+|        1 | Jiangxi              |
+|        1 | Perak                |
+|        1 | Batman               |
+|        1 | Steiermark           |
+|        1 | Miranda              |
+|        2 | Kerala               |
+|        1 | Skikda               |
+|        1 | Tamaulipas           |
+|        1 | Kirov                |
+|        1 | Noord-Brabant        |
+|        1 | Chaharmahal va Bakht |
+|        3 | Sumy                 |
+|        3 | Ontario              |
+|        1 | Tabora               |
+|        1 | Rostov-na-Donu       |
+|        1 | Nyanza               |
+|        2 | Tokyo-to             |
+|        1 | Baden-Wrttemberg     |
+|        2 | Jiangsu              |
+|        1 | Haiphong             |
+|        1 | Ahal                 |
+|        1 | Sulawesi Utara       |
+|        1 | Usak                 |
+|        1 | Alto Paran           |
+|        1 | Santa Catarina       |
+|        1 | Kitaa                |
+|        1 | Aden                 |
+|        2 | Jilin                |
+|        1 | Washington           |
+|        1 | Taizz                |
+|        1 | Haskovo              |
+|        1 | Kabol                |
+|        1 | Zanzibar West        |
+|        1 | Sisilia              |
+|        1 | Jaroslavl            |
+|        5 | Tamil Nadu           |
+|        1 | Asuncin              |
+|        1 | Saarland             |
+|        1 | Phnom Penh           |
+|        1 | Botosani             |
+|        1 | Qina                 |
+|        1 | Hawalli              |
+|        1 | Valle                |
+|        6 | Southern Tagalog     |
+|        1 | Chollanam            |
+|        4 | West Java            |
+|        2 | Fukushima            |
+|        1 | Hebei                |
+|        1 | Tucumn               |
+|        1 | Central Visayas      |
+|        1 | Kyonggi              |
+|        1 | Paran                |
+|        2 | Florida              |
+|        1 | Tianjin              |
+|        1 | Anhalt Sachsen       |
+|        1 | Miyazaki             |
+|        3 | Minas Gerais         |
+|        3 | Central Luzon        |
+|        1 | Sagaing              |
+|        1 | Sofala               |
+|        1 | Santiago             |
+|        1 | Cagayan Valley       |
+|        1 | Manab                |
+|        2 | Osaka                |
+|        1 | Severn Morava        |
+|        1 | Salzburg             |
+|        1 | Wielkopolskie        |
+|        4 | Guanajuato           |
+|        4 | Illinois             |
+|        1 | Bursa                |
+|        1 | East Azerbaidzan     |
+|        1 | Fujian               |
+|        1 | Ponce                |
+|        1 | Edo & Delta          |
+|        1 | Shiga                |
+|        1 | Kowloon and New Kowl |
+|        1 | Gurico               |
+|        1 | Virginia             |
+|        1 | Sharja               |
+|        1 | Baskimaa             |
+|        2 | Ohio                 |
+|        1 | Pietari              |
+|        1 | Pohjois-Pohjanmaa    |
+|        1 | Kaliningrad          |
+|        3 | Liaoning             |
+|        1 | Sanaa                |
+|        1 | Callao               |
+|        1 | Kedah                |
+|        1 | Rio de Janeiro       |
+|        2 | Lombardia            |
+|        1 | Kursk                |
+|        1 | Tabuk                |
+|        1 | Streymoyar           |
+|        1 | Kujawsko-Pomorskie   |
+|        1 | Tutuila              |
+|        3 | Central              |
+|        2 | Morelos              |
+|        1 | St George            |
+|        1 | Santa F              |
+|        1 | Baki                 |
+|        1 | Sumqayit             |
+|        1 | Sousse               |
+|        1 | Western Cape         |
+|        1 | Hanoi                |
+|        1 | Roraima              |
+|        1 | Baja California      |
+|        1 | Tongatapu            |
+|        1 | Irkutsk              |
+|        1 | Nova Scotia          |
+|        1 | OHiggins             |
+|        1 | Hodeida              |
+|        1 | Nam Ha               |
+|        1 | Aceh                 |
+|        1 | Drenthe              |
+|        1 | Qubec                |
+|        1 | Gaziantep            |
+|        1 | Mwanza               |
+|        1 | Veracruz             |
+|        1 | Denizli              |
+|        1 | Ningxia              |
+|        1 | Stavropol            |
+|        1 | Baja California Sur  |
+|        1 | Boyac                |
+|        1 | al-Daqahliya         |
+|        1 | Istanbul             |
+|        1 | Chimborazo           |
+|        1 | Zufar                |
+|        1 | Apulia               |
+|        1 | Lubelskie            |
+|        1 | Nagano               |
+|        1 | Kalimantan Barat     |
+|        1 | Eskisehir            |
+|        1 | Volgograd            |
+|        2 | Heilongjiang         |
+|        1 | Coquimbo             |
+|        1 | Battambang           |
++----------+----------------------+
+378 rows in set (0.00 sec)
+
+mysql> SELECT COUNT(*) as Count, district from address group by district having count >=5;
++-------+------------------+
+| Count | district         |
++-------+------------------+
+|     9 | California       |
+|     5 | Texas            |
+|     7 | England          |
+|     9 | West Bengali     |
+|     8 | Uttar Pradesh    |
+|     5 | Karnataka        |
+|     8 | So Paulo         |
+|    10 | Buenos Aires     |
+|     5 | Gois             |
+|     5 | Punjab           |
+|     5 | Hubei            |
+|     9 | Shandong         |
+|     7 | Maharashtra      |
+|     5 | Tamil Nadu       |
+|     6 | Southern Tagalog |
++-------+------------------+
+15 rows in set (0.00 sec)

@@ -1,0 +1,1578 @@
+Enter password: ***********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 19
+Server version: 8.0.33 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| lco_films          |
+| mysql              |
+| performance_schema |
+| world_actors       |
++--------------------+
+5 rows in set (0.01 sec)
+
+mysql> use lco_films;
+Database changed
+mysql> show tables;
++---------------------+
+| Tables_in_lco_films |
++---------------------+
+| actor               |
+| address             |
+| category            |
+| city                |
+| country             |
+| film                |
+| film_actor          |
+| film_category       |
+| language            |
++---------------------+
+9 rows in set (0.00 sec)
+
+mysql> SELECT * FROM ACTOR LIMIT 10;
++----------+------------+--------------+------------+---------------------+
+| actor_id | first_name | last_name    | address_id | last_update         |
++----------+------------+--------------+------------+---------------------+
+|        1 | PENELOPE   | GUINESS      |          1 | 2020-07-30 18:07:51 |
+|        2 | NICK       | WAHLBERG     |          4 | 2020-07-30 18:07:51 |
+|        3 | ED         | CHASE        |          2 | 2020-07-30 18:07:51 |
+|        4 | JENNIFER   | DAVIS        |          3 | 2020-07-30 18:07:51 |
+|        5 | JOHNNY     | LOLLOBRIGIDA |          5 | 2020-07-30 18:07:51 |
+|        6 | BETTE      | NICHOLSON    |          7 | 2020-07-30 18:07:51 |
+|        7 | GRACE      | MOSTEL       |          6 | 2020-07-30 18:07:51 |
+|        8 | MATTHEW    | JOHANSSON    |          8 | 2020-07-30 18:07:51 |
+|        9 | JOE        | SWANK        |         10 | 2020-07-30 18:07:51 |
+|       10 | CHRISTIAN  | GABLE        |          9 | 2020-07-30 18:07:51 |
++----------+------------+--------------+------------+---------------------+
+10 rows in set (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| lco_films          |
+| mysql              |
+| performance_schema |
+| world_actors       |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> use world_actor;
+ERROR 1049 (42000): Unknown database 'world_actor'
+mysql> use world_actors;
+Database changed
+mysql> select * from actor;
++-----------+----------+--------+----------+
+| Firstname | LastName | Gender | Networth |
++-----------+----------+--------+----------+
+| Alina     | Depp     | Female |     1000 |
+| Angela    | White    | Female |      750 |
+| Sunny     | Leone    | Female |       10 |
+| Mia       | Khalifa  | Female |       45 |
+| Abella    | Danger   | Female |       10 |
+| Mia       | Malova   | Female |       12 |
+| Valentina | Nappi    | Female |       46 |
+| Eva       | Elfie    | Female |       18 |
+| Riley     | Reid     | Female |       19 |
+| Lena      | Paul     | Female |       21 |
+| Brandi    | Love     | Female |       23 |
+| Emily     | Wills    | Female |       25 |
+| Lana      | Rhaodes  | Female |       26 |
+| Tesa      | Lane     | Female |       27 |
+| Leah      | Gotti    | Female |       28 |
+| Mischa    | Brooks   | Female |       15 |
+| Brianna   | Love     | Female |       30 |
+| August    | Ades     | Female |       31 |
+| Victoria  | June     | Female |       32 |
+| Madison   | Ivy      | Female |       33 |
+| Syndey    | Cole     | Female |       35 |
+| Dani      | Daniels  | Female |       36 |
+| Molly     | Sims     | Female |       37 |
+| Kacy      | Black    | Female |       38 |
+| Alyssia   | Kent     | Female |       39 |
+| Kayley    | Gunner   | Female |       41 |
+| Lacy      | Lennon   | Female |       51 |
+| Karlee    | Grey     | Female |       79 |
+| Keisha    | Grey     | Female |       81 |
+| Anila     | Depp     | Male   |       56 |
+| Ana       | Polana   | Female |       91 |
+| Blake     | Blossom  | Female |       11 |
++-----------+----------+--------+----------+
+32 rows in set (0.00 sec)
+
+mysql> delete actor from where Firstname = "Alina";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where Firstname = "Alina"' at line 1
+mysql> delete from actor where Firstname = "Alina";
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select * from actor;
++-----------+----------+--------+----------+
+| Firstname | LastName | Gender | Networth |
++-----------+----------+--------+----------+
+| Angela    | White    | Female |      750 |
+| Sunny     | Leone    | Female |       10 |
+| Mia       | Khalifa  | Female |       45 |
+| Abella    | Danger   | Female |       10 |
+| Mia       | Malova   | Female |       12 |
+| Valentina | Nappi    | Female |       46 |
+| Eva       | Elfie    | Female |       18 |
+| Riley     | Reid     | Female |       19 |
+| Lena      | Paul     | Female |       21 |
+| Brandi    | Love     | Female |       23 |
+| Emily     | Wills    | Female |       25 |
+| Lana      | Rhaodes  | Female |       26 |
+| Tesa      | Lane     | Female |       27 |
+| Leah      | Gotti    | Female |       28 |
+| Mischa    | Brooks   | Female |       15 |
+| Brianna   | Love     | Female |       30 |
+| August    | Ades     | Female |       31 |
+| Victoria  | June     | Female |       32 |
+| Madison   | Ivy      | Female |       33 |
+| Syndey    | Cole     | Female |       35 |
+| Dani      | Daniels  | Female |       36 |
+| Molly     | Sims     | Female |       37 |
+| Kacy      | Black    | Female |       38 |
+| Alyssia   | Kent     | Female |       39 |
+| Kayley    | Gunner   | Female |       41 |
+| Lacy      | Lennon   | Female |       51 |
+| Karlee    | Grey     | Female |       79 |
+| Keisha    | Grey     | Female |       81 |
+| Anila     | Depp     | Male   |       56 |
+| Ana       | Polana   | Female |       91 |
+| Blake     | Blossom  | Female |       11 |
++-----------+----------+--------+----------+
+31 rows in set (0.00 sec)
+
+mysql> update actor Set Networth = 12 WHERE like Firstname = "Blake";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'like Firstname = "Blake"' at line 1
+mysql> update actor Set Networth = 12 WHERE like Firstname = "Blake%";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'like Firstname = "Blake%"' at line 1
+mysql> update actor Set Networth = 12 WHERE Firstname like = "Blake";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '= "Blake"' at line 1
+mysql> update actor Set Networth = 12 WHERE Firstname like = "Blake%";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '= "Blake%"' at line 1
+mysql> update actor Set Networth = 12 WHERE Firstname like  "Blake%";
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from actor;
++-----------+----------+--------+----------+
+| Firstname | LastName | Gender | Networth |
++-----------+----------+--------+----------+
+| Angela    | White    | Female |      750 |
+| Sunny     | Leone    | Female |       10 |
+| Mia       | Khalifa  | Female |       45 |
+| Abella    | Danger   | Female |       10 |
+| Mia       | Malova   | Female |       12 |
+| Valentina | Nappi    | Female |       46 |
+| Eva       | Elfie    | Female |       18 |
+| Riley     | Reid     | Female |       19 |
+| Lena      | Paul     | Female |       21 |
+| Brandi    | Love     | Female |       23 |
+| Emily     | Wills    | Female |       25 |
+| Lana      | Rhaodes  | Female |       26 |
+| Tesa      | Lane     | Female |       27 |
+| Leah      | Gotti    | Female |       28 |
+| Mischa    | Brooks   | Female |       15 |
+| Brianna   | Love     | Female |       30 |
+| August    | Ades     | Female |       31 |
+| Victoria  | June     | Female |       32 |
+| Madison   | Ivy      | Female |       33 |
+| Syndey    | Cole     | Female |       35 |
+| Dani      | Daniels  | Female |       36 |
+| Molly     | Sims     | Female |       37 |
+| Kacy      | Black    | Female |       38 |
+| Alyssia   | Kent     | Female |       39 |
+| Kayley    | Gunner   | Female |       41 |
+| Lacy      | Lennon   | Female |       51 |
+| Karlee    | Grey     | Female |       79 |
+| Keisha    | Grey     | Female |       81 |
+| Anila     | Depp     | Male   |       56 |
+| Ana       | Polana   | Female |       91 |
+| Blake     | Blossom  | Female |       12 |
++-----------+----------+--------+----------+
+31 rows in set (0.00 sec)
+
+mysql> update actor set Networth = 13 WHERE Firstname like "Blake%" and Lastname = "Blossom";
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from actor;
++-----------+----------+--------+----------+
+| Firstname | LastName | Gender | Networth |
++-----------+----------+--------+----------+
+| Angela    | White    | Female |      750 |
+| Sunny     | Leone    | Female |       10 |
+| Mia       | Khalifa  | Female |       45 |
+| Abella    | Danger   | Female |       10 |
+| Mia       | Malova   | Female |       12 |
+| Valentina | Nappi    | Female |       46 |
+| Eva       | Elfie    | Female |       18 |
+| Riley     | Reid     | Female |       19 |
+| Lena      | Paul     | Female |       21 |
+| Brandi    | Love     | Female |       23 |
+| Emily     | Wills    | Female |       25 |
+| Lana      | Rhaodes  | Female |       26 |
+| Tesa      | Lane     | Female |       27 |
+| Leah      | Gotti    | Female |       28 |
+| Mischa    | Brooks   | Female |       15 |
+| Brianna   | Love     | Female |       30 |
+| August    | Ades     | Female |       31 |
+| Victoria  | June     | Female |       32 |
+| Madison   | Ivy      | Female |       33 |
+| Syndey    | Cole     | Female |       35 |
+| Dani      | Daniels  | Female |       36 |
+| Molly     | Sims     | Female |       37 |
+| Kacy      | Black    | Female |       38 |
+| Alyssia   | Kent     | Female |       39 |
+| Kayley    | Gunner   | Female |       41 |
+| Lacy      | Lennon   | Female |       51 |
+| Karlee    | Grey     | Female |       79 |
+| Keisha    | Grey     | Female |       81 |
+| Anila     | Depp     | Male   |       56 |
+| Ana       | Polana   | Female |       91 |
+| Blake     | Blossom  | Female |       13 |
++-----------+----------+--------+----------+
+31 rows in set (0.00 sec)
+
+mysql> use lco_films;
+Database changed
+mysql> SELECT * FROM ACTOR LIMIT 10;
++----------+------------+--------------+------------+---------------------+
+| actor_id | first_name | last_name    | address_id | last_update         |
++----------+------------+--------------+------------+---------------------+
+|        1 | PENELOPE   | GUINESS      |          1 | 2020-07-30 18:07:51 |
+|        2 | NICK       | WAHLBERG     |          4 | 2020-07-30 18:07:51 |
+|        3 | ED         | CHASE        |          2 | 2020-07-30 18:07:51 |
+|        4 | JENNIFER   | DAVIS        |          3 | 2020-07-30 18:07:51 |
+|        5 | JOHNNY     | LOLLOBRIGIDA |          5 | 2020-07-30 18:07:51 |
+|        6 | BETTE      | NICHOLSON    |          7 | 2020-07-30 18:07:51 |
+|        7 | GRACE      | MOSTEL       |          6 | 2020-07-30 18:07:51 |
+|        8 | MATTHEW    | JOHANSSON    |          8 | 2020-07-30 18:07:51 |
+|        9 | JOE        | SWANK        |         10 | 2020-07-30 18:07:51 |
+|       10 | CHRISTIAN  | GABLE        |          9 | 2020-07-30 18:07:51 |
++----------+------------+--------------+------------+---------------------+
+10 rows in set (0.00 sec)
+
+mysql> desc actor;
++-------------+-------------------+------+-----+-------------------+-----------------------------------------------+
+| Field       | Type              | Null | Key | Default           | Extra                                         |
++-------------+-------------------+------+-----+-------------------+-----------------------------------------------+
+| actor_id    | smallint unsigned | NO   | PRI | NULL              | auto_increment                                |
+| first_name  | varchar(45)       | NO   |     | NULL              |                                               |
+| last_name   | varchar(45)       | NO   | MUL | NULL              |                                               |
+| address_id  | smallint unsigned | NO   | MUL | NULL              |                                               |
+| last_update | timestamp         | NO   |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED on update CURRENT_TIMESTAMP |
++-------------+-------------------+------+-----+-------------------+-----------------------------------------------+
+5 rows in set (0.01 sec)
+
+mysql> SELECT first_name ,last_name  address from actor JOIN Address ON Actor.address_id = Address.address_id;
++-------------+--------------+
+| first_name  | address      |
++-------------+--------------+
+| PENELOPE    | GUINESS      |
+| NICK        | WAHLBERG     |
+| ED          | CHASE        |
+| JENNIFER    | DAVIS        |
+| JOHNNY      | LOLLOBRIGIDA |
+| BETTE       | NICHOLSON    |
+| GRACE       | MOSTEL       |
+| MATTHEW     | JOHANSSON    |
+| JOE         | SWANK        |
+| CHRISTIAN   | GABLE        |
+| ZERO        | CAGE         |
+| KARL        | BERRY        |
+| UMA         | WOOD         |
+| VIVIEN      | BERGEN       |
+| CUBA        | OLIVIER      |
+| FRED        | COSTNER      |
+| HELEN       | VOIGHT       |
+| DAN         | TORN         |
+| BOB         | FAWCETT      |
+| LUCILLE     | TRACY        |
+| KIRSTEN     | PALTROW      |
+| ELVIS       | MARX         |
+| SANDRA      | KILMER       |
+| CAMERON     | STREEP       |
+| KEVIN       | BLOOM        |
+| RIP         | CRAWFORD     |
+| JULIA       | MCQUEEN      |
+| WOODY       | HOFFMAN      |
+| ALEC        | WAYNE        |
+| SANDRA      | PECK         |
+| SISSY       | SOBIESKI     |
+| TIM         | HACKMAN      |
+| MILLA       | PECK         |
+| AUDREY      | OLIVIER      |
+| JUDY        | DEAN         |
+| BURT        | DUKAKIS      |
+| VAL         | BOLGER       |
+| TOM         | MCKELLEN     |
+| GOLDIE      | BRODY        |
+| JOHNNY      | CAGE         |
+| JODIE       | DEGENERES    |
+| TOM         | MIRANDA      |
+| KIRK        | JOVOVICH     |
+| NICK        | STALLONE     |
+| REESE       | KILMER       |
+| PARKER      | GOLDBERG     |
+| JULIA       | BARRYMORE    |
+| FRANCES     | DAY-LEWIS    |
+| ANNE        | CRONYN       |
+| NATALIE     | HOPKINS      |
+| GARY        | PHOENIX      |
+| CARMEN      | HUNT         |
+| MENA        | TEMPLE       |
+| PENELOPE    | PINKETT      |
+| FAY         | KILMER       |
+| DAN         | HARRIS       |
+| JUDE        | CRUISE       |
+| CHRISTIAN   | AKROYD       |
+| DUSTIN      | TAUTOU       |
+| HENRY       | BERRY        |
+| CHRISTIAN   | NEESON       |
+| JAYNE       | NEESON       |
+| CAMERON     | WRAY         |
+| RAY         | JOHANSSON    |
+| ANGELA      | HUDSON       |
+| MARY        | TANDY        |
+| JESSICA     | BAILEY       |
+| RIP         | WINSLET      |
+| KENNETH     | PALTROW      |
+| MICHELLE    | MCCONAUGHEY  |
+| ADAM        | GRANT        |
+| SEAN        | WILLIAMS     |
+| GARY        | PENN         |
+| MILLA       | KEITEL       |
+| BURT        | POSEY        |
+| ANGELINA    | ASTAIRE      |
+| CARY        | MCCONAUGHEY  |
+| GROUCHO     | SINATRA      |
+| MAE         | HOFFMAN      |
+| RALPH       | CRUZ         |
+| SCARLETT    | DAMON        |
+| WOODY       | JOLIE        |
+| BEN         | WILLIS       |
+| JAMES       | PITT         |
+| MINNIE      | ZELLWEGER    |
+| GREG        | CHAPLIN      |
+| SPENCER     | PECK         |
+| KENNETH     | PESCI        |
+| CHARLIZE    | DENCH        |
+| SEAN        | GUINESS      |
+| CHRISTOPHER | BERRY        |
+| KIRSTEN     | AKROYD       |
+| ELLEN       | PRESLEY      |
+| KENNETH     | TORN         |
+| DARYL       | WAHLBERG     |
+| GENE        | WILLIS       |
+| MEG         | HAWKE        |
+| CHRIS       | BRIDGES      |
+| JIM         | MOSTEL       |
+| SPENCER     | DEPP         |
+| SUSAN       | DAVIS        |
+| WALTER      | TORN         |
+| MATTHEW     | LEIGH        |
+| PENELOPE    | CRONYN       |
+| SIDNEY      | CROWE        |
+| GROUCHO     | DUNST        |
+| GINA        | DEGENERES    |
+| WARREN      | NOLTE        |
+| SYLVESTER   | DERN         |
+| SUSAN       | DAVIS        |
+| CAMERON     | ZELLWEGER    |
+| RUSSELL     | BACALL       |
+| MORGAN      | HOPKINS      |
+| MORGAN      | MCDORMAND    |
+| HARRISON    | BALE         |
+| DAN         | STREEP       |
+| RENEE       | TRACY        |
+| CUBA        | ALLEN        |
+| WARREN      | JACKMAN      |
+| PENELOPE    | MONROE       |
+| LIZA        | BERGMAN      |
+| SALMA       | NOLTE        |
+| JULIANNE    | DENCH        |
+| SCARLETT    | BENING       |
+| ALBERT      | NOLTE        |
+| FRANCES     | TOMEI        |
+| KEVIN       | GARLAND      |
+| CATE        | MCQUEEN      |
+| DARYL       | CRAWFORD     |
+| GRETA       | KEITEL       |
+| JANE        | JACKMAN      |
+| ADAM        | HOPPER       |
+| RICHARD     | PENN         |
+| GENE        | HOPKINS      |
+| RITA        | REYNOLDS     |
+| ED          | MANSFIELD    |
+| MORGAN      | WILLIAMS     |
+| LUCILLE     | DEE          |
+| EWAN        | GOODING      |
+| WHOOPI      | HURT         |
+| CATE        | HARRIS       |
+| JADA        | RYDER        |
+| RIVER       | DEAN         |
+| ANGELA      | WITHERSPOON  |
+| KIM         | ALLEN        |
+| ALBERT      | JOHANSSON    |
+| FAY         | WINSLET      |
+| EMILY       | DEE          |
+| RUSSELL     | TEMPLE       |
+| JAYNE       | NOLTE        |
+| GEOFFREY    | HESTON       |
+| BEN         | HARRIS       |
+| MINNIE      | KILMER       |
+| MERYL       | GIBSON       |
+| IAN         | TANDY        |
+| FAY         | WOOD         |
+| GRETA       | MALDEN       |
+| VIVIEN      | BASINGER     |
+| LAURA       | BRODY        |
+| CHRIS       | DEPP         |
+| HARVEY      | HOPE         |
+| OPRAH       | KILMER       |
+| CHRISTOPHER | WEST         |
+| HUMPHREY    | WILLIS       |
+| AL          | GARLAND      |
+| NICK        | DEGENERES    |
+| LAURENCE    | BULLOCK      |
+| WILL        | WILSON       |
+| KENNETH     | HOFFMAN      |
+| MENA        | HOPPER       |
+| OLYMPIA     | PFEIFFER     |
+| GROUCHO     | WILLIAMS     |
+| ALAN        | DREYFUSS     |
+| MICHAEL     | BENING       |
+| WILLIAM     | HACKMAN      |
+| JON         | CHASE        |
+| GENE        | MCKELLEN     |
+| LISA        | MONROE       |
+| ED          | GUINESS      |
+| JEFF        | SILVERSTONE  |
+| MATTHEW     | CARREY       |
+| DEBBIE      | AKROYD       |
+| RUSSELL     | CLOSE        |
+| HUMPHREY    | GARLAND      |
+| MICHAEL     | BOLGER       |
+| JULIA       | ZELLWEGER    |
+| RENEE       | BALL         |
+| ROCK        | DUKAKIS      |
+| CUBA        | BIRCH        |
+| AUDREY      | BAILEY       |
+| GREGORY     | GOODING      |
+| JOHN        | SUVARI       |
+| BURT        | TEMPLE       |
+| MERYL       | ALLEN        |
+| JAYNE       | SILVERSTONE  |
+| BELA        | WALKEN       |
+| REESE       | WEST         |
+| MARY        | KEITEL       |
+| JULIA       | FAWCETT      |
+| THORA       | TEMPLE       |
+| Jonny       | Depp         |
+| Ajay        | Devgan       |
++-------------+--------------+
+202 rows in set (0.00 sec)
+
+mysql> SELECT first_name ,last_name , address from actor JOIN Address ON Actor.address_id = Address.address_id;
++-------------+--------------+----------------------------------------+
+| first_name  | last_name    | address                                |
++-------------+--------------+----------------------------------------+
+| PENELOPE    | GUINESS      | 47 MySakila Drive                      |
+| NICK        | WAHLBERG     | 1411 Lillydale Drive                   |
+| ED          | CHASE        | 28 MySQL Boulevard                     |
+| JENNIFER    | DAVIS        | 23 Workhaven Lane                      |
+| JOHNNY      | LOLLOBRIGIDA | 1913 Hanoi Way                         |
+| BETTE       | NICHOLSON    | 692 Joliet Street                      |
+| GRACE       | MOSTEL       | 1121 Loja Avenue                       |
+| MATTHEW     | JOHANSSON    | 1566 Inegl Manor                       |
+| JOE         | SWANK        | 1795 Santiago de Compostela Way        |
+| CHRISTIAN   | GABLE        | 53 Idfu Parkway                        |
+| ZERO        | CAGE         | 900 Santiago de Compostela Parkway     |
+| KARL        | BERRY        | 613 Korolev Drive                      |
+| UMA         | WOOD         | 1867 San Juan Bautista Tuxtepec Avenue |
+| VIVIEN      | BERGEN       | 262 A Corua (La Corua) Parkway         |
+| CUBA        | OLIVIER      | 334 Munger (Monghyr) Lane              |
+| FRED        | COSTNER      | 915 Ponce Place                        |
+| HELEN       | VOIGHT       | 1947 Poos de Caldas Boulevard          |
+| DAN         | TORN         | 1936 Lapu-Lapu Parkway                 |
+| BOB         | FAWCETT      | 211 Chiayi Drive                       |
+| LUCILLE     | TRACY        | 602 Paarl Street                       |
+| KIRSTEN     | PALTROW      | 1697 Tanauan Lane                      |
+| ELVIS       | MARX         | 671 Graz Street                        |
+| SANDRA      | KILMER       | 786 Aurora Avenue                      |
+| CAMERON     | STREEP       | 1213 Ranchi Parkway                    |
+| KEVIN       | BLOOM        | 1214 Hanoi Way                         |
+| RIP         | CRAWFORD     | 1632 Bislig Avenue                     |
+| JULIA       | MCQUEEN      | 1447 Imus Way                          |
+| WOODY       | HOFFMAN      | 17 Kabul Boulevard                     |
+| ALEC        | WAYNE        | 1124 Buenaventura Drive                |
+| SANDRA      | PECK         | 492 Cam Ranh Street                    |
+| SISSY       | SOBIESKI     | 808 Bhopal Manor                       |
+| TIM         | HACKMAN      | 1966 Amroha Avenue                     |
+| MILLA       | PECK         | 927 Baha Blanca Parkway                |
+| AUDREY      | OLIVIER      | 1206 Dos Quebradas Place               |
+| JUDY        | DEAN         | 725 Isesaki Place                      |
+| BURT        | DUKAKIS      | 33 Gorontalo Way                       |
+| VAL         | BOLGER       | 57 Arlington Manor                     |
+| TOM         | MCKELLEN     | 1780 Hino Boulevard                    |
+| GOLDIE      | BRODY        | 1717 Guadalajara Lane                  |
+| JOHNNY      | CAGE         | 943 Tokat Street                       |
+| JODIE       | DEGENERES    | 269 Cam Ranh Parkway                   |
+| TOM         | MIRANDA      | 1551 Rampur Lane                       |
+| KIRK        | JOVOVICH     | 1688 Okara Way                         |
+| NICK        | STALLONE     | 832 Nakhon Sawan Manor                 |
+| REESE       | KILMER       | 1308 Arecibo Way                       |
+| PARKER      | GOLDBERG     | 264 Bhimavaram Manor                   |
+| JULIA       | BARRYMORE    | 1913 Kamakura Place                    |
+| FRANCES     | DAY-LEWIS    | 1386 Yangor Avenue                     |
+| ANNE        | CRONYN       | 848 Tafuna Manor                       |
+| NATALIE     | HOPKINS      | 115 Hidalgo Parkway                    |
+| GARY        | PHOENIX      | 1074 Binzhou Manor                     |
+| CARMEN      | HUNT         | 798 Cianjur Avenue                     |
+| MENA        | TEMPLE       | 781 Shimonoseki Drive                  |
+| PENELOPE    | PINKETT      | 1792 Valle de la Pascua Place          |
+| FAY         | KILMER       | 419 Iligan Lane                        |
+| DAN         | HARRIS       | 1427 A Corua (La Corua) Place          |
+| JUDE        | CRUISE       | 241 Mosul Lane                         |
+| CHRISTIAN   | AKROYD       | 1967 Sincelejo Place                   |
+| DUSTIN      | TAUTOU       | 1107 Nakhon Sawan Avenue               |
+| HENRY       | BERRY        | 140 Chiayi Parkway                     |
+| CHRISTIAN   | NEESON       | 682 Garden Grove Place                 |
+| JAYNE       | NEESON       | 1157 Nyeri Loop                        |
+| CAMERON     | WRAY         | 1752 So Leopoldo Parkway               |
+| RAY         | JOHANSSON    | 782 Mosul Street                       |
+| ANGELA      | HUDSON       | 588 Vila Velha Manor                   |
+| MARY        | TANDY        | 1001 Miyakonojo Lane                   |
+| JESSICA     | BAILEY       | 42 Brindisi Place                      |
+| RIP         | WINSLET      | 1027 Songkhla Manor                    |
+| KENNETH     | PALTROW      | 1410 Benin City Parkway                |
+| MICHELLE    | MCCONAUGHEY  | 1158 Mandi Bahauddin Parkway           |
+| ADAM        | GRANT        | 752 Ondo Loop                          |
+| SEAN        | WILLIAMS     | 1309 Weifang Street                    |
+| GARY        | PENN         | 316 Uruapan Street                     |
+| MILLA       | KEITEL       | 456 Escobar Way                        |
+| BURT        | POSEY        | 1749 Daxian Place                      |
+| ANGELINA    | ASTAIRE      | 804 Elista Drive                       |
+| CARY        | MCCONAUGHEY  | 543 Bergamo Avenue                     |
+| GROUCHO     | SINATRA      | 1002 Ahmadnagar Manor                  |
+| MAE         | HOFFMAN      | 682 Junan Way                          |
+| RALPH       | CRUZ         | 1050 Garden Grove Avenue               |
+| SCARLETT    | DAMON        | 1987 Coacalco de Berriozbal Loop       |
+| WOODY       | JOLIE        | 801 Hagonoy Drive                      |
+| BEN         | WILLIS       | 1089 Iwatsuki Avenue                   |
+| JAMES       | PITT         | 765 Southampton Drive                  |
+| MINNIE      | ZELLWEGER    | 1540 Wroclaw Drive                     |
+| GREG        | CHAPLIN      | 1079 Tel Aviv-Jaffa Boulevard          |
+| SPENCER     | PECK         | 954 Kimchon Place                      |
+| KENNETH     | PESCI        | 43 Dadu Avenue                         |
+| CHARLIZE    | DENCH        | 660 Jedda Boulevard                    |
+| SEAN        | GUINESS      | 817 Bradford Loop                      |
+| CHRISTOPHER | BERRY        | 442 Rae Bareli Place                   |
+| KIRSTEN     | AKROYD       | 146 Johannesburg Way                   |
+| ELLEN       | PRESLEY      | 1229 Valencia Parkway                  |
+| KENNETH     | TORN         | 1029 Dzerzinsk Manor                   |
+| DARYL       | WAHLBERG     | 1666 Beni-Mellal Place                 |
+| GENE        | WILLIS       | 1839 Szkesfehrvr Parkway               |
+| MEG         | HAWKE        | 1848 Salala Boulevard                  |
+| CHRIS       | BRIDGES      | 793 Cam Ranh Avenue                    |
+| JIM         | MOSTEL       | 1386 Nakhon Sawan Boulevard            |
+| SPENCER     | DEPP         | 1587 Sullana Lane                      |
+| SUSAN       | DAVIS        | 1964 Gijn Manor                        |
+| WALTER      | TORN         | 1294 Firozabad Drive                   |
+| MATTHEW     | LEIGH        | 261 Saint Louis Way                    |
+| PENELOPE    | CRONYN       | 842 Salzburg Lane                      |
+| SIDNEY      | CROWE        | 533 al-Ayn Boulevard                   |
+| GROUCHO     | DUNST        | 447 Surakarta Loop                     |
+| GINA        | DEGENERES    | 154 Tallahassee Loop                   |
+| WARREN      | NOLTE        | 698 Otsu Street                        |
+| SYLVESTER   | DERN         | 1010 Klerksdorp Way                    |
+| SUSAN       | DAVIS        | 741 Ambattur Manor                     |
+| CAMERON     | ZELLWEGER    | 1854 Tieli Street                      |
+| RUSSELL     | BACALL       | 333 Goinia Way                         |
+| MORGAN      | HOPKINS      | 1532 Dzerzinsk Way                     |
+| MORGAN      | MCDORMAND    | 850 Salala Loop                        |
+| HARRISON    | BALE         | 356 Olomouc Manor                      |
+| DAN         | STREEP       | 226 Halifax Street                     |
+| RENEE       | TRACY        | 85 San Felipe de Puerto Plata Drive    |
+| CUBA        | ALLEN        | 1736 Cavite Place                      |
+| WARREN      | JACKMAN      | 446 Kirovo-Tepetsk Lane                |
+| PENELOPE    | MONROE       | 1192 Tongliao Street                   |
+| LIZA        | BERGMAN      | 1308 Sumy Loop                         |
+| SALMA       | NOLTE        | 1831 Nam Dinh Loop                     |
+| JULIANNE    | DENCH        | 647 A Corua (La Corua) Street          |
+| SCARLETT    | BENING       | 47 Syktyvkar Lane                      |
+| ALBERT      | NOLTE        | 1944 Bamenda Way                       |
+| FRANCES     | TOMEI        | 226 Brest Manor                        |
+| KEVIN       | GARLAND      | 457 Tongliao Loop                      |
+| CATE        | MCQUEEN      | 346 Skikda Parkway                     |
+| DARYL       | CRAWFORD     | 1215 Pyongyang Parkway                 |
+| GRETA       | KEITEL       | 387 Mwene-Ditu Drive                   |
+| JANE        | JACKMAN      | 751 Lima Loop                          |
+| ADAM        | HOPPER       | 1842 Luzinia Boulevard                 |
+| RICHARD     | PENN         | 1168 Najafabad Parkway                 |
+| GENE        | HOPKINS      | 1473 Changhwa Parkway                  |
+| RITA        | REYNOLDS     | 829 Grand Prairie Way                  |
+| ED          | MANSFIELD    | 1497 Yuzhou Drive                      |
+| MORGAN      | WILLIAMS     | 1103 Bilbays Parkway                   |
+| LUCILLE     | DEE          | 430 Alessandria Loop                   |
+| EWAN        | GOODING      | 1926 Gingoog Street                    |
+| WHOOPI      | HURT         | 1256 Bislig Boulevard                  |
+| CATE        | HARRIS       | 1304 s-Hertogenbosch Way               |
+| JADA        | RYDER        | 885 Yingkou Manor                      |
+| RIVER       | DEAN         | 176 Mandaluyong Place                  |
+| ANGELA      | WITHERSPOON  | 81 Hodeida Way                         |
+| KIM         | ALLEN        | 1027 Banjul Place                      |
+| ALBERT      | JOHANSSON    | 898 Belm Manor                         |
+| FAY         | WINSLET      | 1201 Qomsheh Manor                     |
+| EMILY       | DEE          | 1679 Antofagasta Street                |
+| RUSSELL     | TEMPLE       | 1191 Sungai Petani Boulevard           |
+| JAYNE       | NOLTE        | 68 Ponce Parkway                       |
+| GEOFFREY    | HESTON       | 1892 Nabereznyje Telny Lane            |
+| BEN         | HARRIS       | 715 So Bernardo do Campo Lane          |
+| MINNIE      | KILMER       | 430 Kumbakonam Drive                   |
+| MERYL       | GIBSON       | 1838 Tabriz Lane                       |
+| IAN         | TANDY        | 1145 Vilnius Manor                     |
+| FAY         | WOOD         | 1635 Kuwana Boulevard                  |
+| GRETA       | MALDEN       | 469 Nakhon Sawan Street                |
+| VIVIEN      | BASINGER     | 1009 Zanzibar Lane                     |
+| LAURA       | BRODY        | 114 Jalib al-Shuyukh Manor             |
+| CHRIS       | DEPP         | 154 Oshawa Manor                       |
+| HARVEY      | HOPE         | 1049 Matamoros Parkway                 |
+| OPRAH       | KILMER       | 1641 Changhwa Place                    |
+| CHRISTOPHER | WEST         | 368 Hunuco Boulevard                   |
+| HUMPHREY    | WILLIS       | 401 Sucre Boulevard                    |
+| AL          | GARLAND      | 1368 Maracabo Boulevard                |
+| NICK        | DEGENERES    | 913 Coacalco de Berriozbal Loop        |
+| LAURENCE    | BULLOCK      | 1224 Huejutla de Reyes Boulevard       |
+| WILL        | WILSON       | 1860 Taguig Loop                       |
+| KENNETH     | HOFFMAN      | 898 Jining Lane                        |
+| MENA        | HOPPER       | 780 Kimberley Way                      |
+| OLYMPIA     | PFEIFFER     | 1912 Emeishan Drive                    |
+| GROUCHO     | WILLIAMS     | 1698 Southport Loop                    |
+| ALAN        | DREYFUSS     | 817 Laredo Avenue                      |
+| MICHAEL     | BENING       | 1658 Jastrzebie-Zdrj Loop              |
+| WILLIAM     | HACKMAN      | 614 Pak Kret Street                    |
+| JON         | CHASE        | 661 Chisinau Lane                      |
+| GENE        | MCKELLEN     | 41 El Alto Parkway                     |
+| LISA        | MONROE       | 519 Nyeri Manor                        |
+| ED          | GUINESS      | 381 Kabul Way                          |
+| JEFF        | SILVERSTONE  | 687 Alessandria Parkway                |
+| MATTHEW     | CARREY       | 1519 Santiago de los Caballeros Loop   |
+| DEBBIE      | AKROYD       | 1957 Yantai Lane                       |
+| RUSSELL     | CLOSE        | 651 Pathankot Loop                     |
+| HUMPHREY    | GARLAND      | 1354 Siegen Street                     |
+| MICHAEL     | BOLGER       | 1599 Plock Drive                       |
+| JULIA       | ZELLWEGER    | 951 Stara Zagora Manor                 |
+| RENEE       | BALL         | 1908 Gaziantep Place                   |
+| ROCK        | DUKAKIS      | 230 Urawa Drive                        |
+| CUBA        | BIRCH        | 1920 Weifang Avenue                    |
+| AUDREY      | BAILEY       | 532 Toulon Street                      |
+| GREGORY     | GOODING      | 503 Sogamoso Loop                      |
+| JOHN        | SUVARI       | 604 Bern Place                         |
+| BURT        | TEMPLE       | 98 Stara Zagora Boulevard              |
+| MERYL       | ALLEN        | 1479 Rustenburg Boulevard              |
+| JAYNE       | SILVERSTONE  | 1293 Nam Dinh Way                      |
+| BELA        | WALKEN       | 1628 Nagareyama Lane                   |
+| REESE       | WEST         | 619 Hunuco Avenue                      |
+| MARY        | KEITEL       | 127 Iwakuni Boulevard                  |
+| JULIA       | FAWCETT      | 45 Aparecida de Goinia Place           |
+| THORA       | TEMPLE       | 168 Cianjur Manor                      |
+| Jonny       | Depp         | 45 Aparecida de Goinia Place           |
+| Ajay        | Devgan       | 45 Aparecida de Goinia Place           |
++-------------+--------------+----------------------------------------+
+202 rows in set (0.00 sec)
+
+mysql> show database;;;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'database' at line 1
+ERROR:
+No query specified
+
+ERROR:
+No query specified
+
+mysql> show database;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'database' at line 1
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| lco_films          |
+| mysql              |
+| performance_schema |
+| world_actors       |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> show tables;
++---------------------+
+| Tables_in_lco_films |
++---------------------+
+| actor               |
+| address             |
+| category            |
+| city                |
+| country             |
+| film                |
+| film_actor          |
+| film_category       |
+| language            |
++---------------------+
+9 rows in set (0.00 sec)
+
+mysql> SELECT first_name,last_name ,address,district,city FROM Actor JOIN Address On Actor.address_id = Address.address_id JOIN CITY On Actor.city_id = City.city_id limit 10;
+ERROR 1054 (42S22): Unknown column 'Actor.city_id' in 'on clause'
+mysql> SELECT first_name,last_name ,address,district,city FROM Actor JOIN Address On Actor.address_id = Address.address_id JOIN CITY On Address.city_id = City.city_id limit 10;
++------------+--------------+---------------------------------+------------+----------------+
+| first_name | last_name    | address                         | district   | city           |
++------------+--------------+---------------------------------+------------+----------------+
+| PENELOPE   | GUINESS      | 47 MySakila Drive               | Alberta    | Lethbridge     |
+| NICK       | WAHLBERG     | 1411 Lillydale Drive            | QLD        | Woodridge      |
+| ED         | CHASE        | 28 MySQL Boulevard              | QLD        | Woodridge      |
+| JENNIFER   | DAVIS        | 23 Workhaven Lane               | Alberta    | Lethbridge     |
+| JOHNNY     | LOLLOBRIGIDA | 1913 Hanoi Way                  | Nagasaki   | Sasebo         |
+| BETTE      | NICHOLSON    | 692 Joliet Street               | Attika     | Athenai        |
+| GRACE      | MOSTEL       | 1121 Loja Avenue                | California | San Bernardino |
+| MATTHEW    | JOHANSSON    | 1566 Inegl Manor                | Mandalay   | Myingyan       |
+| JOE        | SWANK        | 1795 Santiago de Compostela Way | Texas      | Laredo         |
+| CHRISTIAN  | GABLE        | 53 Idfu Parkway                 | Nantou     | Nantou         |
++------------+--------------+---------------------------------+------------+----------------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT first_name ,last_name , address from actor RIGHT OUTER JOIN Address ON Actor.address_id = Address.address_id;
++-------------+--------------+----------------------------------------+
+| first_name  | last_name    | address                                |
++-------------+--------------+----------------------------------------+
+| PENELOPE    | GUINESS      | 47 MySakila Drive                      |
+| ED          | CHASE        | 28 MySQL Boulevard                     |
+| JENNIFER    | DAVIS        | 23 Workhaven Lane                      |
+| NICK        | WAHLBERG     | 1411 Lillydale Drive                   |
+| JOHNNY      | LOLLOBRIGIDA | 1913 Hanoi Way                         |
+| GRACE       | MOSTEL       | 1121 Loja Avenue                       |
+| BETTE       | NICHOLSON    | 692 Joliet Street                      |
+| MATTHEW     | JOHANSSON    | 1566 Inegl Manor                       |
+| CHRISTIAN   | GABLE        | 53 Idfu Parkway                        |
+| JOE         | SWANK        | 1795 Santiago de Compostela Way        |
+| ZERO        | CAGE         | 900 Santiago de Compostela Parkway     |
+| NULL        | NULL         | 478 Joliet Way                         |
+| KARL        | BERRY        | 613 Korolev Drive                      |
+| NULL        | NULL         | 1531 Sal Drive                         |
+| NULL        | NULL         | 1542 Tarlac Parkway                    |
+| SISSY       | SOBIESKI     | 808 Bhopal Manor                       |
+| NULL        | NULL         | 270 Amroha Parkway                     |
+| NULL        | NULL         | 770 Bydgoszcz Avenue                   |
+| FAY         | KILMER       | 419 Iligan Lane                        |
+| NULL        | NULL         | 360 Toulouse Parkway                   |
+| NULL        | NULL         | 270 Toulon Boulevard                   |
+| NULL        | NULL         | 320 Brest Avenue                       |
+| NULL        | NULL         | 1417 Lancaster Avenue                  |
+| KIRK        | JOVOVICH     | 1688 Okara Way                         |
+| VIVIEN      | BERGEN       | 262 A Corua (La Corua) Parkway         |
+| NULL        | NULL         | 28 Charlotte Amalie Street             |
+| TOM         | MCKELLEN     | 1780 Hino Boulevard                    |
+| NULL        | NULL         | 96 Tafuna Way                          |
+| NULL        | NULL         | 934 San Felipe de Puerto Plata Street  |
+| NULL        | NULL         | 18 Duisburg Boulevard                  |
+| NULL        | NULL         | 217 Botshabelo Place                   |
+| NULL        | NULL         | 1425 Shikarpur Manor                   |
+| SANDRA      | KILMER       | 786 Aurora Avenue                      |
+| NULL        | NULL         | 1668 Anpolis Street                    |
+| BURT        | DUKAKIS      | 33 Gorontalo Way                       |
+| RIVER       | DEAN         | 176 Mandaluyong Place                  |
+| NULL        | NULL         | 127 Purnea (Purnia) Manor              |
+| NULL        | NULL         | 61 Tama Street                         |
+| NULL        | NULL         | 391 Callao Drive                       |
+| CUBA        | OLIVIER      | 334 Munger (Monghyr) Lane              |
+| NULL        | NULL         | 1440 Fukuyama Loop                     |
+| JODIE       | DEGENERES    | 269 Cam Ranh Parkway                   |
+| NULL        | NULL         | 306 Antofagasta Place                  |
+| ELVIS       | MARX         | 671 Graz Street                        |
+| JESSICA     | BAILEY       | 42 Brindisi Place                      |
+| RIP         | CRAWFORD     | 1632 Bislig Avenue                     |
+| JULIA       | MCQUEEN      | 1447 Imus Way                          |
+| NULL        | NULL         | 1998 Halifax Drive                     |
+| NULL        | NULL         | 1718 Valencia Street                   |
+| NULL        | NULL         | 46 Pjatigorsk Lane                     |
+| NULL        | NULL         | 686 Garland Manor                      |
+| NULL        | NULL         | 909 Garland Manor                      |
+| JUDY        | DEAN         | 725 Isesaki Place                      |
+| NATALIE     | HOPKINS      | 115 Hidalgo Parkway                    |
+| NULL        | NULL         | 1135 Izumisano Parkway                 |
+| NULL        | NULL         | 939 Probolinggo Loop                   |
+| WOODY       | HOFFMAN      | 17 Kabul Boulevard                     |
+| NULL        | NULL         | 1964 Allappuzha (Alleppey) Street      |
+| NULL        | NULL         | 1697 Kowloon and New Kowloon Loop      |
+| NULL        | NULL         | 1668 Saint Louis Place                 |
+| JOHNNY      | CAGE         | 943 Tokat Street                       |
+| NULL        | NULL         | 1114 Liepaja Street                    |
+| CAMERON     | STREEP       | 1213 Ranchi Parkway                    |
+| ANGELA      | WITHERSPOON  | 81 Hodeida Way                         |
+| FRED        | COSTNER      | 915 Ponce Place                        |
+| GOLDIE      | BRODY        | 1717 Guadalajara Lane                  |
+| KEVIN       | BLOOM        | 1214 Hanoi Way                         |
+| TIM         | HACKMAN      | 1966 Amroha Avenue                     |
+| WARREN      | NOLTE        | 698 Otsu Street                        |
+| NULL        | NULL         | 1150 Kimchon Manor                     |
+| NULL        | NULL         | 1586 Guaruj Place                      |
+| VAL         | BOLGER       | 57 Arlington Manor                     |
+| NULL        | NULL         | 1031 Daugavpils Parkway                |
+| ALEC        | WAYNE        | 1124 Buenaventura Drive                |
+| SANDRA      | PECK         | 492 Cam Ranh Street                    |
+| NULL        | NULL         | 89 Allappuzha (Alleppey) Manor         |
+| HELEN       | VOIGHT       | 1947 Poos de Caldas Boulevard          |
+| AUDREY      | OLIVIER      | 1206 Dos Quebradas Place               |
+| TOM         | MIRANDA      | 1551 Rampur Lane                       |
+| LUCILLE     | TRACY        | 602 Paarl Street                       |
+| NULL        | NULL         | 1692 Ede Loop                          |
+| NULL        | NULL         | 936 Salzburg Lane                      |
+| NULL        | NULL         | 586 Tete Way                           |
+| NULL        | NULL         | 1888 Kabul Drive                       |
+| NULL        | NULL         | 320 Baiyin Parkway                     |
+| MILLA       | PECK         | 927 Baha Blanca Parkway                |
+| NULL        | NULL         | 929 Tallahassee Loop                   |
+| NULL        | NULL         | 125 Citt del Vaticano Boulevard        |
+| NULL        | NULL         | 1557 Ktahya Boulevard                  |
+| NULL        | NULL         | 870 Ashqelon Loop                      |
+| NULL        | NULL         | 1740 Portoviejo Avenue                 |
+| NULL        | NULL         | 1942 Ciparay Parkway                   |
+| NULL        | NULL         | 1926 El Alto Avenue                    |
+| NULL        | NULL         | 1952 Chatsworth Drive                  |
+| NULL        | NULL         | 1370 Le Mans Avenue                    |
+| NULL        | NULL         | 984 Effon-Alaiye Avenue                |
+| NICK        | STALLONE     | 832 Nakhon Sawan Manor                 |
+| NULL        | NULL         | 152 Kitwe Parkway                      |
+| KIRSTEN     | PALTROW      | 1697 Tanauan Lane                      |
+| REESE       | KILMER       | 1308 Arecibo Way                       |
+| MICHAEL     | BOLGER       | 1599 Plock Drive                       |
+| NULL        | NULL         | 669 Firozabad Loop                     |
+| ANGELA      | HUDSON       | 588 Vila Velha Manor                   |
+| JULIA       | BARRYMORE    | 1913 Kamakura Place                    |
+| NULL        | NULL         | 733 Mandaluyong Place                  |
+| NULL        | NULL         | 659 Vaduz Drive                        |
+| NULL        | NULL         | 1177 Jelets Way                        |
+| FRANCES     | DAY-LEWIS    | 1386 Yangor Avenue                     |
+| NULL        | NULL         | 454 Nakhon Sawan Boulevard             |
+| UMA         | WOOD         | 1867 San Juan Bautista Tuxtepec Avenue |
+| MORGAN      | HOPKINS      | 1532 Dzerzinsk Way                     |
+| GROUCHO     | SINATRA      | 1002 Ahmadnagar Manor                  |
+| MAE         | HOFFMAN      | 682 Junan Way                          |
+| ANGELINA    | ASTAIRE      | 804 Elista Drive                       |
+| NULL        | NULL         | 1378 Alvorada Avenue                   |
+| CHRIS       | BRIDGES      | 793 Cam Ranh Avenue                    |
+| GREG        | CHAPLIN      | 1079 Tel Aviv-Jaffa Boulevard          |
+| CHRISTOPHER | BERRY        | 442 Rae Bareli Place                   |
+| DUSTIN      | TAUTOU       | 1107 Nakhon Sawan Avenue               |
+| NULL        | NULL         | 544 Malm Parkway                       |
+| CHRISTIAN   | AKROYD       | 1967 Sincelejo Place                   |
+| RUSSELL     | BACALL       | 333 Goinia Way                         |
+| SCARLETT    | DAMON        | 1987 Coacalco de Berriozbal Loop       |
+| JUDE        | CRUISE       | 241 Mosul Lane                         |
+| BOB         | FAWCETT      | 211 Chiayi Drive                       |
+| NULL        | NULL         | 1175 Tanauan Way                       |
+| NULL        | NULL         | 117 Boa Vista Way                      |
+| ANNE        | CRONYN       | 848 Tafuna Manor                       |
+| NULL        | NULL         | 569 Baicheng Lane                      |
+| NULL        | NULL         | 1666 Qomsheh Drive                     |
+| WOODY       | JOLIE        | 801 Hagonoy Drive                      |
+| RALPH       | CRUZ         | 1050 Garden Grove Avenue               |
+| CAMERON     | ZELLWEGER    | 1854 Tieli Street                      |
+| NULL        | NULL         | 758 Junan Lane                         |
+| CAMERON     | WRAY         | 1752 So Leopoldo Parkway               |
+| ALBERT      | JOHANSSON    | 898 Belm Manor                         |
+| MATTHEW     | LEIGH        | 261 Saint Louis Way                    |
+| JAMES       | PITT         | 765 Southampton Drive                  |
+| NULL        | NULL         | 943 Johannesburg Avenue                |
+| NULL        | NULL         | 788 Atinsk Street                      |
+| BURT        | POSEY        | 1749 Daxian Place                      |
+| SPENCER     | DEPP         | 1587 Sullana Lane                      |
+| KENNETH     | TORN         | 1029 Dzerzinsk Manor                   |
+| DARYL       | WAHLBERG     | 1666 Beni-Mellal Place                 |
+| NULL        | NULL         | 928 Jaffna Loop                        |
+| NULL        | NULL         | 483 Ljubertsy Parkway                  |
+| NULL        | NULL         | 374 Bat Yam Boulevard                  |
+| RIP         | WINSLET      | 1027 Songkhla Manor                    |
+| NULL        | NULL         | 999 Sanaa Loop                         |
+| NULL        | NULL         | 879 Newcastle Way                      |
+| NULL        | NULL         | 1337 Lincoln Parkway                   |
+| NULL        | NULL         | 1952 Pune Lane                         |
+| RAY         | JOHANSSON    | 782 Mosul Street                       |
+| MENA        | TEMPLE       | 781 Shimonoseki Drive                  |
+| NULL        | NULL         | 1560 Jelets Boulevard                  |
+| NULL        | NULL         | 1963 Moscow Place                      |
+| MILLA       | KEITEL       | 456 Escobar Way                        |
+| CARMEN      | HUNT         | 798 Cianjur Avenue                     |
+| NULL        | NULL         | 185 Novi Sad Place                     |
+| NULL        | NULL         | 1367 Yantai Manor                      |
+| JIM         | MOSTEL       | 1386 Nakhon Sawan Boulevard            |
+| NULL        | NULL         | 369 Papeete Way                        |
+| NULL        | NULL         | 1440 Compton Place                     |
+| NULL        | NULL         | 1623 Baha Blanca Manor                 |
+| NULL        | NULL         | 97 Shimoga Avenue                      |
+| NULL        | NULL         | 1740 Le Mans Loop                      |
+| NULL        | NULL         | 1287 Xiangfan Boulevard                |
+| PENELOPE    | CRONYN       | 842 Salzburg Lane                      |
+| GINA        | DEGENERES    | 154 Tallahassee Loop                   |
+| NULL        | NULL         | 710 San Felipe del Progreso Avenue     |
+| MINNIE      | ZELLWEGER    | 1540 Wroclaw Drive                     |
+| NULL        | NULL         | 475 Atinsk Way                         |
+| WALTER      | TORN         | 1294 Firozabad Drive                   |
+| NULL        | NULL         | 1877 Ezhou Lane                        |
+| GARY        | PENN         | 316 Uruapan Street                     |
+| NULL        | NULL         | 29 Pyongyang Loop                      |
+| SYLVESTER   | DERN         | 1010 Klerksdorp Way                    |
+| MEG         | HAWKE        | 1848 Salala Boulevard                  |
+| NULL        | NULL         | 431 Xiangtan Avenue                    |
+| NULL        | NULL         | 757 Rustenburg Avenue                  |
+| KIRSTEN     | AKROYD       | 146 Johannesburg Way                   |
+| NULL        | NULL         | 1891 Rizhao Boulevard                  |
+| BEN         | WILLIS       | 1089 Iwatsuki Avenue                   |
+| KENNETH     | PALTROW      | 1410 Benin City Parkway                |
+| CHRISTIAN   | NEESON       | 682 Garden Grove Place                 |
+| SIDNEY      | CROWE        | 533 al-Ayn Boulevard                   |
+| GENE        | WILLIS       | 1839 Szkesfehrvr Parkway               |
+| SUSAN       | DAVIS        | 741 Ambattur Manor                     |
+| NULL        | NULL         | 927 Barcelona Street                   |
+| NULL        | NULL         | 435 0 Way                              |
+| HENRY       | BERRY        | 140 Chiayi Parkway                     |
+| NULL        | NULL         | 1166 Changhwa Street                   |
+| NULL        | NULL         | 891 Novi Sad Manor                     |
+| NULL        | NULL         | 605 Rio Claro Parkway                  |
+| NULL        | NULL         | 1077 San Felipe de Puerto Plata Place  |
+| NULL        | NULL         | 9 San Miguel de Tucumn Manor           |
+| GROUCHO     | DUNST        | 447 Surakarta Loop                     |
+| NULL        | NULL         | 345 Oshawa Boulevard                   |
+| PENELOPE    | PINKETT      | 1792 Valle de la Pascua Place          |
+| GARY        | PHOENIX      | 1074 Binzhou Manor                     |
+| SEAN        | GUINESS      | 817 Bradford Loop                      |
+| NULL        | NULL         | 955 Bamenda Way                        |
+| NULL        | NULL         | 1149 A Corua (La Corua) Boulevard      |
+| GRETA       | KEITEL       | 387 Mwene-Ditu Drive                   |
+| NULL        | NULL         | 68 Molodetno Manor                     |
+| NULL        | NULL         | 642 Nador Drive                        |
+| NULL        | NULL         | 1688 Nador Lane                        |
+| DARYL       | CRAWFORD     | 1215 Pyongyang Parkway                 |
+| EMILY       | DEE          | 1679 Antofagasta Street                |
+| CATE        | HARRIS       | 1304 s-Hertogenbosch Way               |
+| MORGAN      | MCDORMAND    | 850 Salala Loop                        |
+| NULL        | NULL         | 624 Oshawa Boulevard                   |
+| KENNETH     | PESCI        | 43 Dadu Avenue                         |
+| JANE        | JACKMAN      | 751 Lima Loop                          |
+| NULL        | NULL         | 1333 Haldia Street                     |
+| CHARLIZE    | DENCH        | 660 Jedda Boulevard                    |
+| MARY        | TANDY        | 1001 Miyakonojo Lane                   |
+| FRANCES     | TOMEI        | 226 Brest Manor                        |
+| ELLEN       | PRESLEY      | 1229 Valencia Parkway                  |
+| FAY         | WINSLET      | 1201 Qomsheh Manor                     |
+| NULL        | NULL         | 866 Shivapuri Manor                    |
+| RICHARD     | PENN         | 1168 Najafabad Parkway                 |
+| NULL        | NULL         | 1244 Allappuzha (Alleppey) Place       |
+| ADAM        | HOPPER       | 1842 Luzinia Boulevard                 |
+| EWAN        | GOODING      | 1926 Gingoog Street                    |
+| NULL        | NULL         | 810 Palghat (Palakkad) Boulevard       |
+| NULL        | NULL         | 1820 Maring Parkway                    |
+| NULL        | NULL         | 60 Poos de Caldas Street               |
+| NULL        | NULL         | 1014 Loja Manor                        |
+| NULL        | NULL         | 201 Effon-Alaiye Way                   |
+| LUCILLE     | DEE          | 430 Alessandria Loop                   |
+| NULL        | NULL         | 754 Valencia Place                     |
+| HARRISON    | BALE         | 356 Olomouc Manor                      |
+| WHOOPI      | HURT         | 1256 Bislig Boulevard                  |
+| SPENCER     | PECK         | 954 Kimchon Place                      |
+| JADA        | RYDER        | 885 Yingkou Manor                      |
+| CUBA        | ALLEN        | 1736 Cavite Place                      |
+| CATE        | MCQUEEN      | 346 Skikda Parkway                     |
+| BURT        | TEMPLE       | 98 Stara Zagora Boulevard              |
+| MERYL       | ALLEN        | 1479 Rustenburg Boulevard              |
+| JULIANNE    | DENCH        | 647 A Corua (La Corua) Street          |
+| SUSAN       | DAVIS        | 1964 Gijn Manor                        |
+| SCARLETT    | BENING       | 47 Syktyvkar Lane                      |
+| NULL        | NULL         | 1148 Saarbrcken Parkway                |
+| MORGAN      | WILLIAMS     | 1103 Bilbays Parkway                   |
+| NULL        | NULL         | 1246 Boksburg Parkway                  |
+| NULL        | NULL         | 1483 Pathankot Street                  |
+| NULL        | NULL         | 582 Papeete Loop                       |
+| NULL        | NULL         | 300 Junan Street                       |
+| RITA        | REYNOLDS     | 829 Grand Prairie Way                  |
+| GENE        | HOPKINS      | 1473 Changhwa Parkway                  |
+| SEAN        | WILLIAMS     | 1309 Weifang Street                    |
+| NULL        | NULL         | 1760 Oshawa Manor                      |
+| NULL        | NULL         | 786 Stara Zagora Way                   |
+| NULL        | NULL         | 1966 Tonghae Street                    |
+| ED          | MANSFIELD    | 1497 Yuzhou Drive                      |
+| ADAM        | GRANT        | 752 Ondo Loop                          |
+| NULL        | NULL         | 1338 Zalantun Lane                     |
+| MARY        | KEITEL       | 127 Iwakuni Boulevard                  |
+| NULL        | NULL         | 51 Laredo Avenue                       |
+| NULL        | NULL         | 771 Yaound Manor                       |
+| AUDREY      | BAILEY       | 532 Toulon Street                      |
+| KIM         | ALLEN        | 1027 Banjul Place                      |
+| MICHELLE    | MCCONAUGHEY  | 1158 Mandi Bahauddin Parkway           |
+| NULL        | NULL         | 862 Xintai Lane                        |
+| NULL        | NULL         | 816 Cayenne Parkway                    |
+| SALMA       | NOLTE        | 1831 Nam Dinh Loop                     |
+| WARREN      | JACKMAN      | 446 Kirovo-Tepetsk Lane                |
+| NULL        | NULL         | 682 Halisahar Place                    |
+| NULL        | NULL         | 1587 Loja Manor                        |
+| NULL        | NULL         | 1762 Paarl Parkway                     |
+| NULL        | NULL         | 1519 Ilorin Place                      |
+| NULL        | NULL         | 920 Kumbakonam Loop                    |
+| NULL        | NULL         | 906 Goinia Way                         |
+| NULL        | NULL         | 1675 Xiangfan Manor                    |
+| RENEE       | TRACY        | 85 San Felipe de Puerto Plata Drive    |
+| NULL        | NULL         | 144 South Hill Loop                    |
+| NULL        | NULL         | 1884 Shikarpur Avenue                  |
+| NULL        | NULL         | 1980 Kamjanets-Podilskyi Street        |
+| ALBERT      | NOLTE        | 1944 Bamenda Way                       |
+| NULL        | NULL         | 556 Baybay Manor                       |
+| KEVIN       | GARLAND      | 457 Tongliao Loop                      |
+| NULL        | NULL         | 600 Bradford Street                    |
+| NULL        | NULL         | 1006 Santa Brbara dOeste Manor         |
+| LIZA        | BERGMAN      | 1308 Sumy Loop                         |
+| NULL        | NULL         | 1405 Chisinau Place                    |
+| DAN         | STREEP       | 226 Halifax Street                     |
+| NULL        | NULL         | 1279 Udine Parkway                     |
+| NULL        | NULL         | 1336 Benin City Drive                  |
+| NULL        | NULL         | 1155 Liaocheng Place                   |
+| NULL        | NULL         | 1993 Tabuk Lane                        |
+| NULL        | NULL         | 86 Higashiosaka Lane                   |
+| NULL        | NULL         | 1912 Allende Manor                     |
+| NULL        | NULL         | 544 Tarsus Boulevard                   |
+| NULL        | NULL         | 1936 Cuman Avenue                      |
+| PENELOPE    | MONROE       | 1192 Tongliao Street                   |
+| NULL        | NULL         | 44 Najafabad Way                       |
+| NULL        | NULL         | 32 Pudukkottai Lane                    |
+| JON         | CHASE        | 661 Chisinau Lane                      |
+| JULIA       | ZELLWEGER    | 951 Stara Zagora Manor                 |
+| NULL        | NULL         | 922 Vila Velha Loop                    |
+| KENNETH     | HOFFMAN      | 898 Jining Lane                        |
+| FAY         | WOOD         | 1635 Kuwana Boulevard                  |
+| GENE        | MCKELLEN     | 41 El Alto Parkway                     |
+| NULL        | NULL         | 1883 Maikop Lane                       |
+| RENEE       | BALL         | 1908 Gaziantep Place                   |
+| JEFF        | SILVERSTONE  | 687 Alessandria Parkway                |
+| NULL        | NULL         | 827 Yuncheng Drive                     |
+| NICK        | DEGENERES    | 913 Coacalco de Berriozbal Loop        |
+| BEN         | HARRIS       | 715 So Bernardo do Campo Lane          |
+| HUMPHREY    | GARLAND      | 1354 Siegen Street                     |
+| RUSSELL     | TEMPLE       | 1191 Sungai Petani Boulevard           |
+| LAURENCE    | BULLOCK      | 1224 Huejutla de Reyes Boulevard       |
+| CARY        | MCCONAUGHEY  | 543 Bergamo Avenue                     |
+| NULL        | NULL         | 746 Joliet Lane                        |
+| MENA        | HOPPER       | 780 Kimberley Way                      |
+| NULL        | NULL         | 1774 Yaound Place                      |
+| DEBBIE      | AKROYD       | 1957 Yantai Lane                       |
+| NULL        | NULL         | 1542 Lubumbashi Boulevard              |
+| RUSSELL     | CLOSE        | 651 Pathankot Loop                     |
+| NULL        | NULL         | 1359 Zhoushan Parkway                  |
+| NULL        | NULL         | 1769 Iwaki Lane                        |
+| IAN         | TANDY        | 1145 Vilnius Manor                     |
+| GEOFFREY    | HESTON       | 1892 Nabereznyje Telny Lane            |
+| NULL        | NULL         | 470 Boksburg Street                    |
+| DAN         | HARRIS       | 1427 A Corua (La Corua) Place          |
+| NULL        | NULL         | 479 San Felipe del Progreso Avenue     |
+| NULL        | NULL         | 867 Benin City Avenue                  |
+| NULL        | NULL         | 981 Kumbakonam Place                   |
+| NULL        | NULL         | 1016 Iwakuni Street                    |
+| NULL        | NULL         | 663 Baha Blanca Parkway                |
+| WILL        | WILSON       | 1860 Taguig Loop                       |
+| NULL        | NULL         | 1816 Bydgoszcz Loop                    |
+| NULL        | NULL         | 587 Benguela Manor                     |
+| MINNIE      | KILMER       | 430 Kumbakonam Drive                   |
+| MERYL       | GIBSON       | 1838 Tabriz Lane                       |
+| NULL        | NULL         | 431 Szkesfehrvr Avenue                 |
+| GREGORY     | GOODING      | 503 Sogamoso Loop                      |
+| NULL        | NULL         | 507 Smolensk Loop                      |
+| CUBA        | BIRCH        | 1920 Weifang Avenue                    |
+| NULL        | NULL         | 124 al-Manama Way                      |
+| NULL        | NULL         | 1443 Mardan Street                     |
+| NULL        | NULL         | 1909 Benguela Lane                     |
+| JAYNE       | NOLTE        | 68 Ponce Parkway                       |
+| NULL        | NULL         | 1217 Konotop Avenue                    |
+| JAYNE       | SILVERSTONE  | 1293 Nam Dinh Way                      |
+| NULL        | NULL         | 785 Vaduz Street                       |
+| NULL        | NULL         | 1516 Escobar Drive                     |
+| BELA        | WALKEN       | 1628 Nagareyama Lane                   |
+| JAYNE       | NEESON       | 1157 Nyeri Loop                        |
+| NULL        | NULL         | 1673 Tangail Drive                     |
+| ED          | GUINESS      | 381 Kabul Way                          |
+| NULL        | NULL         | 953 Hodeida Street                     |
+| GRETA       | MALDEN       | 469 Nakhon Sawan Street                |
+| NULL        | NULL         | 1378 Beira Loop                        |
+| OPRAH       | KILMER       | 1641 Changhwa Place                    |
+| GROUCHO     | WILLIAMS     | 1698 Southport Loop                    |
+| LISA        | MONROE       | 519 Nyeri Manor                        |
+| REESE       | WEST         | 619 Hunuco Avenue                      |
+| JULIA       | FAWCETT      | 45 Aparecida de Goinia Place           |
+| Jonny       | Depp         | 45 Aparecida de Goinia Place           |
+| Ajay        | Devgan       | 45 Aparecida de Goinia Place           |
+| NULL        | NULL         | 482 Kowloon and New Kowloon Manor      |
+| JOHN        | SUVARI       | 604 Bern Place                         |
+| NULL        | NULL         | 1623 Kingstown Drive                   |
+| VIVIEN      | BASINGER     | 1009 Zanzibar Lane                     |
+| LAURA       | BRODY        | 114 Jalib al-Shuyukh Manor             |
+| NULL        | NULL         | 1163 London Parkway                    |
+| MICHAEL     | BENING       | 1658 Jastrzebie-Zdrj Loop              |
+| ALAN        | DREYFUSS     | 817 Laredo Avenue                      |
+| NULL        | NULL         | 1565 Tangail Manor                     |
+| OLYMPIA     | PFEIFFER     | 1912 Emeishan Drive                    |
+| ROCK        | DUKAKIS      | 230 Urawa Drive                        |
+| NULL        | NULL         | 1922 Miraj Way                         |
+| NULL        | NULL         | 433 Florencia Street                   |
+| HARVEY      | HOPE         | 1049 Matamoros Parkway                 |
+| NULL        | NULL         | 1061 Ede Avenue                        |
+| CHRIS       | DEPP         | 154 Oshawa Manor                       |
+| NULL        | NULL         | 1191 Tandil Drive                      |
+| NULL        | NULL         | 1133 Rizhao Avenue                     |
+| MATTHEW     | CARREY       | 1519 Santiago de los Caballeros Loop   |
+| NULL        | NULL         | 1618 Olomouc Manor                     |
+| NULL        | NULL         | 220 Hidalgo Drive                      |
+| NULL        | NULL         | 686 Donostia-San Sebastin Lane         |
+| NULL        | NULL         | 97 Mogiljov Lane                       |
+| NULL        | NULL         | 1642 Charlotte Amalie Drive            |
+| AL          | GARLAND      | 1368 Maracabo Boulevard                |
+| HUMPHREY    | WILLIS       | 401 Sucre Boulevard                    |
+| CHRISTOPHER | WEST         | 368 Hunuco Boulevard                   |
+| NULL        | NULL         | 500 Lincoln Parkway                    |
+| NULL        | NULL         | 102 Chapra Drive                       |
+| NULL        | NULL         | 1793 Meixian Place                     |
+| NULL        | NULL         | 514 Ife Way                            |
+| NULL        | NULL         | 717 Changzhou Lane                     |
+| NULL        | NULL         | 753 Ilorin Avenue                      |
+| NULL        | NULL         | 1337 Mit Ghamr Avenue                  |
+| NULL        | NULL         | 767 Pyongyang Drive                    |
+| WILLIAM     | HACKMAN      | 614 Pak Kret Street                    |
+| NULL        | NULL         | 954 Lapu-Lapu Way                      |
+| NULL        | NULL         | 331 Bydgoszcz Parkway                  |
+| NULL        | NULL         | 1152 Citrus Heights Manor              |
+| THORA       | TEMPLE       | 168 Cianjur Manor                      |
+| NULL        | NULL         | 616 Hagonoy Avenue                     |
+| NULL        | NULL         | 1190 0 Place                           |
+| NULL        | NULL         | 734 Bchar Place                        |
+| NULL        | NULL         | 530 Lausanne Lane                      |
+| NULL        | NULL         | 454 Patiala Lane                       |
+| NULL        | NULL         | 1346 Mysore Drive                      |
+| NULL        | NULL         | 990 Etawah Loop                        |
+| NULL        | NULL         | 1266 Laredo Parkway                    |
+| NULL        | NULL         | 88 Nagaon Manor                        |
+| PARKER      | GOLDBERG     | 264 Bhimavaram Manor                   |
+| NULL        | NULL         | 1639 Saarbrcken Drive                  |
+| NULL        | NULL         | 692 Amroha Drive                       |
+| DAN         | TORN         | 1936 Lapu-Lapu Parkway                 |
+| NULL        | NULL         | 432 Garden Grove Street                |
+| NULL        | NULL         | 1445 Carmen Parkway                    |
+| NULL        | NULL         | 791 Salinas Street                     |
+| NULL        | NULL         | 126 Acua Parkway                       |
+| NULL        | NULL         | 397 Sunnyvale Avenue                   |
+| NULL        | NULL         | 992 Klerksdorp Loop                    |
+| NULL        | NULL         | 966 Arecibo Loop                       |
+| NULL        | NULL         | 289 Santo Andr Manor                   |
+| NULL        | NULL         | 437 Chungho Drive                      |
+| NULL        | NULL         | 1948 Bayugan Parkway                   |
+| NULL        | NULL         | 1866 al-Qatif Avenue                   |
+| NULL        | NULL         | 1661 Abha Drive                        |
+| NULL        | NULL         | 1557 Cape Coral Parkway                |
+| NULL        | NULL         | 1727 Matamoros Place                   |
+| NULL        | NULL         | 1269 Botosani Manor                    |
+| NULL        | NULL         | 355 Vitria de Santo Anto Way           |
+| NULL        | NULL         | 1596 Acua Parkway                      |
+| NULL        | NULL         | 259 Ipoh Drive                         |
+| NULL        | NULL         | 1823 Hoshiarpur Lane                   |
+| NULL        | NULL         | 1404 Taguig Drive                      |
+| NULL        | NULL         | 740 Udaipur Lane                       |
+| NULL        | NULL         | 287 Cuautla Boulevard                  |
+| NULL        | NULL         | 1766 Almirante Brown Street            |
+| NULL        | NULL         | 596 Huixquilucan Place                 |
+| NULL        | NULL         | 1351 Aparecida de Goinia Parkway       |
+| NULL        | NULL         | 722 Bradford Lane                      |
+| NULL        | NULL         | 983 Santa F Way                        |
+| NULL        | NULL         | 1245 Ibirit Way                        |
+| NULL        | NULL         | 1836 Korla Parkway                     |
+| NULL        | NULL         | 231 Kaliningrad Place                  |
+| NULL        | NULL         | 495 Bhimavaram Lane                    |
+| NULL        | NULL         | 1924 Shimonoseki Drive                 |
+| NULL        | NULL         | 105 Dzerzinsk Manor                    |
+| NULL        | NULL         | 614 Denizli Parkway                    |
+| NULL        | NULL         | 1289 Belm Boulevard                    |
+| NULL        | NULL         | 203 Tambaram Street                    |
+| NULL        | NULL         | 1704 Tambaram Manor                    |
+| NULL        | NULL         | 207 Cuernavaca Loop                    |
+| NULL        | NULL         | 319 Springs Loop                       |
+| NULL        | NULL         | 956 Nam Dinh Manor                     |
+| NULL        | NULL         | 1947 Paarl Way                         |
+| NULL        | NULL         | 814 Simferopol Loop                    |
+| NULL        | NULL         | 535 Ahmadnagar Manor                   |
+| NULL        | NULL         | 138 Caracas Boulevard                  |
+| NULL        | NULL         | 251 Florencia Drive                    |
+| NULL        | NULL         | 659 Gatineau Boulevard                 |
+| NULL        | NULL         | 1889 Valparai Way                      |
+| NULL        | NULL         | 1485 Bratislava Place                  |
+| NULL        | NULL         | 935 Aden Boulevard                     |
+| NULL        | NULL         | 76 Kermanshah Manor                    |
+| NULL        | NULL         | 734 Tanshui Avenue                     |
+| NULL        | NULL         | 118 Jaffna Loop                        |
+| NULL        | NULL         | 1621 Tongliao Avenue                   |
+| NULL        | NULL         | 1844 Usak Avenue                       |
+| NULL        | NULL         | 1872 Toulon Loop                       |
+| NULL        | NULL         | 1088 Ibirit Place                      |
+| NULL        | NULL         | 1322 Mosul Parkway                     |
+| NULL        | NULL         | 1447 Chatsworth Place                  |
+| NULL        | NULL         | 1257 Guadalajara Street                |
+| NULL        | NULL         | 1469 Plock Lane                        |
+| NULL        | NULL         | 434 Ourense (Orense) Manor             |
+| NULL        | NULL         | 270 Tambaram Parkway                   |
+| NULL        | NULL         | 1786 Salinas Place                     |
+| NULL        | NULL         | 1078 Stara Zagora Drive                |
+| NULL        | NULL         | 1854 Okara Boulevard                   |
+| NULL        | NULL         | 421 Yaound Street                      |
+| NULL        | NULL         | 1153 Allende Way                       |
+| NULL        | NULL         | 808 Naala-Porto Parkway                |
+| NULL        | NULL         | 632 Usolje-Sibirskoje Parkway          |
+| NULL        | NULL         | 98 Pyongyang Boulevard                 |
+| NULL        | NULL         | 984 Novoterkassk Loop                  |
+| NULL        | NULL         | 64 Korla Street                        |
+| NULL        | NULL         | 1785 So Bernardo do Campo Street       |
+| NULL        | NULL         | 698 Jelets Boulevard                   |
+| NULL        | NULL         | 1297 Alvorada Parkway                  |
+| NULL        | NULL         | 1909 Dayton Avenue                     |
+| NULL        | NULL         | 1789 Saint-Denis Parkway               |
+| NULL        | NULL         | 185 Mannheim Lane                      |
+| NULL        | NULL         | 184 Mandaluyong Street                 |
+| NULL        | NULL         | 591 Sungai Petani Drive                |
+| NULL        | NULL         | 656 Matamoros Drive                    |
+| NULL        | NULL         | 775 ostka Drive                        |
+| NULL        | NULL         | 1013 Tabuk Boulevard                   |
+| NULL        | NULL         | 319 Plock Parkway                      |
+| NULL        | NULL         | 1954 Kowloon and New Kowloon Way       |
+| NULL        | NULL         | 362 Rajkot Lane                        |
+| NULL        | NULL         | 1060 Tandil Lane                       |
+| NULL        | NULL         | 1515 Korla Way                         |
+| NULL        | NULL         | 1416 San Juan Bautista Tuxtepec Avenue |
+| NULL        | NULL         | 1 Valle de Santiago Avenue             |
+| NULL        | NULL         | 519 Brescia Parkway                    |
+| NULL        | NULL         | 414 Mandaluyong Street                 |
+| NULL        | NULL         | 1197 Sokoto Boulevard                  |
+| NULL        | NULL         | 496 Celaya Drive                       |
+| NULL        | NULL         | 786 Matsue Way                         |
+| NULL        | NULL         | 48 Maracabo Place                      |
+| NULL        | NULL         | 1152 al-Qatif Lane                     |
+| NULL        | NULL         | 1269 Ipoh Avenue                       |
+| NULL        | NULL         | 758 Korolev Parkway                    |
+| NULL        | NULL         | 1747 Rustenburg Place                  |
+| NULL        | NULL         | 886 Tonghae Place                      |
+| NULL        | NULL         | 1574 Goinia Boulevard                  |
+| NULL        | NULL         | 548 Uruapan Street                     |
+| NULL        | NULL         | 962 Tama Loop                          |
+| NULL        | NULL         | 1778 Gijn Manor                        |
+| NULL        | NULL         | 568 Dhule (Dhulia) Loop                |
+| NULL        | NULL         | 1768 Udine Loop                        |
+| NULL        | NULL         | 608 Birgunj Parkway                    |
+| NULL        | NULL         | 680 A Corua (La Corua) Manor           |
+| NULL        | NULL         | 1949 Sanya Street                      |
+| NULL        | NULL         | 617 Klerksdorp Place                   |
+| NULL        | NULL         | 1993 0 Loop                            |
+| NULL        | NULL         | 1176 Southend-on-Sea Manor             |
+| NULL        | NULL         | 600 Purnea (Purnia) Avenue             |
+| NULL        | NULL         | 1003 Qinhuangdao Street                |
+| NULL        | NULL         | 1986 Sivas Place                       |
+| NULL        | NULL         | 1427 Tabuk Place                       |
+| NULL        | NULL         | 556 Asuncin Way                        |
+| NULL        | NULL         | 486 Ondo Parkway                       |
+| NULL        | NULL         | 635 Brest Manor                        |
+| NULL        | NULL         | 166 Jinchang Street                    |
+| NULL        | NULL         | 958 Sagamihara Lane                    |
+| NULL        | NULL         | 1817 Livorno Way                       |
+| NULL        | NULL         | 1332 Gaziantep Lane                    |
+| NULL        | NULL         | 949 Allende Lane                       |
+| NULL        | NULL         | 195 Ilorin Street                      |
+| NULL        | NULL         | 193 Bhusawal Place                     |
+| NULL        | NULL         | 43 Vilnius Manor                       |
+| NULL        | NULL         | 183 Haiphong Street                    |
+| NULL        | NULL         | 163 Augusta-Richmond County Loop       |
+| NULL        | NULL         | 191 Jos Azueta Parkway                 |
+| NULL        | NULL         | 379 Lublin Parkway                     |
+| NULL        | NULL         | 1658 Cuman Loop                        |
+| NULL        | NULL         | 454 Qinhuangdao Drive                  |
+| NULL        | NULL         | 1715 Okayama Street                    |
+| NULL        | NULL         | 182 Nukualofa Drive                    |
+| NULL        | NULL         | 390 Wroclaw Way                        |
+| NULL        | NULL         | 1421 Quilmes Lane                      |
+| NULL        | NULL         | 947 Trshavn Place                      |
+| NULL        | NULL         | 1764 Jalib al-Shuyukh Parkway          |
+| NULL        | NULL         | 346 Cam Ranh Avenue                    |
+| NULL        | NULL         | 1407 Pachuca de Soto Place             |
+| NULL        | NULL         | 904 Clarksville Drive                  |
+| NULL        | NULL         | 1917 Kumbakonam Parkway                |
+| NULL        | NULL         | 1447 Imus Place                        |
+| NULL        | NULL         | 1497 Fengshan Drive                    |
+| NULL        | NULL         | 869 Shikarpur Way                      |
+| NULL        | NULL         | 1059 Yuncheng Avenue                   |
+| NULL        | NULL         | 505 Madiun Boulevard                   |
+| NULL        | NULL         | 1741 Hoshiarpur Boulevard              |
+| NULL        | NULL         | 1229 Varanasi (Benares) Manor          |
+| NULL        | NULL         | 1894 Boa Vista Way                     |
+| NULL        | NULL         | 1342 Sharja Way                        |
+| NULL        | NULL         | 1342 Abha Boulevard                    |
+| NULL        | NULL         | 415 Pune Avenue                        |
+| NULL        | NULL         | 1746 Faaa Way                          |
+| NULL        | NULL         | 539 Hami Way                           |
+| NULL        | NULL         | 1407 Surakarta Manor                   |
+| NULL        | NULL         | 502 Mandi Bahauddin Parkway            |
+| NULL        | NULL         | 1052 Pathankot Avenue                  |
+| NULL        | NULL         | 1351 Sousse Lane                       |
+| NULL        | NULL         | 1501 Pangkal Pinang Avenue             |
+| NULL        | NULL         | 1405 Hagonoy Avenue                    |
+| NULL        | NULL         | 521 San Juan Bautista Tuxtepec Place   |
+| NULL        | NULL         | 923 Tangail Boulevard                  |
+| NULL        | NULL         | 186 Skikda Lane                        |
+| NULL        | NULL         | 1568 Celaya Parkway                    |
+| NULL        | NULL         | 1489 Kakamigahara Lane                 |
+| NULL        | NULL         | 1819 Alessandria Loop                  |
+| NULL        | NULL         | 1208 Tama Loop                         |
+| NULL        | NULL         | 951 Springs Lane                       |
+| NULL        | NULL         | 760 Miyakonojo Drive                   |
+| NULL        | NULL         | 966 Asuncin Way                        |
+| NULL        | NULL         | 1584 Ljubertsy Lane                    |
+| NULL        | NULL         | 247 Jining Parkway                     |
+| NULL        | NULL         | 773 Dallas Manor                       |
+| NULL        | NULL         | 1923 Stara Zagora Lane                 |
+| NULL        | NULL         | 1402 Zanzibar Boulevard                |
+| NULL        | NULL         | 1464 Kursk Parkway                     |
+| NULL        | NULL         | 1074 Sanaa Parkway                     |
+| NULL        | NULL         | 1759 Niznekamsk Avenue                 |
+| NULL        | NULL         | 32 Liaocheng Way                       |
+| NULL        | NULL         | 42 Fontana Avenue                      |
+| NULL        | NULL         | 1895 Zhezqazghan Drive                 |
+| NULL        | NULL         | 1837 Kaduna Parkway                    |
+| NULL        | NULL         | 844 Bucuresti Place                    |
+| NULL        | NULL         | 1101 Bucuresti Boulevard               |
+| NULL        | NULL         | 1103 Quilmes Boulevard                 |
+| NULL        | NULL         | 1331 Usak Boulevard                    |
+| NULL        | NULL         | 1325 Fukuyama Street                   |
++-------------+--------------+----------------------------------------+
+605 rows in set (0.01 sec)
+
+mysql> SELECT first_name ,last_name , address from actor LEFT OUTER JOIN Address ON Actor.address_id = Address.address_id;
++-------------+--------------+----------------------------------------+
+| first_name  | last_name    | address                                |
++-------------+--------------+----------------------------------------+
+| PENELOPE    | GUINESS      | 47 MySakila Drive                      |
+| NICK        | WAHLBERG     | 1411 Lillydale Drive                   |
+| ED          | CHASE        | 28 MySQL Boulevard                     |
+| JENNIFER    | DAVIS        | 23 Workhaven Lane                      |
+| JOHNNY      | LOLLOBRIGIDA | 1913 Hanoi Way                         |
+| BETTE       | NICHOLSON    | 692 Joliet Street                      |
+| GRACE       | MOSTEL       | 1121 Loja Avenue                       |
+| MATTHEW     | JOHANSSON    | 1566 Inegl Manor                       |
+| JOE         | SWANK        | 1795 Santiago de Compostela Way        |
+| CHRISTIAN   | GABLE        | 53 Idfu Parkway                        |
+| ZERO        | CAGE         | 900 Santiago de Compostela Parkway     |
+| KARL        | BERRY        | 613 Korolev Drive                      |
+| UMA         | WOOD         | 1867 San Juan Bautista Tuxtepec Avenue |
+| VIVIEN      | BERGEN       | 262 A Corua (La Corua) Parkway         |
+| CUBA        | OLIVIER      | 334 Munger (Monghyr) Lane              |
+| FRED        | COSTNER      | 915 Ponce Place                        |
+| HELEN       | VOIGHT       | 1947 Poos de Caldas Boulevard          |
+| DAN         | TORN         | 1936 Lapu-Lapu Parkway                 |
+| BOB         | FAWCETT      | 211 Chiayi Drive                       |
+| LUCILLE     | TRACY        | 602 Paarl Street                       |
+| KIRSTEN     | PALTROW      | 1697 Tanauan Lane                      |
+| ELVIS       | MARX         | 671 Graz Street                        |
+| SANDRA      | KILMER       | 786 Aurora Avenue                      |
+| CAMERON     | STREEP       | 1213 Ranchi Parkway                    |
+| KEVIN       | BLOOM        | 1214 Hanoi Way                         |
+| RIP         | CRAWFORD     | 1632 Bislig Avenue                     |
+| JULIA       | MCQUEEN      | 1447 Imus Way                          |
+| WOODY       | HOFFMAN      | 17 Kabul Boulevard                     |
+| ALEC        | WAYNE        | 1124 Buenaventura Drive                |
+| SANDRA      | PECK         | 492 Cam Ranh Street                    |
+| SISSY       | SOBIESKI     | 808 Bhopal Manor                       |
+| TIM         | HACKMAN      | 1966 Amroha Avenue                     |
+| MILLA       | PECK         | 927 Baha Blanca Parkway                |
+| AUDREY      | OLIVIER      | 1206 Dos Quebradas Place               |
+| JUDY        | DEAN         | 725 Isesaki Place                      |
+| BURT        | DUKAKIS      | 33 Gorontalo Way                       |
+| VAL         | BOLGER       | 57 Arlington Manor                     |
+| TOM         | MCKELLEN     | 1780 Hino Boulevard                    |
+| GOLDIE      | BRODY        | 1717 Guadalajara Lane                  |
+| JOHNNY      | CAGE         | 943 Tokat Street                       |
+| JODIE       | DEGENERES    | 269 Cam Ranh Parkway                   |
+| TOM         | MIRANDA      | 1551 Rampur Lane                       |
+| KIRK        | JOVOVICH     | 1688 Okara Way                         |
+| NICK        | STALLONE     | 832 Nakhon Sawan Manor                 |
+| REESE       | KILMER       | 1308 Arecibo Way                       |
+| PARKER      | GOLDBERG     | 264 Bhimavaram Manor                   |
+| JULIA       | BARRYMORE    | 1913 Kamakura Place                    |
+| FRANCES     | DAY-LEWIS    | 1386 Yangor Avenue                     |
+| ANNE        | CRONYN       | 848 Tafuna Manor                       |
+| NATALIE     | HOPKINS      | 115 Hidalgo Parkway                    |
+| GARY        | PHOENIX      | 1074 Binzhou Manor                     |
+| CARMEN      | HUNT         | 798 Cianjur Avenue                     |
+| MENA        | TEMPLE       | 781 Shimonoseki Drive                  |
+| PENELOPE    | PINKETT      | 1792 Valle de la Pascua Place          |
+| FAY         | KILMER       | 419 Iligan Lane                        |
+| DAN         | HARRIS       | 1427 A Corua (La Corua) Place          |
+| JUDE        | CRUISE       | 241 Mosul Lane                         |
+| CHRISTIAN   | AKROYD       | 1967 Sincelejo Place                   |
+| DUSTIN      | TAUTOU       | 1107 Nakhon Sawan Avenue               |
+| HENRY       | BERRY        | 140 Chiayi Parkway                     |
+| CHRISTIAN   | NEESON       | 682 Garden Grove Place                 |
+| JAYNE       | NEESON       | 1157 Nyeri Loop                        |
+| CAMERON     | WRAY         | 1752 So Leopoldo Parkway               |
+| RAY         | JOHANSSON    | 782 Mosul Street                       |
+| ANGELA      | HUDSON       | 588 Vila Velha Manor                   |
+| MARY        | TANDY        | 1001 Miyakonojo Lane                   |
+| JESSICA     | BAILEY       | 42 Brindisi Place                      |
+| RIP         | WINSLET      | 1027 Songkhla Manor                    |
+| KENNETH     | PALTROW      | 1410 Benin City Parkway                |
+| MICHELLE    | MCCONAUGHEY  | 1158 Mandi Bahauddin Parkway           |
+| ADAM        | GRANT        | 752 Ondo Loop                          |
+| SEAN        | WILLIAMS     | 1309 Weifang Street                    |
+| GARY        | PENN         | 316 Uruapan Street                     |
+| MILLA       | KEITEL       | 456 Escobar Way                        |
+| BURT        | POSEY        | 1749 Daxian Place                      |
+| ANGELINA    | ASTAIRE      | 804 Elista Drive                       |
+| CARY        | MCCONAUGHEY  | 543 Bergamo Avenue                     |
+| GROUCHO     | SINATRA      | 1002 Ahmadnagar Manor                  |
+| MAE         | HOFFMAN      | 682 Junan Way                          |
+| RALPH       | CRUZ         | 1050 Garden Grove Avenue               |
+| SCARLETT    | DAMON        | 1987 Coacalco de Berriozbal Loop       |
+| WOODY       | JOLIE        | 801 Hagonoy Drive                      |
+| BEN         | WILLIS       | 1089 Iwatsuki Avenue                   |
+| JAMES       | PITT         | 765 Southampton Drive                  |
+| MINNIE      | ZELLWEGER    | 1540 Wroclaw Drive                     |
+| GREG        | CHAPLIN      | 1079 Tel Aviv-Jaffa Boulevard          |
+| SPENCER     | PECK         | 954 Kimchon Place                      |
+| KENNETH     | PESCI        | 43 Dadu Avenue                         |
+| CHARLIZE    | DENCH        | 660 Jedda Boulevard                    |
+| SEAN        | GUINESS      | 817 Bradford Loop                      |
+| CHRISTOPHER | BERRY        | 442 Rae Bareli Place                   |
+| KIRSTEN     | AKROYD       | 146 Johannesburg Way                   |
+| ELLEN       | PRESLEY      | 1229 Valencia Parkway                  |
+| KENNETH     | TORN         | 1029 Dzerzinsk Manor                   |
+| DARYL       | WAHLBERG     | 1666 Beni-Mellal Place                 |
+| GENE        | WILLIS       | 1839 Szkesfehrvr Parkway               |
+| MEG         | HAWKE        | 1848 Salala Boulevard                  |
+| CHRIS       | BRIDGES      | 793 Cam Ranh Avenue                    |
+| JIM         | MOSTEL       | 1386 Nakhon Sawan Boulevard            |
+| SPENCER     | DEPP         | 1587 Sullana Lane                      |
+| SUSAN       | DAVIS        | 1964 Gijn Manor                        |
+| WALTER      | TORN         | 1294 Firozabad Drive                   |
+| MATTHEW     | LEIGH        | 261 Saint Louis Way                    |
+| PENELOPE    | CRONYN       | 842 Salzburg Lane                      |
+| SIDNEY      | CROWE        | 533 al-Ayn Boulevard                   |
+| GROUCHO     | DUNST        | 447 Surakarta Loop                     |
+| GINA        | DEGENERES    | 154 Tallahassee Loop                   |
+| WARREN      | NOLTE        | 698 Otsu Street                        |
+| SYLVESTER   | DERN         | 1010 Klerksdorp Way                    |
+| SUSAN       | DAVIS        | 741 Ambattur Manor                     |
+| CAMERON     | ZELLWEGER    | 1854 Tieli Street                      |
+| RUSSELL     | BACALL       | 333 Goinia Way                         |
+| MORGAN      | HOPKINS      | 1532 Dzerzinsk Way                     |
+| MORGAN      | MCDORMAND    | 850 Salala Loop                        |
+| HARRISON    | BALE         | 356 Olomouc Manor                      |
+| DAN         | STREEP       | 226 Halifax Street                     |
+| RENEE       | TRACY        | 85 San Felipe de Puerto Plata Drive    |
+| CUBA        | ALLEN        | 1736 Cavite Place                      |
+| WARREN      | JACKMAN      | 446 Kirovo-Tepetsk Lane                |
+| PENELOPE    | MONROE       | 1192 Tongliao Street                   |
+| LIZA        | BERGMAN      | 1308 Sumy Loop                         |
+| SALMA       | NOLTE        | 1831 Nam Dinh Loop                     |
+| JULIANNE    | DENCH        | 647 A Corua (La Corua) Street          |
+| SCARLETT    | BENING       | 47 Syktyvkar Lane                      |
+| ALBERT      | NOLTE        | 1944 Bamenda Way                       |
+| FRANCES     | TOMEI        | 226 Brest Manor                        |
+| KEVIN       | GARLAND      | 457 Tongliao Loop                      |
+| CATE        | MCQUEEN      | 346 Skikda Parkway                     |
+| DARYL       | CRAWFORD     | 1215 Pyongyang Parkway                 |
+| GRETA       | KEITEL       | 387 Mwene-Ditu Drive                   |
+| JANE        | JACKMAN      | 751 Lima Loop                          |
+| ADAM        | HOPPER       | 1842 Luzinia Boulevard                 |
+| RICHARD     | PENN         | 1168 Najafabad Parkway                 |
+| GENE        | HOPKINS      | 1473 Changhwa Parkway                  |
+| RITA        | REYNOLDS     | 829 Grand Prairie Way                  |
+| ED          | MANSFIELD    | 1497 Yuzhou Drive                      |
+| MORGAN      | WILLIAMS     | 1103 Bilbays Parkway                   |
+| LUCILLE     | DEE          | 430 Alessandria Loop                   |
+| EWAN        | GOODING      | 1926 Gingoog Street                    |
+| WHOOPI      | HURT         | 1256 Bislig Boulevard                  |
+| CATE        | HARRIS       | 1304 s-Hertogenbosch Way               |
+| JADA        | RYDER        | 885 Yingkou Manor                      |
+| RIVER       | DEAN         | 176 Mandaluyong Place                  |
+| ANGELA      | WITHERSPOON  | 81 Hodeida Way                         |
+| KIM         | ALLEN        | 1027 Banjul Place                      |
+| ALBERT      | JOHANSSON    | 898 Belm Manor                         |
+| FAY         | WINSLET      | 1201 Qomsheh Manor                     |
+| EMILY       | DEE          | 1679 Antofagasta Street                |
+| RUSSELL     | TEMPLE       | 1191 Sungai Petani Boulevard           |
+| JAYNE       | NOLTE        | 68 Ponce Parkway                       |
+| GEOFFREY    | HESTON       | 1892 Nabereznyje Telny Lane            |
+| BEN         | HARRIS       | 715 So Bernardo do Campo Lane          |
+| MINNIE      | KILMER       | 430 Kumbakonam Drive                   |
+| MERYL       | GIBSON       | 1838 Tabriz Lane                       |
+| IAN         | TANDY        | 1145 Vilnius Manor                     |
+| FAY         | WOOD         | 1635 Kuwana Boulevard                  |
+| GRETA       | MALDEN       | 469 Nakhon Sawan Street                |
+| VIVIEN      | BASINGER     | 1009 Zanzibar Lane                     |
+| LAURA       | BRODY        | 114 Jalib al-Shuyukh Manor             |
+| CHRIS       | DEPP         | 154 Oshawa Manor                       |
+| HARVEY      | HOPE         | 1049 Matamoros Parkway                 |
+| OPRAH       | KILMER       | 1641 Changhwa Place                    |
+| CHRISTOPHER | WEST         | 368 Hunuco Boulevard                   |
+| HUMPHREY    | WILLIS       | 401 Sucre Boulevard                    |
+| AL          | GARLAND      | 1368 Maracabo Boulevard                |
+| NICK        | DEGENERES    | 913 Coacalco de Berriozbal Loop        |
+| LAURENCE    | BULLOCK      | 1224 Huejutla de Reyes Boulevard       |
+| WILL        | WILSON       | 1860 Taguig Loop                       |
+| KENNETH     | HOFFMAN      | 898 Jining Lane                        |
+| MENA        | HOPPER       | 780 Kimberley Way                      |
+| OLYMPIA     | PFEIFFER     | 1912 Emeishan Drive                    |
+| GROUCHO     | WILLIAMS     | 1698 Southport Loop                    |
+| ALAN        | DREYFUSS     | 817 Laredo Avenue                      |
+| MICHAEL     | BENING       | 1658 Jastrzebie-Zdrj Loop              |
+| WILLIAM     | HACKMAN      | 614 Pak Kret Street                    |
+| JON         | CHASE        | 661 Chisinau Lane                      |
+| GENE        | MCKELLEN     | 41 El Alto Parkway                     |
+| LISA        | MONROE       | 519 Nyeri Manor                        |
+| ED          | GUINESS      | 381 Kabul Way                          |
+| JEFF        | SILVERSTONE  | 687 Alessandria Parkway                |
+| MATTHEW     | CARREY       | 1519 Santiago de los Caballeros Loop   |
+| DEBBIE      | AKROYD       | 1957 Yantai Lane                       |
+| RUSSELL     | CLOSE        | 651 Pathankot Loop                     |
+| HUMPHREY    | GARLAND      | 1354 Siegen Street                     |
+| MICHAEL     | BOLGER       | 1599 Plock Drive                       |
+| JULIA       | ZELLWEGER    | 951 Stara Zagora Manor                 |
+| RENEE       | BALL         | 1908 Gaziantep Place                   |
+| ROCK        | DUKAKIS      | 230 Urawa Drive                        |
+| CUBA        | BIRCH        | 1920 Weifang Avenue                    |
+| AUDREY      | BAILEY       | 532 Toulon Street                      |
+| GREGORY     | GOODING      | 503 Sogamoso Loop                      |
+| JOHN        | SUVARI       | 604 Bern Place                         |
+| BURT        | TEMPLE       | 98 Stara Zagora Boulevard              |
+| MERYL       | ALLEN        | 1479 Rustenburg Boulevard              |
+| JAYNE       | SILVERSTONE  | 1293 Nam Dinh Way                      |
+| BELA        | WALKEN       | 1628 Nagareyama Lane                   |
+| REESE       | WEST         | 619 Hunuco Avenue                      |
+| MARY        | KEITEL       | 127 Iwakuni Boulevard                  |
+| JULIA       | FAWCETT      | 45 Aparecida de Goinia Place           |
+| THORA       | TEMPLE       | 168 Cianjur Manor                      |
+| Jonny       | Depp         | 45 Aparecida de Goinia Place           |
+| Ajay        | Devgan       | 45 Aparecida de Goinia Place           |
++-------------+--------------+----------------------------------------+
+202 rows in set (0.00 sec)
+
+mysql>

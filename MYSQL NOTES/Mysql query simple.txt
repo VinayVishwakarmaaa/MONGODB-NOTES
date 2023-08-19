@@ -1,0 +1,589 @@
+Enter password: ***********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 18
+Server version: 8.0.33 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| lco_films          |
+| mysql              |
+| performance_schema |
+| world_actors       |
++--------------------+
+5 rows in set (0.03 sec)
+
+ERROR:
+No query specified
+
+mysql> use world_actors;
+Database changed
+mysql> show tables;
++------------------------+
+| Tables_in_world_actors |
++------------------------+
+| actor                  |
++------------------------+
+1 row in set (0.02 sec)
+
+mysql> select * from actor limit 1,3;
++-----------+----------+--------+----------+
+| Firstname | LastName | Gender | Networth |
++-----------+----------+--------+----------+
+| Angela    | White    | Female |      750 |
+| Sunny     | Leone    | Female |       10 |
+| Mia       | Khalifa  | Female |       45 |
++-----------+----------+--------+----------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT * FROM ACTOR WHERE Networth >=45;
++-----------+----------+--------+----------+
+| Firstname | LastName | Gender | Networth |
++-----------+----------+--------+----------+
+| Alina     | Depp     | Female |     1000 |
+| Angela    | White    | Female |      750 |
+| Mia       | Khalifa  | Female |       45 |
+| Valentina | Nappi    | Female |       46 |
+| Lacy      | Lennon   | Female |       51 |
+| Karlee    | Grey     | Female |       79 |
+| Keisha    | Grey     | Female |       81 |
+| Anila     | Depp     | Male   |       56 |
+| Ana       | Polana   | Female |       91 |
++-----------+----------+--------+----------+
+9 rows in set (0.00 sec)
+
+mysql> SELECT * FROM ACTOR WHERE Networth >=45 OR Networth <20;
++-----------+----------+--------+----------+
+| Firstname | LastName | Gender | Networth |
++-----------+----------+--------+----------+
+| Alina     | Depp     | Female |     1000 |
+| Angela    | White    | Female |      750 |
+| Sunny     | Leone    | Female |       10 |
+| Mia       | Khalifa  | Female |       45 |
+| Abella    | Danger   | Female |       10 |
+| Mia       | Malova   | Female |       12 |
+| Valentina | Nappi    | Female |       46 |
+| Eva       | Elfie    | Female |       18 |
+| Riley     | Reid     | Female |       19 |
+| Mischa    | Brooks   | Female |       15 |
+| Lacy      | Lennon   | Female |       51 |
+| Karlee    | Grey     | Female |       79 |
+| Keisha    | Grey     | Female |       81 |
+| Anila     | Depp     | Male   |       56 |
+| Ana       | Polana   | Female |       91 |
+| Blake     | Blossom  | Female |       11 |
++-----------+----------+--------+----------+
+16 rows in set (0.00 sec)
+
+mysql> SELECT * FROM ACTOR WHERE Gender = "Male";
++-----------+----------+--------+----------+
+| Firstname | LastName | Gender | Networth |
++-----------+----------+--------+----------+
+| Anila     | Depp     | Male   |       56 |
++-----------+----------+--------+----------+
+1 row in set (0.00 sec)
+
+mysql> SELECT  Firstname,Networth FROM ACTOR WHERE Gender = "Male";
++-----------+----------+
+| Firstname | Networth |
++-----------+----------+
+| Anila     |       56 |
++-----------+----------+
+1 row in set (0.00 sec)
+
+mysql> SELECT * FROM ACTOR where Firstname = "Angela";
++-----------+----------+--------+----------+
+| Firstname | LastName | Gender | Networth |
++-----------+----------+--------+----------+
+| Angela    | White    | Female |      750 |
++-----------+----------+--------+----------+
+1 row in set (0.00 sec)
+
+mysql> SELECT Firstname,Lastname FROM ACTOR where = "Angela";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '= "Angela"' at line 1
+mysql> SELECT * FROM ACTOR where Firstname = "Angela";
++-----------+----------+--------+----------+
+| Firstname | LastName | Gender | Networth |
++-----------+----------+--------+----------+
+| Angela    | White    | Female |      750 |
++-----------+----------+--------+----------+
+1 row in set (0.00 sec)
+
+mysql> SELECT Firstname,Lastname FROM ACTOR where = "An%";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '= "An%"' at line 1
+mysql> SELECT * FROM ACTOR where Firstname like = "An%";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '= "An%"' at line 1
+mysql> SELECT * FROM ACTOR WHERE Firstname like  "An%";
++-----------+----------+--------+----------+
+| Firstname | LastName | Gender | Networth |
++-----------+----------+--------+----------+
+| Angela    | White    | Female |      750 |
+| Anila     | Depp     | Male   |       56 |
+| Ana       | Polana   | Female |       91 |
++-----------+----------+--------+----------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT * FROM ACTOR WHERE Firstname like  "%An";
+Empty set (0.00 sec)
+
+mysql> SELECT * FROM ACTOR WHERE Firstname like  "%la";
++-----------+----------+--------+----------+
+| Firstname | LastName | Gender | Networth |
++-----------+----------+--------+----------+
+| Angela    | White    | Female |      750 |
+| Abella    | Danger   | Female |       10 |
+| Anila     | Depp     | Male   |       56 |
++-----------+----------+--------+----------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT * FROM ACTOR WHERE Firstname like  "%na";
++-----------+----------+--------+----------+
+| Firstname | LastName | Gender | Networth |
++-----------+----------+--------+----------+
+| Alina     | Depp     | Female |     1000 |
+| Valentina | Nappi    | Female |       46 |
+| Lena      | Paul     | Female |       21 |
+| Lana      | Rhaodes  | Female |       26 |
+| Brianna   | Love     | Female |       30 |
+| Ana       | Polana   | Female |       91 |
++-----------+----------+--------+----------+
+6 rows in set (0.00 sec)
+
+mysql> SELECT * FROM ACTOR WHERE Firstname like  "%g%";
++-----------+----------+--------+----------+
+| Firstname | LastName | Gender | Networth |
++-----------+----------+--------+----------+
+| Angela    | White    | Female |      750 |
+| August    | Ades     | Female |       31 |
++-----------+----------+--------+----------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT * FROM ACTOR WHERE Firstname like  "%g%" ORDER BY ASC;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ASC' at line 1
+mysql> SELECT * FROM ACTOR ORDER BY Networth ASC;
++-----------+----------+--------+----------+
+| Firstname | LastName | Gender | Networth |
++-----------+----------+--------+----------+
+| Sunny     | Leone    | Female |       10 |
+| Abella    | Danger   | Female |       10 |
+| Blake     | Blossom  | Female |       11 |
+| Mia       | Malova   | Female |       12 |
+| Mischa    | Brooks   | Female |       15 |
+| Eva       | Elfie    | Female |       18 |
+| Riley     | Reid     | Female |       19 |
+| Lena      | Paul     | Female |       21 |
+| Brandi    | Love     | Female |       23 |
+| Emily     | Wills    | Female |       25 |
+| Lana      | Rhaodes  | Female |       26 |
+| Tesa      | Lane     | Female |       27 |
+| Leah      | Gotti    | Female |       28 |
+| Brianna   | Love     | Female |       30 |
+| August    | Ades     | Female |       31 |
+| Victoria  | June     | Female |       32 |
+| Madison   | Ivy      | Female |       33 |
+| Syndey    | Cole     | Female |       35 |
+| Dani      | Daniels  | Female |       36 |
+| Molly     | Sims     | Female |       37 |
+| Kacy      | Black    | Female |       38 |
+| Alyssia   | Kent     | Female |       39 |
+| Kayley    | Gunner   | Female |       41 |
+| Mia       | Khalifa  | Female |       45 |
+| Valentina | Nappi    | Female |       46 |
+| Lacy      | Lennon   | Female |       51 |
+| Anila     | Depp     | Male   |       56 |
+| Karlee    | Grey     | Female |       79 |
+| Keisha    | Grey     | Female |       81 |
+| Ana       | Polana   | Female |       91 |
+| Angela    | White    | Female |      750 |
+| Alina     | Depp     | Female |     1000 |
++-----------+----------+--------+----------+
+32 rows in set (0.00 sec)
+
+mysql> SELECT * FROM ACTOR ORDER BY Networth Desc;
++-----------+----------+--------+----------+
+| Firstname | LastName | Gender | Networth |
++-----------+----------+--------+----------+
+| Alina     | Depp     | Female |     1000 |
+| Angela    | White    | Female |      750 |
+| Ana       | Polana   | Female |       91 |
+| Keisha    | Grey     | Female |       81 |
+| Karlee    | Grey     | Female |       79 |
+| Anila     | Depp     | Male   |       56 |
+| Lacy      | Lennon   | Female |       51 |
+| Valentina | Nappi    | Female |       46 |
+| Mia       | Khalifa  | Female |       45 |
+| Kayley    | Gunner   | Female |       41 |
+| Alyssia   | Kent     | Female |       39 |
+| Kacy      | Black    | Female |       38 |
+| Molly     | Sims     | Female |       37 |
+| Dani      | Daniels  | Female |       36 |
+| Syndey    | Cole     | Female |       35 |
+| Madison   | Ivy      | Female |       33 |
+| Victoria  | June     | Female |       32 |
+| August    | Ades     | Female |       31 |
+| Brianna   | Love     | Female |       30 |
+| Leah      | Gotti    | Female |       28 |
+| Tesa      | Lane     | Female |       27 |
+| Lana      | Rhaodes  | Female |       26 |
+| Emily     | Wills    | Female |       25 |
+| Brandi    | Love     | Female |       23 |
+| Lena      | Paul     | Female |       21 |
+| Riley     | Reid     | Female |       19 |
+| Eva       | Elfie    | Female |       18 |
+| Mischa    | Brooks   | Female |       15 |
+| Mia       | Malova   | Female |       12 |
+| Blake     | Blossom  | Female |       11 |
+| Sunny     | Leone    | Female |       10 |
+| Abella    | Danger   | Female |       10 |
++-----------+----------+--------+----------+
+32 rows in set (0.00 sec)
+
+mysql> SELECT * FROM ACTOR WHERE FIRTNAME LIKE "Angela" ORDER BY NETWORTH ASC;
+ERROR 1054 (42S22): Unknown column 'FIRTNAME' in 'where clause'
+mysql> SELECT * FROM ACTOR WHERE FIRTNAME LIKE "Angela" ORDER BY NETWORTH desc;
+ERROR 1054 (42S22): Unknown column 'FIRTNAME' in 'where clause'
+mysql> SELECT * FROM ACTOR WHERE FIRSTNAME LIKE "Angela" ORDER BY NETWORTH asc;
++-----------+----------+--------+----------+
+| Firstname | LastName | Gender | Networth |
++-----------+----------+--------+----------+
+| Angela    | White    | Female |      750 |
++-----------+----------+--------+----------+
+1 row in set (0.00 sec)
+
+mysql> SELECT * FROM ACTOR WHERE FIRSTNAME LIKE "Angela" ORDER BY NETWORTH Desc;
++-----------+----------+--------+----------+
+| Firstname | LastName | Gender | Networth |
++-----------+----------+--------+----------+
+| Angela    | White    | Female |      750 |
++-----------+----------+--------+----------+
+1 row in set (0.00 sec)
+
+mysql> SELECT * FROM ACTOR WHERE FIRSTNAME LIKE "An%" ORDER BY NETWORTH Desc;
++-----------+----------+--------+----------+
+| Firstname | LastName | Gender | Networth |
++-----------+----------+--------+----------+
+| Angela    | White    | Female |      750 |
+| Ana       | Polana   | Female |       91 |
+| Anila     | Depp     | Male   |       56 |
++-----------+----------+--------+----------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT FROM Firstname,Lastname Actor WHERE Gender "Female";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM Firstname,Lastname Actor WHERE Gender "Female"' at line 1
+mysql> SELECT FROM Firstname,Lastname Actor WHERE Gender = "Female";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM Firstname,Lastname Actor WHERE Gender = "Female"' at line 1
+mysql> SELECT Firstname,Networth FROM Actor WHERE Gender "An%";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '"An%"' at line 1
+mysql> SELECT Firstname,Networth FROM Actor WHERE Gender =  "An%";
+Empty set (0.00 sec)
+
+mysql> SELECT Firstname,Networth FROM Actor WHERE Gender =  "Male";
++-----------+----------+
+| Firstname | Networth |
++-----------+----------+
+| Anila     |       56 |
++-----------+----------+
+1 row in set (0.00 sec)
+
+mysql> SELECT * FROM ACTOR WHERE Firstname LIKE "An";
+Empty set (0.00 sec)
+
+mysql> SELECT * FROM ACTOR WHERE Firstname LIKE = "An";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '= "An"' at line 1
+mysql> SELECT * FROM ACTOR WHERE Firstname LIKE  "An";
+Empty set (0.00 sec)
+
+mysql> SELECT * FROM ACTOR WHERE Firstname LIKE  "An" ORDER BY Firstname;
+Empty set (0.00 sec)
+
+mysql> SELECT * FROM ACTOR WHERE Firstname LIKE  "An%" ORDER BY Firstname;
++-----------+----------+--------+----------+
+| Firstname | LastName | Gender | Networth |
++-----------+----------+--------+----------+
+| Ana       | Polana   | Female |       91 |
+| Angela    | White    | Female |      750 |
+| Anila     | Depp     | Male   |       56 |
++-----------+----------+--------+----------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT * FROM ACTOR WHERE Firstname LIKE  "An%" ORDER BY Firstname DESC;
++-----------+----------+--------+----------+
+| Firstname | LastName | Gender | Networth |
++-----------+----------+--------+----------+
+| Anila     | Depp     | Male   |       56 |
+| Angela    | White    | Female |      750 |
+| Ana       | Polana   | Female |       91 |
++-----------+----------+--------+----------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT * FROM ACTOR WHERE Firstname LIKE  "An%" ORDER BY Firstname,Networth DESC;
++-----------+----------+--------+----------+
+| Firstname | LastName | Gender | Networth |
++-----------+----------+--------+----------+
+| Ana       | Polana   | Female |       91 |
+| Angela    | White    | Female |      750 |
+| Anila     | Depp     | Male   |       56 |
++-----------+----------+--------+----------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT * FROM ACTOR WHERE Firstname LIKE  "An%" ORDER BY Firstname,Networth,Gender DESC;
++-----------+----------+--------+----------+
+| Firstname | LastName | Gender | Networth |
++-----------+----------+--------+----------+
+| Ana       | Polana   | Female |       91 |
+| Angela    | White    | Female |      750 |
+| Anila     | Depp     | Male   |       56 |
++-----------+----------+--------+----------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT * FROM Actor limit 10;
++-----------+----------+--------+----------+
+| Firstname | LastName | Gender | Networth |
++-----------+----------+--------+----------+
+| Alina     | Depp     | Female |     1000 |
+| Angela    | White    | Female |      750 |
+| Sunny     | Leone    | Female |       10 |
+| Mia       | Khalifa  | Female |       45 |
+| Abella    | Danger   | Female |       10 |
+| Mia       | Malova   | Female |       12 |
+| Valentina | Nappi    | Female |       46 |
+| Eva       | Elfie    | Female |       18 |
+| Riley     | Reid     | Female |       19 |
+| Lena      | Paul     | Female |       21 |
++-----------+----------+--------+----------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT Firstname,Networth FROm Actor WHERE Gender "Male";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '"Male"' at line 1
+mysql> SELECT Firstname,Networth FROm Actor WHERE Gender =  "Male";
++-----------+----------+
+| Firstname | Networth |
++-----------+----------+
+| Anila     |       56 |
++-----------+----------+
+1 row in set (0.00 sec)
+
+mysql> SELECT * FROM Actor limit 10 offset 3;
++-----------+----------+--------+----------+
+| Firstname | LastName | Gender | Networth |
++-----------+----------+--------+----------+
+| Mia       | Khalifa  | Female |       45 |
+| Abella    | Danger   | Female |       10 |
+| Mia       | Malova   | Female |       12 |
+| Valentina | Nappi    | Female |       46 |
+| Eva       | Elfie    | Female |       18 |
+| Riley     | Reid     | Female |       19 |
+| Lena      | Paul     | Female |       21 |
+| Brandi    | Love     | Female |       23 |
+| Emily     | Wills    | Female |       25 |
+| Lana      | Rhaodes  | Female |       26 |
++-----------+----------+--------+----------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT * FROM Actor limit 10 offset 1;
++-----------+----------+--------+----------+
+| Firstname | LastName | Gender | Networth |
++-----------+----------+--------+----------+
+| Angela    | White    | Female |      750 |
+| Sunny     | Leone    | Female |       10 |
+| Mia       | Khalifa  | Female |       45 |
+| Abella    | Danger   | Female |       10 |
+| Mia       | Malova   | Female |       12 |
+| Valentina | Nappi    | Female |       46 |
+| Eva       | Elfie    | Female |       18 |
+| Riley     | Reid     | Female |       19 |
+| Lena      | Paul     | Female |       21 |
+| Brandi    | Love     | Female |       23 |
++-----------+----------+--------+----------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT * FROM ACTOR WHERE Firstname like "An";
+Empty set (0.00 sec)
+
+mysql>
+mysql> SELECT * FROM ACTOR WHERE Firstname like "An";
+Empty set (0.00 sec)
+
+mysql> SELECT * FROM ACTOR WHERE Firstname like "An%";
++-----------+----------+--------+----------+
+| Firstname | LastName | Gender | Networth |
++-----------+----------+--------+----------+
+| Angela    | White    | Female |      750 |
+| Anila     | Depp     | Male   |       56 |
+| Ana       | Polana   | Female |       91 |
++-----------+----------+--------+----------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT * FROM ACTOR WHERE Firstname like "An%" limit 1 offset 2;
++-----------+----------+--------+----------+
+| Firstname | LastName | Gender | Networth |
++-----------+----------+--------+----------+
+| Ana       | Polana   | Female |       91 |
++-----------+----------+--------+----------+
+1 row in set (0.00 sec)
+
+mysql> UPDATE Actor SET Networth = 12 where FIRSTNAME = "Black%"
+    -> UPDATE Actor SET Networth = 12 where FIRSTNAME = "Black%";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'UPDATE Actor SET Networth = 12 where FIRSTNAME = "Black%"' at line 2
+mysql> UPDATE Actor SET Networth = 12 where Firstname = "Black%";
+Query OK, 0 rows affected (0.01 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+mysql> Select * from actor;
++-----------+----------+--------+----------+
+| Firstname | LastName | Gender | Networth |
++-----------+----------+--------+----------+
+| Alina     | Depp     | Female |     1000 |
+| Angela    | White    | Female |      750 |
+| Sunny     | Leone    | Female |       10 |
+| Mia       | Khalifa  | Female |       45 |
+| Abella    | Danger   | Female |       10 |
+| Mia       | Malova   | Female |       12 |
+| Valentina | Nappi    | Female |       46 |
+| Eva       | Elfie    | Female |       18 |
+| Riley     | Reid     | Female |       19 |
+| Lena      | Paul     | Female |       21 |
+| Brandi    | Love     | Female |       23 |
+| Emily     | Wills    | Female |       25 |
+| Lana      | Rhaodes  | Female |       26 |
+| Tesa      | Lane     | Female |       27 |
+| Leah      | Gotti    | Female |       28 |
+| Mischa    | Brooks   | Female |       15 |
+| Brianna   | Love     | Female |       30 |
+| August    | Ades     | Female |       31 |
+| Victoria  | June     | Female |       32 |
+| Madison   | Ivy      | Female |       33 |
+| Syndey    | Cole     | Female |       35 |
+| Dani      | Daniels  | Female |       36 |
+| Molly     | Sims     | Female |       37 |
+| Kacy      | Black    | Female |       38 |
+| Alyssia   | Kent     | Female |       39 |
+| Kayley    | Gunner   | Female |       41 |
+| Lacy      | Lennon   | Female |       51 |
+| Karlee    | Grey     | Female |       79 |
+| Keisha    | Grey     | Female |       81 |
+| Anila     | Depp     | Male   |       56 |
+| Ana       | Polana   | Female |       91 |
+| Blake     | Blossom  | Female |       11 |
++-----------+----------+--------+----------+
+32 rows in set (0.00 sec)
+
+mysql> SELECT Actor SET Networth = 12 WHERE Firstname = "Blake";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SET Networth = 12 WHERE Firstname = "Blake"' at line 1
+mysql> SELECT Actor SET Networth = 12 WHERE Firstname = "Blake%";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SET Networth = 12 WHERE Firstname = "Blake%"' at line 1
+mysql> SELECT Actor SET Networth = 12 WHERE Firstname = "Blake%";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SET Networth = 12 WHERE Firstname = "Blake%"' at line 1
+mysql> SELECT Actor SET Networth = 12 WHERE Firstname = "Ana%";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SET Networth = 12 WHERE Firstname = "Ana%"' at line 1
+mysql> SELECT Actor SET Networth = 12 WHERE Firstname = "Ana%";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SET Networth = 12 WHERE Firstname = "Ana%"' at line 1
+mysql> UPDATE Actor SET Networth = 12 WHERE Firstname = "Blake%";
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+mysql> Select * from actor;
++-----------+----------+--------+----------+
+| Firstname | LastName | Gender | Networth |
++-----------+----------+--------+----------+
+| Alina     | Depp     | Female |     1000 |
+| Angela    | White    | Female |      750 |
+| Sunny     | Leone    | Female |       10 |
+| Mia       | Khalifa  | Female |       45 |
+| Abella    | Danger   | Female |       10 |
+| Mia       | Malova   | Female |       12 |
+| Valentina | Nappi    | Female |       46 |
+| Eva       | Elfie    | Female |       18 |
+| Riley     | Reid     | Female |       19 |
+| Lena      | Paul     | Female |       21 |
+| Brandi    | Love     | Female |       23 |
+| Emily     | Wills    | Female |       25 |
+| Lana      | Rhaodes  | Female |       26 |
+| Tesa      | Lane     | Female |       27 |
+| Leah      | Gotti    | Female |       28 |
+| Mischa    | Brooks   | Female |       15 |
+| Brianna   | Love     | Female |       30 |
+| August    | Ades     | Female |       31 |
+| Victoria  | June     | Female |       32 |
+| Madison   | Ivy      | Female |       33 |
+| Syndey    | Cole     | Female |       35 |
+| Dani      | Daniels  | Female |       36 |
+| Molly     | Sims     | Female |       37 |
+| Kacy      | Black    | Female |       38 |
+| Alyssia   | Kent     | Female |       39 |
+| Kayley    | Gunner   | Female |       41 |
+| Lacy      | Lennon   | Female |       51 |
+| Karlee    | Grey     | Female |       79 |
+| Keisha    | Grey     | Female |       81 |
+| Anila     | Depp     | Male   |       56 |
+| Ana       | Polana   | Female |       91 |
+| Blake     | Blossom  | Female |       11 |
++-----------+----------+--------+----------+
+32 rows in set (0.00 sec)
+
+mysql> UPDATE Actor SET Networth = 500 WHERE Firstname = "Blake%";
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+mysql> UPDATE Actor SET Networth = 10 WHERE Firstname = "Blake%";
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+mysql> UPDATE Actor SET Networth = 10 WHERE Firstname = "Ana%";
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+mysql> Select * from actor;
++-----------+----------+--------+----------+
+| Firstname | LastName | Gender | Networth |
++-----------+----------+--------+----------+
+| Alina     | Depp     | Female |     1000 |
+| Angela    | White    | Female |      750 |
+| Sunny     | Leone    | Female |       10 |
+| Mia       | Khalifa  | Female |       45 |
+| Abella    | Danger   | Female |       10 |
+| Mia       | Malova   | Female |       12 |
+| Valentina | Nappi    | Female |       46 |
+| Eva       | Elfie    | Female |       18 |
+| Riley     | Reid     | Female |       19 |
+| Lena      | Paul     | Female |       21 |
+| Brandi    | Love     | Female |       23 |
+| Emily     | Wills    | Female |       25 |
+| Lana      | Rhaodes  | Female |       26 |
+| Tesa      | Lane     | Female |       27 |
+| Leah      | Gotti    | Female |       28 |
+| Mischa    | Brooks   | Female |       15 |
+| Brianna   | Love     | Female |       30 |
+| August    | Ades     | Female |       31 |
+| Victoria  | June     | Female |       32 |
+| Madison   | Ivy      | Female |       33 |
+| Syndey    | Cole     | Female |       35 |
+| Dani      | Daniels  | Female |       36 |
+| Molly     | Sims     | Female |       37 |
+| Kacy      | Black    | Female |       38 |
+| Alyssia   | Kent     | Female |       39 |
+| Kayley    | Gunner   | Female |       41 |
+| Lacy      | Lennon   | Female |       51 |
+| Karlee    | Grey     | Female |       79 |
+| Keisha    | Grey     | Female |       81 |
+| Anila     | Depp     | Male   |       56 |
+| Ana       | Polana   | Female |       91 |
+| Blake     | Blossom  | Female |       11 |
++-----------+----------+--------+----------+
+32 rows in set (0.00 sec)
+
+mysql> UPDATE Actor SET Networth = 12 WHERE Firstname = "Alina%";
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+mysql>
